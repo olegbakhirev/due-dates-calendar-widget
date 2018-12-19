@@ -1,4 +1,4 @@
-# Countdown widget 
+# Due dates calendar widget 
 Renders a celandar showing issue with Due Dates set to some particular date.
 It is possible to configure query for the issues that will be shown 
 Works in YouTrack 2018.1+, Hub 2018.1+, Upsource 2018.1+.
