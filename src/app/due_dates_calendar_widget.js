@@ -123,7 +123,7 @@ class DueDatesCalendarWidget extends React.Component {
           this.setState({isConfiguring: true, isNew});
         } else {
           this.changeTitle(title);
-          this.setState({date: new Date(date), view});
+          this.setState({date: date ? new Date(date) : new Date(), view});
           await this.loadIssues(search, context);
         }
         this.setLoadingEnabled(false);
