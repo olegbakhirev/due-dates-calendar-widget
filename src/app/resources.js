@@ -20,8 +20,9 @@ export async function loadIssues(fetchYouTrack, query, context, skip) {
 }
 
 export async function loadTotalIssuesCount(
-  fetchYouTrack, issue, query, context
+  fetchYouTrack, query, context
 ) {
+  const issues = await loadQueryHasIssues(fetchYouTrack, query);
   const searchPage = await fetchYouTrack(
     'api/searchPage?fields=total', {
       method: 'POST',
@@ -32,11 +33,15 @@ export async function loadTotalIssuesCount(
           $type: context.$type
         },
         query,
-        issue: {id: issue.id}
+        issue: {id: issues[0].id}
       }
     }
   );
   return searchPage && searchPage.total;
+}
+
+export async function loadQueryHasIssues(fetchYouTrack, query) {
+  return await fetchYouTrack(`api/issues?q=${query}&$top=1`);
 }
 
 export async function loadPinnedIssueFolders(fetchYouTrack, loadAll) {
@@ -49,4 +54,8 @@ export async function underlineAndSuggest(fetchYouTrack, query, caret) {
     method: 'POST',
     body: {query, caret}
   });
+}
+
+export async function loadFieldsWithType(fetchYouTrack, fieldType) {
+  return await fetchYouTrack(`api/filterFields?$top=-1&fieldTypes=${fieldType}&fields=name`);
 }

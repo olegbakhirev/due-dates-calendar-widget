@@ -17,7 +17,8 @@ import ServiceResource from './components/service-resource';
 import {
   underlineAndSuggest,
   loadIssues,
-  loadPinnedIssueFolders
+  loadPinnedIssueFolders,
+  loadFieldsWithType
 } from './resources';
 import './style/widget.scss';
 
@@ -28,6 +29,7 @@ class EditForm extends React.Component {
     search: PropTypes.string,
     context: PropTypes.object,
     title: PropTypes.string,
+    scheduleField: PropTypes.string,
     refreshPeriod: PropTypes.number,
     onSubmit: PropTypes.func,
     onCancel: PropTypes.func,
@@ -58,10 +60,12 @@ class EditForm extends React.Component {
       search: props.search || '',
       context: props.context,
       title: props.title || '',
+      scheduleField: props.scheduleField,
       refreshPeriod: props.refreshPeriod || 0,
       selectedYouTrack,
       youTracks: [selectedYouTrack],
-      filtersType: EditForm.FILTERS_TYPES.PROJECTS
+      filtersType: EditForm.FILTERS_TYPES.PROJECTS,
+      availableScheduleFields: []
     };
   }
 
@@ -93,6 +97,7 @@ class EditForm extends React.Component {
     this.setFormLoaderEnabled(true);
     try {
       await this.loadAllContexts();
+      await this.loadAllScheduleFields();
     } catch (err) {
       this.setState({
         isLoading: false,
@@ -129,6 +134,14 @@ class EditForm extends React.Component {
 
   clearTitle = () => this.setState({title: ''});
 
+  changeScheduleField = evt => {
+    this.setState({scheduleField: evt.label});
+  }
+
+  clearScheduleField = () => {
+    this.setState({scheduleField: ''});
+  };
+
   changeYouTrack = selected => {
     this.setState({
       selectedYouTrack: selected.model,
@@ -138,7 +151,7 @@ class EditForm extends React.Component {
 
   submitForm = async () => {
     const {
-      search, context, title, refreshPeriod, selectedYouTrack
+      search, context, title, refreshPeriod, selectedYouTrack, scheduleField
     } = this.state;
     this.setFormLoaderEnabled(true);
     try {
@@ -154,7 +167,12 @@ class EditForm extends React.Component {
     }
     this.setFormLoaderEnabled(false);
     await this.props.onSubmit({
-      search: search || '', title, context, refreshPeriod, selectedYouTrack
+      search: search || '',
+      title,
+      context,
+      refreshPeriod,
+      selectedYouTrack,
+      scheduleField
     });
   };
 
@@ -173,6 +191,16 @@ class EditForm extends React.Component {
     this.setState({allContexts: null});
     const allContexts = await loadPinnedIssueFolders(this.fetchYouTrack, true);
     this.setState({allContexts});
+  };
+
+  loadAllScheduleFields = async () => {
+    this.setState({availableScheduleFields: []});
+    const fields = await loadFieldsWithType(this.fetchYouTrack, 'date');
+    const availableScheduleFields = [];
+    fields.forEach(field => {
+      availableScheduleFields.push({label: field.name});
+    });
+    this.setState({availableScheduleFields});
   };
 
   renderFilterLink(filterType, filter) {
@@ -215,7 +243,7 @@ class EditForm extends React.Component {
       i18n('No tags'),
       i18n('No saved searches')
     ];
-
+    // eslint-disable-next-line max-len
     const displayedFilters = (allContexts || []).filter(filterTypeCheckers[filtersType]).filter(filterIsNotAlreadyUsed);
 
     return (
@@ -365,7 +393,7 @@ class EditForm extends React.Component {
     return (
       <ConfigurationForm
         warning={errorMessage}
-        isInvalid={errorMessage}
+        isInvalid={errorMessage || !this.state.scheduleField}
         isLoading={this.state.isLoading}
         panelControls={this.renderRefreshPeriod()}
         onSave={this.submitForm}
@@ -373,7 +401,7 @@ class EditForm extends React.Component {
       >
         <Input
           className="ring-form__group"
-          borderless={true}
+          label="Optional title"
           size={InputSize.FULL}
           value={this.state.title}
           placeholder={i18n('Set optional title')}
@@ -383,13 +411,32 @@ class EditForm extends React.Component {
         {
           youTracks.length > 1 &&
           <Select
+            className="ring-form__group"
             size={InputSize.FULL}
-            type={Select.Type.BUTTON}
+            maxHeight={300}
+            //type={Select.Type.BUTTON}
+            selectedLabel="YouTrack service"
             data={youTracks.map(youTrackServiceToSelectItem)}
             selected={youTrackServiceToSelectItem(selectedYouTrack)}
             onSelect={this.changeYouTrack}
             filter={true}
             label={i18n('Select YouTrack')}
+          />
+        }
+        {
+          !errorMessage &&
+          <Select
+            className="ring-form__group"
+            selectedLabel="Schedule by field"
+            size={InputSize.FULL}
+            //type={Select.Type.BUTTON}
+            data={this.state.availableScheduleFields}
+            selected={{label: this.state.scheduleField}}
+            onSelect={this.changeScheduleField}
+            filter={true}
+            maxHeight={300}
+            renderOptimization={false}
+            label={i18n('Select Schedule field')}
           />
         }
         <div className="ring-form__group">

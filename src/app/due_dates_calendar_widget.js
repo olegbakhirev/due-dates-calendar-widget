@@ -9,13 +9,14 @@ import moment from 'moment';
 import 'react-big-calendar/lib/css/react-big-calendar.css';
 import styles from './app.css';
 import EditForm from './edit-form';
-import {loadIssues} from './resources';
+import {loadIssues, loadTotalIssuesCount} from './resources';
 import ServiceResource from './components/service-resource';
 
 import EventComponent from './issue_event';
 import CalendarToolbar from './calendar_toolbar';
 
 const localizer = Calendar.momentLocalizer(moment);
+const DEFAULT_SCHEDULE_FIELD = 'Due Date';
 
 class DueDatesCalendarWidget extends React.Component {
   static propTypes = {
@@ -88,7 +89,8 @@ class DueDatesCalendarWidget extends React.Component {
       onConfigure: () => this.setState({
         isConfiguring: true,
         isLoading: false,
-        isLoadDataError: false
+        isLoadDataError: false,
+        isEmptyQueryResultError: false
       }),
       onRefresh: () => this.loadIssues()
     });
@@ -101,7 +103,14 @@ class DueDatesCalendarWidget extends React.Component {
   initialize = async dashboardApi => {
     this.setLoadingEnabled(true);
     const config = await dashboardApi.readConfig();
-    const {search, context, title, refreshPeriod, date, view} = (config || {});
+    const {search, context, title, refreshPeriod, date, view} =
+        (config || {});
+
+    let {scheduleField} = (config || {});
+    if (!scheduleField) {
+      scheduleField = DEFAULT_SCHEDULE_FIELD;
+    }
+
     const isNew = !config;
 
     if (!isNew) {
@@ -123,8 +132,9 @@ class DueDatesCalendarWidget extends React.Component {
           this.setState({isConfiguring: true, isNew});
         } else {
           this.changeTitle(title);
-          this.setState({date: date ? new Date(date) : new Date(), view});
-          await this.loadIssues(search, context);
+          this.setState({date: date ? new Date(date) : new Date(),
+            view, scheduleField});
+          await this.loadIssues(search, context, scheduleField);
         }
         this.setLoadingEnabled(false);
       };
@@ -190,20 +200,23 @@ class DueDatesCalendarWidget extends React.Component {
 
   submitConfiguration = async formParameters => {
     const {
-      search, title, context, refreshPeriod, selectedYouTrack
+      search, title, context, refreshPeriod, selectedYouTrack, scheduleField
     } = formParameters;
+
     this.setYouTrack(
       selectedYouTrack, async () => {
         this.initRefreshPeriod(refreshPeriod);
         this.changeSearch(
-          search, context, async () => {
+          search, context, scheduleField, async () => {
             this.changeTitle(title);
+            //this.loadIssuesCount(`${search} has: {${this.state.scheduleField}}`, context);
             await this.loadIssues();
             await this.props.dashboardApi.storeConfig({
               search,
               context,
               title,
               refreshPeriod,
+              scheduleField,
               youTrack: {
                 id: selectedYouTrack.id,
                 homeUrl: selectedYouTrack.homeUrl
@@ -239,18 +252,19 @@ class DueDatesCalendarWidget extends React.Component {
         isConfiguring,
         refreshPeriod,
         search,
-        context
+        context,
+        scheduleField
       } = this.state;
       if (!isConfiguring && refreshPeriod === newRefreshPeriod) {
-        await this.loadIssues(search, context);
+        await this.loadIssues(search, context, scheduleField);
         this.initRefreshPeriod(refreshPeriod);
       }
     }, newRefreshPeriod * millisInSec);
   };
 
-  changeSearch = (search, context, onChangeSearchCallback) => {
+  changeSearch = (search, context, scheduleField, onChangeSearchCallback) => {
     this.setState(
-      {search: search || '', context},
+      {search: search || '', context, scheduleField},
       async () => onChangeSearchCallback && await onChangeSearchCallback()
     );
   };
@@ -273,6 +287,7 @@ class DueDatesCalendarWidget extends React.Component {
     let displayedTitle =
       title ||
       DueDatesCalendarWidget.getFullSearchPresentation(context, search);
+    displayedTitle += ` has: {${this.state.scheduleField}}`;
     if (issuesCount) {
       const superScriptIssuesCount =
         `${issuesCount}`.split('').map(DueDatesCalendarWidget.digitToUnicodeSuperScriptDigit).join('');
@@ -280,7 +295,7 @@ class DueDatesCalendarWidget extends React.Component {
     }
     this.props.dashboardApi.setTitle(
       displayedTitle,
-      DueDatesCalendarWidget.getIssueListLink(youTrack.homeUrl, context, search)
+      DueDatesCalendarWidget.getIssueListLink(youTrack.homeUrl, context, `${search} has: {${this.state.scheduleField}}`)
     );
   };
 
@@ -292,6 +307,7 @@ class DueDatesCalendarWidget extends React.Component {
           context={this.state.context}
           title={this.state.title}
           refreshPeriod={this.state.refreshPeriod}
+          scheduleField={this.state.scheduleField || DEFAULT_SCHEDULE_FIELD}
           onSubmit={this.submitConfiguration}
           onCancel={this.cancelConfiguration}
           dashboardApi={this.props.dashboardApi}
@@ -310,9 +326,31 @@ class DueDatesCalendarWidget extends React.Component {
     );
   }
 
-  async loadIssues(search, context) {
+  renderEmptyQueryResultError() {
+    this.updateTitle();
+    return (
+      <EmptyWidget
+        face={EmptyWidgetFaces.ERROR}
+        message={i18n('No issues corresponding your query, project and schedule field.')}
+      />
+    );
+  }
+
+  async loadIssues(search, context, scheduleField) {
+    const currentSearch = search || this.state.search;
+    const currentContext = context || this.state.context;
+    const currentScheduleField = scheduleField || this.state.scheduleField;
     try {
-      await this.loadIssuesUnsafe(search, context);
+      await this.loadIssuesCount(`${currentSearch} has: {${currentScheduleField}}`, currentContext);
+    } catch (error) {
+      this.setState({isEmptyQueryResultError: true, issuesCount: 0});
+    }
+    try {
+
+      await this.loadIssuesUnsafe(
+        currentSearch,
+        currentContext,
+        currentScheduleField);
     } catch (error) {
       this.setState({isLoadDataError: true});
     }
@@ -323,28 +361,24 @@ class DueDatesCalendarWidget extends React.Component {
   }
 
 
-  async loadIssuesUnsafe(search, context) {
-    const currentSearch = search || this.state.search;
-    const currentContext = context || this.state.context;
+  async loadIssuesUnsafe(search, context, scheduleField) {
 
     const currentDate = moment(this.state.date);
-    const issuesQuery = `${currentSearch} Due Date: ${moment(currentDate).format('YYYY-MM')}`;
-
+    const issuesQuery = `${search} ${scheduleField}: ${moment(currentDate).format('YYYY-MM')}`;
     const issues = await loadIssues(
-      this.fetchYouTrack, issuesQuery, currentContext
+      this.fetchYouTrack, issuesQuery, context
     );
 
     const events = [];
     if (Array.isArray(issues)) {
       issues.forEach(issue => {
-        let hasDueDate = false;
         let dueDate = '';
-        let issuePriority = 'NotDefined';
+        let issuePriority = 'not-defined';
         let isResolved = false;
         issue.fields.forEach(field => {
           if (field.hasOwnProperty('projectCustomField')) {
-            if (field.projectCustomField.field.name === 'Due Date') {
-              hasDueDate = true;
+            // eslint-disable-next-line max-len
+            if (field.projectCustomField.field.name === this.state.scheduleField) {
               dueDate = field.value;
             }
             if (field.projectCustomField.field.name === 'Priority') {
@@ -355,26 +389,38 @@ class DueDatesCalendarWidget extends React.Component {
             }
           }
         });
-        if (hasDueDate) {
-          events.push({
-            issueId: issue.idReadable,
-            description: `${issue.idReadable} ${issue.summary}`,
-            url: `${this.state.youTrack.homeUrl}/issue/${issue.idReadable}`,
-            priority: issuePriority,
-            isResolved,
-            start: (new Date(dueDate)),
-            end: (new Date(dueDate)),
-            allDay: true
-          });
-        }
-        return hasDueDate;
+
+        events.push({
+          issueId: issue.idReadable,
+          description: `${issue.idReadable} ${issue.summary}`,
+          url: `${this.state.youTrack.homeUrl}/issue/${issue.idReadable}`,
+          priority: issuePriority,
+          isResolved,
+          start: (new Date(dueDate)),
+          end: (new Date(dueDate)),
+          allDay: true
+        });
       });
     }
     this.setState({issues, events, fromCache: false, isLoadDataError: false});
     this.props.dashboardApi.storeCache({
-      search: currentSearch, context: currentContext, issues
+      search, context, issues
     });
   }
+
+  async loadIssuesCount(search, context) {
+    const issuesCount =
+      await loadTotalIssuesCount(
+        this.fetchYouTrack, search, context
+      );
+    this.changeIssuesCount(issuesCount);
+  }
+
+  changeIssuesCount = issuesCount => {
+    this.setState(
+      {issuesCount}, () => this.updateTitle()
+    );
+  };
 
   calendarNavigate = async date => {
     this.setState({date}, this.loadIssues);
@@ -396,15 +442,22 @@ class DueDatesCalendarWidget extends React.Component {
       isConfiguring,
       isLoading,
       fromCache,
-      isLoadDataError
+      isLoadDataError,
+      isEmptyQueryResultError
     } = this.state;
+
+    if (isEmptyQueryResultError) {
+      return this.renderEmptyQueryResultError();
+    }
 
     if (isLoadDataError && !fromCache) {
       return this.renderLoadDataError();
     }
+
     if (isConfiguring) {
       return this.renderConfiguration();
     }
+
     if (isLoading && !fromCache) {
       return this.renderLoader();
     }

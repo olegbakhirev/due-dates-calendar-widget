@@ -143,9 +143,15 @@
   background-color: transparent;
 }
 
-:global(.eventNotDefinedPriority) {
-  color: white;
-  background-color: var(--ring-main-color);
+:global(.event-priority-not-defined) {
+  color: lightgray;
+  border: 1px solid lightgray;
+  background-color: white;
+}
+
+:global(.event-priority-not-defined:hover) {
+  border: 1px solid black;
+  border-radius: 3px;
 }
 
 :global(.event-priority-normal) {
@@ -194,6 +200,7 @@
 
 :global(.event-priority-minor) {
   color: #888;
+  border: 1px solid #e6e6e6;
   background-color: #e6e6e6;
 }
 
