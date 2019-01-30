@@ -385,7 +385,8 @@ class DueDatesCalendarWidget extends React.Component {
               issuePriority = field.value.name;
             }
             if (field.projectCustomField.field.name === 'State') {
-              isResolved = Boolean(field.value.isResolved);
+              // eslint-disable-next-line max-len
+              isResolved = field.value ? Boolean(field.value.isResolved) : false;
             }
           }
         });
@@ -469,7 +470,7 @@ class DueDatesCalendarWidget extends React.Component {
           defaultDate={this.state.date}
           defaultView={this.state.view}
           events={this.state.events}
-          style={{height: '100vh'}}
+          className={styles.calendar}
           views={['month', 'week', 'day']}
           components={
             {
