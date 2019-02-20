@@ -373,8 +373,8 @@ class DueDatesCalendarWidget extends React.Component {
     if (Array.isArray(issues)) {
       issues.forEach(issue => {
         let dueDate = '';
-        let foregroundColor = '';
-        let backgroundColor = '';
+        let foregroundColor = '#9c9c9c';
+        let backgroundColor = '#fff';
         let issuePriority = 'not-defined';
         let isResolved = false;
         issue.fields.forEach(field => {
