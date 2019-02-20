@@ -9,11 +9,19 @@ class EventComponent extends React.Component {
     event: PropTypes.object
   };
 
+
   render() {
     const classes = classNames({
       'event-link': true,
       'event-resolved': this.props.event.isResolved
-    }, [`event-priority-${this.props.event.priority.toLowerCase()}`]);
+    }, 'event-style');
+
+    const event = this.props.event;
+    const colorsStyle = {
+      backgroundColor: event.backgroundColor,
+      color: event.foregroundColor,
+      borderColor: event.foregroundColor
+    };
 
     return (
       <Tooltip
@@ -22,6 +30,7 @@ class EventComponent extends React.Component {
       >
         <a
           className={classes}
+          style={colorsStyle}
           href={this.props.event.url}
         >
           {this.props.event.description}

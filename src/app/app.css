@@ -153,71 +153,15 @@
   background-color: transparent;
 }
 
-:global(.event-priority-not-defined) {
-  color: lightgray;
-  border: 1px solid lightgray;
-  background-color: white;
-}
-
-:global(.event-priority-not-defined:hover) {
-  border: 1px solid black;
+:global(.event-style) {
+  border: 1px solid;
   border-radius: 3px;
+
+  &:not(:hover) {
+    border-color: transparent !important;
+  }
 }
 
-:global(.event-priority-normal) {
-  color: #4da400;
-  border: 1px solid #e6f6cf;
-  background-color: #e6f6cf;
-}
-
-:global(.event-priority-normal:hover) {
-  border: 1px solid #4da400;
-  border-radius: 3px;
-}
-
-:global(.event-priority-major) {
-  color: #b45f06;
-  border: 1px solid #ffee9c;
-  background-color: #ffee9c;
-}
-
-:global(.event-priority-major:hover) {
-  border: 1px solid #b45f06;
-  border-radius: 3px;
-}
-
-:global(.event-priority-critical) {
-  color: #444;
-  border: 1px solid #ffc8ea;
-  background-color: #ffc8ea;
-}
-
-:global(.event-priority-critical:hover) {
-  border: 1px solid #444;
-  border-radius: 3px;
-}
-
-:global(.event-priority-show-stopper) {
-  color: #fff;
-  border: 1px solid #e30000;
-  background-color: #e30000;
-}
-
-:global(.event-priority-show-stopper:hover) {
-  border: 1px solid #000;
-  border-radius: 3px;
-}
-
-:global(.event-priority-minor) {
-  color: #888;
-  border: 1px solid #e6e6e6;
-  background-color: #e6e6e6;
-}
-
-:global(.event-priority-minor:hover) {
-  border: 1px solid #888;
-  border-radius: 3px;
-}
 
 :global(.event-resolved) {
   text-decoration: line-through;

@@ -373,6 +373,8 @@ class DueDatesCalendarWidget extends React.Component {
     if (Array.isArray(issues)) {
       issues.forEach(issue => {
         let dueDate = '';
+        let foregroundColor = '';
+        let backgroundColor = '';
         let issuePriority = 'not-defined';
         let isResolved = false;
         issue.fields.forEach(field => {
@@ -383,6 +385,8 @@ class DueDatesCalendarWidget extends React.Component {
             }
             if (field.projectCustomField.field.name === 'Priority') {
               issuePriority = field.value.name;
+              foregroundColor = field.value.color.foreground;
+              backgroundColor = field.value.color.background;
             }
             if (field.projectCustomField.field.name === 'State') {
               // eslint-disable-next-line max-len
@@ -399,7 +403,9 @@ class DueDatesCalendarWidget extends React.Component {
           isResolved,
           start: (new Date(dueDate)),
           end: (new Date(dueDate)),
-          allDay: true
+          allDay: true,
+          foregroundColor,
+          backgroundColor
         });
       });
     }
