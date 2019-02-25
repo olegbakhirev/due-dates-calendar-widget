@@ -393,7 +393,7 @@ class EditForm extends React.Component {
     return (
       <ConfigurationForm
         warning={errorMessage}
-        isInvalid={errorMessage || !this.state.scheduleField}
+        isInvalid={!!errorMessage || !this.state.scheduleField}
         isLoading={this.state.isLoading}
         panelControls={this.renderRefreshPeriod()}
         onSave={this.submitForm}
