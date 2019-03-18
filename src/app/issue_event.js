@@ -1,7 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
-import Tooltip from '@jetbrains/ring-ui/components/tooltip/tooltip';
+import Dropdown from '@jetbrains/ring-ui/components/dropdown/dropdown';
+import Popup from '@jetbrains/ring-ui/components/popup/popup';
 
 
 class EventComponent extends React.Component {
@@ -10,11 +11,60 @@ class EventComponent extends React.Component {
   };
 
 
-  render() {
-    const classes = classNames({
-      'event-link': true,
-      'event-resolved': this.props.event.isResolved
-    }, 'event-style');
+  renderColorField = () => {
+    const event = this.props.event;
+    if (event.priority) {
+      const colorsStyle = {
+        backgroundColor: event.backgroundColor,
+        color: event.foregroundColor
+      };
+      return (<div className={'popup-color-scheme-field'} style={colorsStyle}>
+        {`${event.priority.charAt(0).toUpperCase()}`}
+      </div>);
+    } else {
+      return '';
+    }
+  };
+
+  renderDescription() {
+    const event = this.props.event;
+    return (
+      <div className={'popup-body'}>
+        <div className={'popup-header'}>
+          {this.renderColorField()}
+          <div className={'popup-header-text'}>{event.description}</div>
+        </div>
+        <div className={'customfields-block-container'}>
+          {this.renderCustomFields()}
+        </div>
+      </div>
+    );
+  }
+
+  renderCustomFields = () => {
+    const customFields = [];
+    const eventCustomFields = this.props.event.customFields;
+
+    for (let i = 0; i < eventCustomFields.length; i++) {
+      const customField = eventCustomFields[i];
+      const colorsStyle = {
+        backgroundColor: customField.backgroundColor
+
+      };
+      customFields.push(
+        <div key={i} className={'custom-field-block'}>
+          <div className={'custom-field-value'}>
+            <div className={'custom-field-icon'} style={colorsStyle}/>
+            <div>{customField.value}</div>
+          </div>
+        </div>);
+    }
+    return customFields;
+  };
+
+  renderAnchor() {
+    const classes = classNames({'event-link': true,
+      'event-resolved': this.props.event.isResolved});
 
     const event = this.props.event;
     const colorsStyle = {
@@ -24,10 +74,7 @@ class EventComponent extends React.Component {
     };
 
     return (
-      <Tooltip
-        popupProps={{top: 0}}
-        title={this.props.event.description}
-      >
+      <div className={'event-container'} style={colorsStyle}>
         <a
           className={classes}
           style={colorsStyle}
@@ -35,10 +82,26 @@ class EventComponent extends React.Component {
         >
           {this.props.event.description}
         </a>
-      </Tooltip>
+      </div>
+    );
+  }
+
+  render() {
+    return (
+      <Dropdown
+        className={'issue-dropdown'}
+        anchor={this.renderAnchor()}
+        clickMode={false}
+        hoverMode={true}
+      >
+        <Popup
+          className={'issue-popup'}
+        >
+          {this.renderDescription()}
+        </Popup>
+      </Dropdown>
     );
   }
 }
-
 
 export default EventComponent;

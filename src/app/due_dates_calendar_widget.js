@@ -18,6 +18,7 @@ import CalendarToolbar from './calendar_toolbar';
 
 const localizer = Calendar.momentLocalizer(moment);
 const DEFAULT_SCHEDULE_FIELD = 'Due Date';
+const DEFAULT_COLOR_FIELD = 'Priority';
 
 class DueDatesCalendarWidget extends React.Component {
   static propTypes = {
@@ -154,6 +155,7 @@ class DueDatesCalendarWidget extends React.Component {
     this.setState({isLoadDataError: true, isLoading: false});
   }
 
+  // eslint-disable-next-line complexity
   async initializeExistingWidget(youTrackService) {
     const search = this.props.configWrapper.getFieldValue('search');
     const context = this.props.configWrapper.getFieldValue('context');
@@ -170,6 +172,13 @@ class DueDatesCalendarWidget extends React.Component {
       scheduleField = DEFAULT_SCHEDULE_FIELD;
     }
 
+    let {colorField} =
+          this.props.configWrapper.getFieldValue('colorField');
+
+    if (!colorField) {
+      colorField = DEFAULT_COLOR_FIELD;
+    }
+
     this.setState({
       title,
       search: search || '',
@@ -177,6 +186,7 @@ class DueDatesCalendarWidget extends React.Component {
       date: date ? new Date(date) : new Date(),
       view,
       scheduleField,
+      colorField,
       refreshPeriod:
         refreshPeriod || DueDatesCalendarWidget.DEFAULT_REFRESH_PERIOD
     });
@@ -240,13 +250,15 @@ class DueDatesCalendarWidget extends React.Component {
 
   submitConfiguration = async formParameters => {
     const {
-      search, title, context, refreshPeriod, selectedYouTrack, scheduleField
+      search, title, context, refreshPeriod, selectedYouTrack,
+      scheduleField, colorField
     } = formParameters;
 
     this.setYouTrack(
       selectedYouTrack, async () => {
         this.setState(
-          {search: search || '', context, title, scheduleField, refreshPeriod},
+          {search: search || '',
+            context, title, scheduleField, refreshPeriod, colorField},
           async () => {
             await this.loadIssues();
             await this.props.configWrapper.replace({
@@ -255,6 +267,7 @@ class DueDatesCalendarWidget extends React.Component {
               title,
               refreshPeriod,
               scheduleField,
+              colorField,
               youTrack: {
                 id: selectedYouTrack.id,
                 homeUrl: selectedYouTrack.homeUrl
@@ -314,6 +327,7 @@ class DueDatesCalendarWidget extends React.Component {
         title={this.state.title}
         refreshPeriod={this.state.refreshPeriod}
         scheduleField={this.state.scheduleField || DEFAULT_SCHEDULE_FIELD}
+        colorField={this.state.colorField || DEFAULT_COLOR_FIELD}
         onSubmit={this.submitConfiguration}
         onCancel={this.cancelConfiguration}
         dashboardApi={this.props.dashboardApi}
@@ -349,15 +363,12 @@ class DueDatesCalendarWidget extends React.Component {
     } catch (error) {
       this.setState({isEmptyQueryResultError: true, issuesCount: 0});
     }
-    try {
 
-      await this.loadIssuesUnsafe(
-        currentSearch,
-        currentContext,
-        currentScheduleField);
-    } catch (error) {
-      this.setState({isLoadDataError: true});
-    }
+    await this.loadIssuesUnsafe(
+      currentSearch,
+      currentContext,
+      currentScheduleField);
+
   }
 
   renderLoader() {
@@ -378,23 +389,39 @@ class DueDatesCalendarWidget extends React.Component {
       issues.forEach(issue => {
         let dueDate = '';
         let foregroundColor = '#9c9c9c';
-        let backgroundColor = '#fff';
-        let issuePriority = 'not-defined';
+        let backgroundColor = '#e8e8e8';
+        let issuePriority = '';
         let isResolved = false;
+        const customFields = [];
+        // eslint-disable-next-line complexity
         issue.fields.forEach(field => {
-          if (field.hasOwnProperty('projectCustomField')) {
+          if (field.hasOwnProperty('projectCustomField') && field.value) {
+            if (field.value) {
             // eslint-disable-next-line max-len
-            if (field.projectCustomField.field.name === this.state.scheduleField) {
-              dueDate = field.value;
-            }
-            if (field.projectCustomField.field.name === 'Priority') {
-              issuePriority = field.value.name;
-              foregroundColor = field.value.color.foreground;
-              backgroundColor = field.value.color.background;
-            }
-            if (field.projectCustomField.field.name === 'State') {
+              if (field.projectCustomField.field.name === this.state.scheduleField) {
+                dueDate = field.value;
+              }
               // eslint-disable-next-line max-len
-              isResolved = field.value ? Boolean(field.value.isResolved) : false;
+              if (field.projectCustomField.field.name === this.state.colorField) {
+                issuePriority = field.value.name;
+                foregroundColor = field.value.color.foreground;
+                backgroundColor = field.value.color.background;
+              } else if (field.value.color) {
+                customFields.push({name: field.projectCustomField.field.name,
+                  value: field.value.name,
+                  foregroundColor: field.value.color.foreground,
+                  backgroundColor: field.value.color.background});
+              }
+
+              if (field.projectCustomField.field.name === 'State') {
+              // eslint-disable-next-line max-len
+                isResolved = Boolean(field.value.isResolved);
+              }
+            } else {
+              customFields.push({name: field.projectCustomField.field.name,
+                value: 'Undefined',
+                foregroundColor: '#fff',
+                backgroundColor: '#fff'});
             }
           }
         });
@@ -409,7 +436,8 @@ class DueDatesCalendarWidget extends React.Component {
           end: (new Date(dueDate)),
           allDay: true,
           foregroundColor,
-          backgroundColor
+          backgroundColor,
+          customFields
         });
       });
     }

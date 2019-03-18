@@ -30,6 +30,7 @@ class EditForm extends React.Component {
     context: PropTypes.object,
     title: PropTypes.string,
     scheduleField: PropTypes.string,
+    colorField: PropTypes.string,
     refreshPeriod: PropTypes.number,
     onSubmit: PropTypes.func,
     onCancel: PropTypes.func,
@@ -61,11 +62,13 @@ class EditForm extends React.Component {
       context: props.context,
       title: props.title || '',
       scheduleField: props.scheduleField,
+      colorField: props.colorField,
       refreshPeriod: props.refreshPeriod || 0,
       selectedYouTrack,
       youTracks: [selectedYouTrack],
       filtersType: EditForm.FILTERS_TYPES.PROJECTS,
-      availableScheduleFields: []
+      availableScheduleFields: [],
+      availableEventFields: []
     };
   }
 
@@ -98,6 +101,7 @@ class EditForm extends React.Component {
     try {
       await this.loadAllContexts();
       await this.loadAllScheduleFields();
+      await this.loadAllEventFields();
     } catch (err) {
       this.setState({
         isLoading: false,
@@ -136,6 +140,10 @@ class EditForm extends React.Component {
 
   changeScheduleField = evt => {
     this.setState({scheduleField: evt.label});
+  };
+
+  changeColorField = evt => {
+    this.setState({colorField: evt.label});
   }
 
   clearScheduleField = () => {
@@ -151,7 +159,7 @@ class EditForm extends React.Component {
 
   submitForm = async () => {
     const {
-      search, context, title, refreshPeriod, selectedYouTrack, scheduleField
+      search, context, title, refreshPeriod, selectedYouTrack, scheduleField, colorField
     } = this.state;
     this.setFormLoaderEnabled(true);
     try {
@@ -172,7 +180,8 @@ class EditForm extends React.Component {
       context,
       refreshPeriod,
       selectedYouTrack,
-      scheduleField
+      scheduleField,
+      colorField
     });
   };
 
@@ -201,6 +210,16 @@ class EditForm extends React.Component {
       availableScheduleFields.push({label: field.name});
     });
     this.setState({availableScheduleFields});
+  };
+
+  loadAllEventFields = async () => {
+    this.setState({availableEventFields: []});
+    const fields = await loadFieldsWithType(this.fetchYouTrack, 'enum[1]');
+    const availableEventFields = [];
+    fields.forEach(field => {
+      availableEventFields.push({label: field.name});
+    });
+    this.setState({availableEventFields});
   };
 
   renderFilterLink(filterType, filter) {
@@ -429,7 +448,6 @@ class EditForm extends React.Component {
             className="ring-form__group"
             selectedLabel="Schedule by field"
             size={InputSize.FULL}
-            //type={Select.Type.BUTTON}
             data={this.state.availableScheduleFields}
             selected={{label: this.state.scheduleField}}
             onSelect={this.changeScheduleField}
@@ -437,6 +455,21 @@ class EditForm extends React.Component {
             maxHeight={300}
             renderOptimization={false}
             label={i18n('Select Schedule field')}
+          />
+        }
+        {
+          !errorMessage &&
+          <Select
+            className="ring-form__group"
+            selectedLabel="Color scheme"
+            size={InputSize.FULL}
+            data={this.state.availableEventFields}
+            selected={{label: this.state.colorField}}
+            onSelect={this.changeColorField}
+            filter={true}
+            maxHeight={300}
+            renderOptimization={false}
+            label={i18n('Select color scheme field')}
           />
         }
         <div className="ring-form__group">
