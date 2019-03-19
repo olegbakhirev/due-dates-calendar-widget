@@ -183,20 +183,6 @@
   }
 }
 
-:global(.customfields-block-container) {
-  display: flex;
-  overflow: hidden;
-  flex-direction: row;
-
-  margin-top: 16px;
-
-  text-overflow: ellipsis;
-
-  color: var(--ring-secondary-color);
-
-  font-size: var(--ring-font-size-smaller);
-}
-
 :global(.custom-field-block) {
   display: flex;
   align-items: center;
@@ -252,6 +238,22 @@
 
 :global(.issue-dropdown) {
   width: 100%;
+}
+
+:global(.popup-customfields-block) {
+  display: flex;
+  overflow: hidden;
+  flex-direction: row;
+
+  margin-top: 16px;
+
+  margin-left: 8px;
+
+  text-overflow: ellipsis;
+
+  color: var(--ring-secondary-color);
+
+  font-size: var(--ring-font-size-smaller);
 }
 
 :global(.popup-header-text) {

@@ -34,7 +34,7 @@ class EventComponent extends React.Component {
           {this.renderColorField()}
           <div className={'popup-header-text'}>{event.description}</div>
         </div>
-        <div className={'customfields-block-container'}>
+        <div className={'popup-customfields-block'}>
           {this.renderCustomFields()}
         </div>
       </div>
@@ -55,7 +55,7 @@ class EventComponent extends React.Component {
         <div key={i} className={'custom-field-block'}>
           <div className={'custom-field-value'}>
             <div className={'custom-field-icon'} style={colorsStyle}/>
-            <div>{customField.value}</div>
+            <div title={customField.name}>{customField.value}</div>
           </div>
         </div>);
     }
