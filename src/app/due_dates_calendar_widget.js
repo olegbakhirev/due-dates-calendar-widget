@@ -165,15 +165,15 @@ class DueDatesCalendarWidget extends React.Component {
     const date = this.props.configWrapper.getFieldValue('date');
     const view = this.props.configWrapper.getFieldValue('view');
 
-    let {scheduleField} =
-        this.props.configWrapper.getFieldValue('scheduleField');
+    let scheduleField =
+        (this.props.configWrapper.getFieldValue('scheduleField') || {}).value;
 
     if (!scheduleField) {
       scheduleField = DEFAULT_SCHEDULE_FIELD;
     }
 
-    let {colorField} =
-          this.props.configWrapper.getFieldValue('colorField');
+    let colorField =
+        (this.props.configWrapper.getFieldValue('colorField') || {}).value;
 
     if (!colorField) {
       colorField = DEFAULT_COLOR_FIELD;
