@@ -204,7 +204,10 @@ class EditForm extends React.Component {
 
   loadAllScheduleFields = async () => {
     this.setState({availableScheduleFields: []});
-    const fields = await loadFieldsWithType(this.fetchYouTrack, 'date');
+    const fields = [
+      ...await loadFieldsWithType(this.fetchYouTrack, 'date'),
+      ...await loadFieldsWithType(this.fetchYouTrack, 'date and time'),
+    ];
     const availableScheduleFields = [];
     fields.forEach(field => {
       availableScheduleFields.push({label: field.name});
