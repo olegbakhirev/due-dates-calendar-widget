@@ -259,7 +259,10 @@
 :global(.popup-header-text) {
   display: block;
   overflow: hidden;
-  color: white;
+  
+  /* This value is the OPPOSITE color of our background */
+  color: rgb(255, 255, 255); 
+  mix-blend-mode: difference;
 
   width: calc(100% - 32px);
   margin-left: 8px;
