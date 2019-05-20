@@ -8,6 +8,8 @@ import Calendar from 'react-big-calendar';
 import moment from 'moment';
 
 import 'react-big-calendar/lib/css/react-big-calendar.css';
+import classNames from 'classnames';
+
 import styles from './app.css';
 import EditForm from './edit-form';
 import {loadIssues, loadTotalIssuesCount} from './resources';
@@ -15,6 +17,7 @@ import ServiceResource from './components/service-resource';
 
 import EventComponent from './issue_event';
 import CalendarToolbar from './calendar_toolbar';
+
 
 const localizer = Calendar.momentLocalizer(moment);
 const DEFAULT_SCHEDULE_FIELD = 'Due Date';
@@ -172,6 +175,9 @@ class DueDatesCalendarWidget extends React.Component {
         this.props.configWrapper.getFieldValue('colorField') ||
         DEFAULT_COLOR_FIELD;
 
+    const isDateAndTime =
+        this.props.configWrapper.getFieldValue('isDateAndTime');
+
 
     this.setState({
       title,
@@ -180,6 +186,7 @@ class DueDatesCalendarWidget extends React.Component {
       date: date ? new Date(date) : new Date(),
       view,
       scheduleField,
+      isDateAndTime,
       colorField,
       refreshPeriod:
         refreshPeriod || DueDatesCalendarWidget.DEFAULT_REFRESH_PERIOD
@@ -245,14 +252,15 @@ class DueDatesCalendarWidget extends React.Component {
   submitConfiguration = async formParameters => {
     const {
       search, title, context, refreshPeriod, selectedYouTrack,
-      scheduleField, colorField
+      scheduleField, colorField, isDateAndTime
     } = formParameters;
 
     this.setYouTrack(
       selectedYouTrack, async () => {
         this.setState(
           {search: search || '',
-            context, title, scheduleField, refreshPeriod, colorField},
+            context, title, scheduleField,
+            refreshPeriod, colorField, isDateAndTime},
           async () => {
             await this.loadIssues();
             await this.props.configWrapper.replace({
@@ -262,6 +270,7 @@ class DueDatesCalendarWidget extends React.Component {
               refreshPeriod,
               scheduleField,
               colorField,
+              isDateAndTime,
               youTrack: {
                 id: selectedYouTrack.id,
                 homeUrl: selectedYouTrack.homeUrl
@@ -428,7 +437,7 @@ class DueDatesCalendarWidget extends React.Component {
           isResolved,
           start: (new Date(dueDate)),
           end: (new Date(dueDate)),
-          allDay: true,
+          allDay: !this.state.isDateAndTime,
           foregroundColor,
           backgroundColor,
           customFields
@@ -493,6 +502,11 @@ class DueDatesCalendarWidget extends React.Component {
       return this.renderLoader();
     }
 
+    const calendarClasses = classNames({
+      [`${styles.calendar}`]: true,
+      'date-only-calendar': !this.state.isDateAndTime
+    });
+
     return (
       <div className={styles.widget}>
         <Calendar
@@ -500,7 +514,7 @@ class DueDatesCalendarWidget extends React.Component {
           defaultDate={this.state.date}
           defaultView={this.state.view}
           events={this.state.events}
-          className={styles.calendar}
+          className={calendarClasses}
           views={['month', 'week', 'day']}
           components={
             {

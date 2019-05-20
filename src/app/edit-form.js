@@ -144,7 +144,7 @@ class EditForm extends React.Component {
 
   changeColorField = evt => {
     this.setState({colorField: evt.label});
-  }
+  };
 
   clearScheduleField = () => {
     this.setState({scheduleField: ''});
@@ -159,7 +159,13 @@ class EditForm extends React.Component {
 
   submitForm = async () => {
     const {
-      search, context, title, refreshPeriod, selectedYouTrack, scheduleField, colorField
+      search,
+      context,
+      title,
+      refreshPeriod,
+      selectedYouTrack,
+      scheduleField,
+      colorField
     } = this.state;
     this.setFormLoaderEnabled(true);
     try {
@@ -174,6 +180,10 @@ class EditForm extends React.Component {
       return;
     }
     this.setFormLoaderEnabled(false);
+
+    const isDateAndTime =
+        this.state.dateTimeFields.map(i => i.name).includes(scheduleField);
+
     await this.props.onSubmit({
       search: search || '',
       title,
@@ -181,7 +191,8 @@ class EditForm extends React.Component {
       refreshPeriod,
       selectedYouTrack,
       scheduleField,
-      colorField
+      colorField,
+      isDateAndTime
     });
   };
 
@@ -204,12 +215,21 @@ class EditForm extends React.Component {
 
   loadAllScheduleFields = async () => {
     this.setState({availableScheduleFields: []});
-    const fields = await loadFieldsWithType(this.fetchYouTrack, 'date');
+
+    const dateFields = await loadFieldsWithType(this.fetchYouTrack, 'date');
+    const dateTimeFields =
+        await loadFieldsWithType(this.fetchYouTrack, 'date and time');
+
+    const fields = [
+      ...dateFields,
+      ...dateTimeFields
+    ];
+
     const availableScheduleFields = [];
     fields.forEach(field => {
       availableScheduleFields.push({label: field.name});
     });
-    this.setState({availableScheduleFields});
+    this.setState({availableScheduleFields, dateFields, dateTimeFields});
   };
 
   loadAllEventFields = async () => {

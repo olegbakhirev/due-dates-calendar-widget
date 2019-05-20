@@ -26,40 +26,20 @@
   padding: 16px;
 }
 
-:global(.rbc-time-content) {
-  visibility: hidden;
-
-  height: 0;
-}
-
-:global(.rbc-time-header-gutter.rbc-label) {
-  visibility: hidden;
-
-  width: 0 !important;
-  min-width: 0 !important;
-  max-width: 0 !important;
-}
-
-:global(.rbc-time-header) {
-  height: 100%;
-  margin-right: 0 !important;
-  margin-left: 0 !important;
-}
-
-:global(.rbc-time-header-content) {
-  width: 100% !important;
-  margin-right: 0 !important;
-
-  border-right: none !important;
-  border-left: none;
-}
-
-:global(.rbc-time-header) {
-  border-right: none !important;
-}
-
-:global(.rbc-time-header-gutter) {
+:global(.date-only-calendar) :global(.rbc-time-content) {
   display: none !important;
+}
+
+:global(.date-only-calendar) :global(.rbc-time-header-gutter.rbc-label) {
+  display: none !important;
+}
+
+:global(.date-only-calendar) :global(.rbc-time-header) {
+  height: 100%;
+}
+
+:global(.date-only-calendar) :global(.rbc-time-header-content) {
+  border: none !important;
 }
 
 :global(.custom-toolbar-navigate) {
@@ -113,6 +93,8 @@
 
 :global(.rbc-event-content:hover) {
   text-decoration: none;
+
+  line-height: 1;
 }
 
 :global(.event-link:hover) {
@@ -120,7 +102,7 @@
 }
 
 :global(.rbc-event-content) {
-  height: 18px;
+  height: 18px !important;
   margin-right: 0;
   margin-left: 0;
 }
@@ -148,13 +130,15 @@
   height: 16px;
   padding: 0 4px;
 
+  white-space: nowrap;
   text-decoration: none;
   text-overflow: ellipsis;
 
   color: white;
   border-radius: 3px;
 
-  line-height: 13px;
+  font-size: 11px;
+  line-height: 14px;
 }
 
 :global(.custom-field-icon) {
@@ -180,6 +164,16 @@
 
   &:not(:hover) {
     border-color: transparent !important;
+  }
+}
+
+:global(.rbc-time-content .event-container) {
+  border-color: transparent !important;
+
+  font-weight: bold;
+
+  &:not(:hover) {
+    font-weight: normal;
   }
 }
 
@@ -274,11 +268,23 @@
   text-decoration: line-through;
 }
 
-:global(.rbc-event.rbc-selected) {
-  height: 16px;
+:global(.rbc-event) {
+  height: 16px !important;
+  min-height: 16px !important;
 
   border-radius: 3px;
-  background-color: var(--ring-main-color);
+
+  background-color: transparent;
+}
+
+:global(.rbc-event.rbc-selected) {
+  background-color: transparent;
+}
+
+:global(.rbc-event-label) {
+  display: none;
+
+  width: 0 !important;
 }
 
 :global(.rbc-row-segment) {
