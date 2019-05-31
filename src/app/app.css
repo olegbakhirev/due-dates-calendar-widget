@@ -118,10 +118,14 @@
 
 :global(.rbc-event) {
   height: 16px;
+  margin-top: 4px;
   padding: 0;
 
   border: none !important;
   background-color: transparent;
+
+  font-size: 11px !important;
+  line-height: normal !important;
 }
 
 :global(.event-link) {
