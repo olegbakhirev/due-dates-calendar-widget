@@ -12,14 +12,12 @@ import classNames from 'classnames';
 
 import styles from './app.css';
 import EditForm from './edit-form';
-import {loadIssues, loadTotalIssuesCount} from './resources';
+import {loadIssues, loadTotalIssuesCount, loadFirstDayOfWeek} from './resources';
 import ServiceResource from './components/service-resource';
 
 import EventComponent from './issue_event';
 import CalendarToolbar from './calendar_toolbar';
 
-
-const localizer = Calendar.momentLocalizer(moment);
 const DEFAULT_SCHEDULE_FIELD = 'Due Date';
 const DEFAULT_COLOR_FIELD = 'Priority';
 
@@ -110,7 +108,8 @@ class DueDatesCalendarWidget extends React.Component {
       isConfiguring: false,
       isLoading: true,
       events: [],
-      date: new Date()
+      date: new Date(),
+      localizer: Calendar.momentLocalizer(moment)
     };
 
     registerWidgetApi({
@@ -143,7 +142,19 @@ class DueDatesCalendarWidget extends React.Component {
     } else {
       await this.initializeExistingWidget(youTrackService);
     }
+
+    await this.setFirstDayOfWeek();
   };
+
+  async setFirstDayOfWeek() {
+    const firstDayOfWeek = await loadFirstDayOfWeek(this.fetchYouTrack);
+    moment.locale('en-gb', {
+      week: {
+        dow: firstDayOfWeek
+      }
+    });
+    this.setState({localizer: Calendar.momentLocalizer(moment)});
+  }
 
 
   initializeNewWidget(youTrackService) {
@@ -337,7 +348,7 @@ class DueDatesCalendarWidget extends React.Component {
         youTrackId={this.state.youTrack.id}
       />
     </div>
-  )
+  );
 
   renderLoadDataError() {
     return (
@@ -371,6 +382,8 @@ class DueDatesCalendarWidget extends React.Component {
       currentSearch,
       currentContext,
       currentScheduleField);
+
+    await this.setFirstDayOfWeek();
 
   }
 
@@ -506,11 +519,10 @@ class DueDatesCalendarWidget extends React.Component {
       [`${styles.calendar}`]: true,
       'date-only-calendar': !this.state.isDateAndTime
     });
-
     return (
       <div className={styles.widget}>
         <Calendar
-          localizer={localizer}
+          localizer={this.state.localizer}
           defaultDate={this.state.date}
           defaultView={this.state.view}
           events={this.state.events}

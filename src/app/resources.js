@@ -63,3 +63,8 @@ export async function loadFieldsWithType(fetchYouTrack, fieldType) {
 export async function loadFieldsWithTypeAndName(fetchYouTrack, fieldType, fieldName) {
   return await fetchYouTrack(`api/filterFields?$top=-1&fieldTypes=${fieldType}&name=${fieldName}&fields=name`);
 }
+
+export async function loadFirstDayOfWeek(fetchYouTrack) {
+  const profile = await fetchYouTrack('api/admin/users/me?$top=-1&fields=profiles(appearance(firstDayOfWeek))');
+  return profile.profiles.appearance.firstDayOfWeek;
+}
