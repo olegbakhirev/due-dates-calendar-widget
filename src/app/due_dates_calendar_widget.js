@@ -489,6 +489,21 @@ class DueDatesCalendarWidget extends React.Component {
     await this.props.dashboardApi.storeConfig(config);
   };
 
+  handleSelect = ({start, end}) => {
+    const {
+      context,
+      isDateAndTime,
+      youTrack,
+      scheduleField
+    } = this.state;
+
+    const projectName = context.shortName;
+    if (projectName) {
+      const slotTime = isDateAndTime ? moment(start).format('YYYY-MM-DDTHH:mm:ss') : moment(start).format('YYYY-MM-DD');
+      window.open(`${youTrack.homeUrl}/newIssue?project=${projectName}&c=${scheduleField} ${slotTime}`);
+    }
+  };
+
   // eslint-disable-next-line complexity
   renderContent = () => {
     const {
@@ -522,6 +537,7 @@ class DueDatesCalendarWidget extends React.Component {
     return (
       <div className={styles.widget}>
         <Calendar
+          selectable={true}
           localizer={this.state.localizer}
           defaultDate={this.state.date}
           defaultView={this.state.view}
@@ -536,6 +552,7 @@ class DueDatesCalendarWidget extends React.Component {
           }
           onNavigate={this.calendarNavigate}
           onView={this.calendarChangeView}
+          onSelectSlot={this.handleSelect}
         />
       </div>
     );

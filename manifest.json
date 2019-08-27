@@ -1,7 +1,7 @@
 {
   "key": "due-dates-calendar",
   "name": "Due Dates Calendar",
-  "version": "1.3.3",
+  "version": "1.4.0",
   "description": "Due Dates Calendar Widget for Youtrack Issues",
   "applicationName": "YouTrack",
   "author": "Oleg Bakhirev <oleg.bakhirev@gmail.com>",
