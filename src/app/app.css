@@ -162,12 +162,22 @@
 }
 
 :global(.rbc-month-view) {
+  border-color: var(--ring-line-color);
   border-radius: var(--ring-border-radius);
   height: auto !important;
 }
 
 :global(.rbc-time-view) {
+  border-color: var(--ring-line-color);
   border-radius: var(--ring-border-radius);
+}
+
+:global(.rbc-month-row+.rbc-month-row) {
+  border-top-color: var(--ring-line-color);
+}
+
+:global(.rbc-day-bg+.rbc-day-bg) {
+  border-left-color: var(--ring-line-color);
 }
 
 :global(.event-container) {
@@ -318,7 +328,12 @@
 }
 
 :global(.rbc-header) {
+  border-bottom-color: var(--ring-line-color);
   color: var(--ring-text-color);
+}
+
+:global(.rbc-header+.rbc-header) {
+  border-left-color: var(--ring-line-color);
 }
 
 :global(.rbc-date-cell.rbc-off-range) {
