@@ -79,6 +79,10 @@
   float: left;
 }
 
+:global(.rbc-today) {
+  background-color: var(--ring-selected-background-color);
+}
+
 :global(.rbc-show-more) {
   color: var(--ring-main-color);
 
@@ -309,7 +313,16 @@
 }
 
 :global(.rbc-date-cell) {
+  color: var(--ring-text-color);
   padding-right: 8px;
+}
+
+:global(.rbc-header) {
+  color: var(--ring-text-color);
+}
+
+:global(.rbc-date-cell.rbc-off-range) {
+  color: var(--ring-hint-color);
 }
 
 :global(button.nav-button) {
