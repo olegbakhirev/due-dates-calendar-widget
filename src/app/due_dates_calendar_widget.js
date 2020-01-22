@@ -4,7 +4,7 @@ import LoaderInline from '@jetbrains/ring-ui/components/loader-inline/loader-inl
 import {i18n} from 'hub-dashboard-addons/dist/localization';
 import EmptyWidget, {EmptyWidgetFaces} from '@jetbrains/hub-widget-ui/dist/empty-widget';
 import ConfigurableWidget from '@jetbrains/hub-widget-ui/dist/configurable-widget';
-import Calendar from 'react-big-calendar';
+import {Calendar, momentLocalizer} from 'react-big-calendar';
 import moment from 'moment';
 
 import 'react-big-calendar/lib/css/react-big-calendar.css';
@@ -109,7 +109,7 @@ class DueDatesCalendarWidget extends React.Component {
       isLoading: true,
       events: [],
       date: new Date(),
-      localizer: Calendar.momentLocalizer(moment)
+      localizer: momentLocalizer(moment)
     };
 
     registerWidgetApi({
@@ -153,7 +153,7 @@ class DueDatesCalendarWidget extends React.Component {
         dow: firstDayOfWeek
       }
     });
-    this.setState({localizer: Calendar.momentLocalizer(moment)});
+    this.setState({localizer: momentLocalizer(moment)});
   }
 
 
@@ -395,7 +395,10 @@ class DueDatesCalendarWidget extends React.Component {
   async loadIssuesUnsafe(search, context, scheduleField) {
 
     const currentDate = moment(this.state.date);
-    const issuesQuery = `${search} ${scheduleField}: ${moment(currentDate).format('YYYY-MM')}`;
+    const startDate = moment(currentDate).startOf('month').startOf('week').format('YYYY-MM-DD');
+    const endDate = moment(currentDate).endOf('month').endOf('week').format('YYYY-MM-DD');
+    const issuesQuery = `${search} ${scheduleField}: ${startDate} .. ${endDate}`;
+
     const issues = await loadIssues(
       this.fetchYouTrack, issuesQuery, context
     );
