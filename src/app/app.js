@@ -6,8 +6,6 @@ import {render} from 'react-dom';
 import DueDatesCalendarWidget from './due_dates_calendar_widget';
 import ConfigWrapper from './config-wrapper';
 
-import 'file-loader?name=[name].[ext]!../../manifest.json'; // eslint-disable-line import/no-unresolved
-
 const CONFIG_FIELDS = [
   'search', 'context', 'title', 'refreshPeriod', 'youTrack', 'date', 'view', 'scheduleField', 'colorField', 'isDateAndTime'
 ];

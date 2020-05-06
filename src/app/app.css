@@ -1,19 +1,21 @@
-@value unit, font, font-size from "@jetbrains/ring-ui/components/global/global.css";
-
 :global(.widget-body) {
+  overflow-x: hidden;
+
   margin: 0;
-  padding: calc(unit * 2);
+
+  padding: calc(var(--ring-unit) * 2);
 
   background: var(--ring-content-background-color);
 
-  font-size: font-size;
+  font-size: var(--ring-font-size);
 }
 
 .widget {
-  composes: font;
-
   margin: 0;
   padding: 0;
+
+  font-family: var(--ring-font-family);
+  font-size: var(--ring-font-size);
 }
 
 .calendar {
@@ -38,8 +40,35 @@
   height: 100%;
 }
 
+:global(.rbc-time-content) {
+  border-color: var(--ring-line-color) !important;
+}
+
+:global(.rbc-time-header.rbc-overflowing) {
+  border-color: var(--ring-line-color) !important;
+}
+
+:global(.rbc-time-slot) {
+  color: var(--ring-text-color) !important;
+  border-color: var(--ring-line-color) !important;
+
+  font-size: var(--ring-font-size) !important;
+}
+
 :global(.date-only-calendar) :global(.rbc-time-header-content) {
   border: none !important;
+}
+
+:global(.rbc-time-header-content) {
+  border-left-color: var(--ring-line-color) !important;
+}
+
+:global(.rbc-events-container) {
+  border-left-color: var(--ring-line-color) !important;
+}
+
+:global(.rbc-timeslot-group) {
+  border-color: var(--ring-line-color) !important;
 }
 
 :global(.custom-toolbar-navigate) {
@@ -87,6 +116,8 @@
   color: var(--ring-main-color);
 
   border-radius: var(--ring-border-radius);
+  background: transparent;
+
   font-size: 12px !important;
   font-weight: 400;
   text-decoration-line: none;
@@ -162,9 +193,10 @@
 }
 
 :global(.rbc-month-view) {
+  height: auto !important;
+
   border-color: var(--ring-line-color);
   border-radius: var(--ring-border-radius);
-  height: auto !important;
 }
 
 :global(.rbc-time-view) {
@@ -190,18 +222,10 @@
 
   border: 1px solid;
   border-radius: 3px;
-
-  &:not(:hover) {
-    border-color: transparent !important;
-  }
 }
 
-:global(.rbc-time-content .event-container) {
-  border: 2px solid !important;
-
-  &:not(:hover) {
-    border: 1px solid !important;
-  }
+:global(.event-container):not(:hover) {
+  border-color: transparent !important;
 }
 
 :global(.custom-field-block) {
@@ -323,13 +347,15 @@
 }
 
 :global(.rbc-date-cell) {
-  color: var(--ring-text-color);
   padding-right: 8px;
+
+  color: var(--ring-text-color);
 }
 
 :global(.rbc-header) {
-  border-bottom-color: var(--ring-line-color);
   color: var(--ring-text-color);
+
+  border-bottom-color: var(--ring-line-color);
 }
 
 :global(.rbc-header+.rbc-header) {
