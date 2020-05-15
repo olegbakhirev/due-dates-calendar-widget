@@ -56,12 +56,12 @@ export async function underlineAndSuggest(fetchYouTrack, query, caret) {
   });
 }
 
-export async function loadFieldsWithType(fetchYouTrack, fieldType) {
-  return await fetchYouTrack(`api/filterFields?$top=-1&fieldTypes=${fieldType}&fields=name`);
-}
-
-export async function loadFieldsWithTypeAndName(fetchYouTrack, fieldType, fieldName) {
-  return await fetchYouTrack(`api/filterFields?$top=-1&fieldTypes=${fieldType}&name=${fieldName}&fields=name`);
+export async function loadFieldsWithType(fetchYouTrack, fieldType, context) {
+  let request = `api/filterFields?$top=-1&fieldTypes=${fieldType}&fields=name`;
+  if (context && context !== '') {
+    request += `&fld=${context.id}`;
+  }
+  return await fetchYouTrack(request);
 }
 
 export async function loadFirstDayOfWeek(fetchYouTrack) {

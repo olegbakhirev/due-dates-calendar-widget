@@ -205,7 +205,11 @@ class EditForm extends React.Component {
   underlineAndSuggest = async (query, caret) =>
     await underlineAndSuggest(this.fetchYouTrack, query, caret);
 
-  changeSearchContext = selected => this.setState({context: selected.model});
+  changeSearchContext = async selected => {
+    await this.setState({context: selected.model});
+    await this.loadAllScheduleFields();
+    await this.loadAllEventFields();
+  };
 
   loadAllContexts = async () => {
     this.setState({allContexts: null});
@@ -215,10 +219,12 @@ class EditForm extends React.Component {
 
   loadAllScheduleFields = async () => {
     this.setState({availableScheduleFields: []});
-
-    const dateFields = await loadFieldsWithType(this.fetchYouTrack, 'date');
+    // eslint-disable-next-line max-len
+    const context = this.state.context === EditForm.EVERYTHING_CONTEXT_OPTION ? '' : this.state.context;
+    const dateFields =
+      await loadFieldsWithType(this.fetchYouTrack, 'date', context);
     const dateTimeFields =
-        await loadFieldsWithType(this.fetchYouTrack, 'date and time');
+        await loadFieldsWithType(this.fetchYouTrack, 'date and time', context);
 
     const fields = [
       ...dateFields,
@@ -233,8 +239,11 @@ class EditForm extends React.Component {
   };
 
   loadAllEventFields = async () => {
+    // eslint-disable-next-line max-len
+    const context = this.state.context === EditForm.EVERYTHING_CONTEXT_OPTION ? '' : this.state.context;
     this.setState({availableEventFields: []});
-    const fields = await loadFieldsWithType(this.fetchYouTrack, 'enum[1]');
+    const fields =
+      await loadFieldsWithType(this.fetchYouTrack, 'enum[1]', context);
     const availableEventFields = [];
     fields.forEach(field => {
       availableEventFields.push({label: field.name});
