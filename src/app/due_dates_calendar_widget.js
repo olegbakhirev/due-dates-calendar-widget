@@ -12,7 +12,7 @@ import classNames from 'classnames';
 
 import styles from './app.css';
 import EditForm from './edit-form';
-import {loadIssues, loadTotalIssuesCount, loadFirstDayOfWeek} from './resources';
+import {loadIssues, loadTotalIssuesCount, loadProfile} from './resources';
 import ServiceResource from './components/service-resource';
 
 import EventComponent from './issue_event';
@@ -143,17 +143,19 @@ class DueDatesCalendarWidget extends React.Component {
       await this.initializeExistingWidget(youTrackService);
     }
 
-    await this.setFirstDayOfWeek();
+    await this.setLocaleOptions();
   };
 
-  async setFirstDayOfWeek() {
-    const firstDayOfWeek = await loadFirstDayOfWeek(this.fetchYouTrack);
+  async setLocaleOptions() {
+    const profile = await loadProfile(this.fetchYouTrack);
+    const firstDayOfWeek = profile.profiles.appearance.firstDayOfWeek;
+    const profileLocale = profile.profiles.general.locale.locale;
     moment.locale('en-gb', {
       week: {
         dow: firstDayOfWeek
       }
     });
-    this.setState({localizer: momentLocalizer(moment)});
+    this.setState({localizer: momentLocalizer(moment), profileLocale});
   }
 
 
@@ -383,7 +385,7 @@ class DueDatesCalendarWidget extends React.Component {
       currentContext,
       currentScheduleField);
 
-    await this.setFirstDayOfWeek();
+    await this.setLocaleOptions();
 
   }
 
@@ -492,6 +494,7 @@ class DueDatesCalendarWidget extends React.Component {
     await this.props.dashboardApi.storeConfig(config);
   };
 
+  // eslint-disable-next-line no-unused-vars
   handleSelect = ({start, end}) => {
     const {
       context,
@@ -547,6 +550,7 @@ class DueDatesCalendarWidget extends React.Component {
           events={this.state.events}
           className={calendarClasses}
           views={['month', 'week', 'day']}
+          culture={this.state.profileLocale}
           components={
             {
               toolbar: CalendarToolbar,

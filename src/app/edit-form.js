@@ -217,6 +217,17 @@ class EditForm extends React.Component {
     this.setState({allContexts});
   };
 
+  queryAssistDataSource = async queryAssistModel =>
+    await this.underlineAndSuggest(
+      queryAssistModel.query, queryAssistModel.caret, this.state.context
+    );
+
+  onChangeRefreshPeriod = newValue =>
+    this.setState({refreshPeriod: newValue});
+
+  onQueryAssistInputChange = queryAssistModel =>
+    this.changeSearch(queryAssistModel.query);
+
   loadAllScheduleFields = async () => {
     this.setState({availableScheduleFields: []});
     // eslint-disable-next-line max-len
@@ -251,8 +262,10 @@ class EditForm extends React.Component {
     this.setState({availableEventFields});
   };
 
+  getAppendToQueryCallback = (filterType, filter) =>
+    () => this.appendToSearch(filterType, filter);
+
   renderFilterLink(filterType, filter) {
-    const appendToQuery = () => this.appendToSearch(filterType, filter);
 
     return (
       <div
@@ -261,7 +274,7 @@ class EditForm extends React.Component {
       >
         <Link
           pseudo={true}
-          onClick={appendToQuery}
+          onClick={this.getAppendToQueryCallback(filterType, filter)}
         >
           {
             filter.shortName
@@ -340,17 +353,9 @@ class EditForm extends React.Component {
       allContexts
     } = this.state;
 
-    const queryAssistDataSource = async queryAssistModel =>
-      await this.underlineAndSuggest(
-        queryAssistModel.query, queryAssistModel.caret
-      );
-
     const toSelectItem = it => it && {key: it.id, label: it.name, model: it};
-
-    const onQueryAssistChange = queryAssistModel =>
-      this.changeSearch(queryAssistModel.query);
-
     const contextOptions = (allContexts || []).map(toSelectItem);
+
     contextOptions.unshift(EditForm.EVERYTHING_CONTEXT_OPTION);
 
     return (
@@ -372,8 +377,8 @@ class EditForm extends React.Component {
               disabled={this.state.isLoading}
               query={search}
               placeholder={i18n('Type search query')}
-              onChange={onQueryAssistChange}
-              dataSource={queryAssistDataSource}
+              onChange={this.onQueryAssistInputChange}
+              dataSource={this.queryAssistDataSource}
             />
           </div>
         </div>
@@ -411,17 +416,15 @@ class EditForm extends React.Component {
       return '';
     }
 
-    const changeRefreshPeriod = newValue =>
-      this.setState({refreshPeriod: newValue});
-
     return (
       <RefreshPeriod
         seconds={this.state.refreshPeriod}
-        onChange={changeRefreshPeriod}
+        onChange={this.onChangeRefreshPeriod}
       />
     );
   }
 
+  // eslint-disable-next-line complexity
   render() {
     const {
       youTracks,

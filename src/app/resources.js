@@ -64,7 +64,6 @@ export async function loadFieldsWithType(fetchYouTrack, fieldType, context) {
   return await fetchYouTrack(request);
 }
 
-export async function loadFirstDayOfWeek(fetchYouTrack) {
-  const profile = await fetchYouTrack('api/admin/users/me?$top=-1&fields=profiles(appearance(firstDayOfWeek))');
-  return profile.profiles.appearance.firstDayOfWeek;
+export async function loadProfile(fetchYouTrack) {
+  return await fetchYouTrack('api/admin/users/me?$top=-1&fields=profiles(appearance(firstDayOfWeek),general(locale(locale)))');
 }
