@@ -253,10 +253,15 @@ class EditForm extends React.Component {
     // eslint-disable-next-line max-len
     const context = this.state.context === EditForm.EVERYTHING_CONTEXT_OPTION ? '' : this.state.context;
     this.setState({availableEventFields: []});
-    const fields =
+    const enumFields =
       await loadFieldsWithType(this.fetchYouTrack, 'enum[1]', context);
+    const stateFields =
+      await loadFieldsWithType(this.fetchYouTrack, 'state[1]', context);
     const availableEventFields = [];
-    fields.forEach(field => {
+    enumFields.forEach(field => {
+      availableEventFields.push({label: field.name});
+    });
+    stateFields.forEach(field => {
       availableEventFields.push({label: field.name});
     });
     this.setState({availableEventFields});
