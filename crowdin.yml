@@ -8,6 +8,6 @@ files: [
  {
   "source" : "/src/app/translations/default.pot",
   "dest": "/widgets/due-dates-calendar-widget/default.pot",
-  "translation" : "/src/app/translations/due-dates-calendar_%two_letters_code%.po",
+  "translation" : "/src/app/translations/due-dates-calendar-widget_%two_letters_code%.po",
  }
 ]
