@@ -9,9 +9,9 @@ msgstr ""
 "X-Crowdin-File: /widgets/due-dates-calendar-widget/default.pot\n"
 "Language-Team: Spanish\n"
 "Language: es_ES\n"
-"PO-Revision-Date: 2020-05-27 09:15\n"
+"PO-Revision-Date: 2020-05-27 10:13\n"
 
-#: src/app/due_dates_calendar_widget.js:359
+#: src/app/due_dates_calendar_widget.js:357
 msgid "Can't load information from service."
 msgstr ""
 
@@ -27,8 +27,8 @@ msgstr ""
 msgid "Due Dates Calendar Widget"
 msgstr ""
 
-#: src/app/edit-form.js:378
-#: src/app/edit-form.js:49
+#: src/app/edit-form.js:368
+#: src/app/edit-form.js:50
 msgid "Everything"
 msgstr ""
 
@@ -40,19 +40,19 @@ msgstr "Enero|Febrero|Marzo|Abril|Mayo|Junio|Julio|Agosto|Septiembre|Octubre|Nov
 msgid "Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec"
 msgstr "Ene|Feb|Mar|Abr|May|Jun|Jul|Ago|Sep|Oct|Nov|Dic"
 
-#: src/app/due_dates_calendar_widget.js:368
+#: src/app/due_dates_calendar_widget.js:366
 msgid "No issues corresponding your query, project and schedule field."
 msgstr ""
 
-#: src/app/edit-form.js:308
+#: src/app/edit-form.js:290
 msgid "No projects"
 msgstr ""
 
-#: src/app/edit-form.js:310
+#: src/app/edit-form.js:292
 msgid "No saved searches"
 msgstr ""
 
-#: src/app/edit-form.js:309
+#: src/app/edit-form.js:291
 msgid "No tags"
 msgstr ""
 
@@ -60,7 +60,7 @@ msgstr ""
 msgid "Oops! Something went wrong..."
 msgstr "¡Uy! Algo ha salido mal..."
 
-#: src/app/edit-form.js:397
+#: src/app/edit-form.js:387
 msgid "Projects"
 msgstr ""
 
@@ -68,27 +68,27 @@ msgstr ""
 msgid "Save"
 msgstr ""
 
-#: src/app/edit-form.js:409
+#: src/app/edit-form.js:399
 msgid "Saved searches"
 msgstr ""
 
-#: src/app/edit-form.js:494
+#: src/app/edit-form.js:486
 msgid "Select Schedule field"
 msgstr ""
 
-#: src/app/edit-form.js:479
+#: src/app/edit-form.js:471
 msgid "Select YouTrack"
 msgstr ""
 
-#: src/app/edit-form.js:509
+#: src/app/edit-form.js:501
 msgid "Select color scheme field"
 msgstr ""
 
-#: src/app/edit-form.js:110
+#: src/app/edit-form.js:111
 msgid "Selected YouTrack service is not available"
 msgstr ""
 
-#: src/app/edit-form.js:463
+#: src/app/edit-form.js:455
 msgid "Set optional title"
 msgstr ""
 
@@ -100,7 +100,7 @@ msgstr "Domingo|Lunes|Martes|Miércoles|Jueves|Viernes|Sábado"
 msgid "Sun|Mon|Tue|Wed|Thu|Fri|Sat"
 msgstr "Dom|Lun|Mar|Mié|Jue|Vie|Sáb"
 
-#: src/app/edit-form.js:403
+#: src/app/edit-form.js:393
 msgid "Tags"
 msgstr ""
 
@@ -108,7 +108,7 @@ msgstr ""
 msgid "Today"
 msgstr ""
 
-#: src/app/edit-form.js:384
+#: src/app/edit-form.js:374
 msgid "Type search query"
 msgstr ""
 
