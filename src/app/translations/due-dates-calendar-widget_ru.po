@@ -9,28 +9,28 @@ msgstr ""
 "X-Crowdin-File: /widgets/due-dates-calendar-widget/default.pot\n"
 "Language-Team: Russian\n"
 "Language: ru_RU\n"
-"PO-Revision-Date: 2020-05-27 10:27\n"
+"PO-Revision-Date: 2020-06-04 18:41\n"
 
-#: src/app/due_dates_calendar_widget.js:359
+#: src/app/due_dates_calendar_widget.js:357
 msgid "Can't load information from service."
-msgstr ""
+msgstr "Не удается загрузить информацию от сервиса."
 
 #: node_modules/@jetbrains/hub-widget-ui/src/configuration-form/configuration-form.js:58
 msgid "Cancel"
-msgstr ""
+msgstr "Отмена"
 
 #: src/app/calendar_toolbar.js:44
 msgid "Day"
-msgstr ""
+msgstr "День"
 
 #: src/app/due_dates_calendar_widget.js:83
 msgid "Due Dates Calendar Widget"
-msgstr ""
+msgstr "Виджет \"Календарь со сроками исполнения\""
 
-#: src/app/edit-form.js:378
-#: src/app/edit-form.js:49
+#: src/app/edit-form.js:368
+#: src/app/edit-form.js:50
 msgid "Everything"
-msgstr ""
+msgstr "Все"
 
 #: node_modules/hub-dashboard-addons/components/localization/src/localization.js:90
 msgid "January|February|March|April|May|June|July|August|September|October|November|December"
@@ -40,57 +40,57 @@ msgstr "январь|февраль|март|апрель|май|июнь|июл
 msgid "Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec"
 msgstr "янв|фев|мар|апр|мая|июн|июл|авг|сен|окт|ноя|дек"
 
-#: src/app/due_dates_calendar_widget.js:368
+#: src/app/due_dates_calendar_widget.js:366
 msgid "No issues corresponding your query, project and schedule field."
-msgstr ""
+msgstr "Нет задач, удовлетворяющих вашему запросу и полям проект и расписание"
 
-#: src/app/edit-form.js:308
+#: src/app/edit-form.js:290
 msgid "No projects"
-msgstr ""
+msgstr "Нет проектов"
 
-#: src/app/edit-form.js:310
+#: src/app/edit-form.js:292
 msgid "No saved searches"
-msgstr ""
+msgstr "Нет сохраненных поисков"
 
-#: src/app/edit-form.js:309
+#: src/app/edit-form.js:291
 msgid "No tags"
-msgstr ""
+msgstr "Нет тегов"
 
 #: node_modules/@jetbrains/hub-widget-ui/src/http-error-handler/http-error-handler.js:4
 msgid "Oops! Something went wrong..."
 msgstr "К сожалению, возникла какая-то проблема..."
 
-#: src/app/edit-form.js:397
+#: src/app/edit-form.js:387
 msgid "Projects"
-msgstr ""
+msgstr "Проекты"
 
 #: node_modules/@jetbrains/hub-widget-ui/src/configuration-form/configuration-form.js:47
 msgid "Save"
-msgstr ""
+msgstr "Сохранить"
 
-#: src/app/edit-form.js:409
+#: src/app/edit-form.js:399
 msgid "Saved searches"
-msgstr ""
+msgstr "Сохраненные поиски"
 
-#: src/app/edit-form.js:494
+#: src/app/edit-form.js:486
 msgid "Select Schedule field"
-msgstr ""
+msgstr "Выберите поле расписания"
 
-#: src/app/edit-form.js:479
+#: src/app/edit-form.js:471
 msgid "Select YouTrack"
-msgstr ""
+msgstr "Выберите YouTrack"
 
-#: src/app/edit-form.js:509
+#: src/app/edit-form.js:501
 msgid "Select color scheme field"
-msgstr ""
+msgstr "Выберите поле с цветовой схемой"
 
-#: src/app/edit-form.js:110
+#: src/app/edit-form.js:111
 msgid "Selected YouTrack service is not available"
-msgstr ""
+msgstr "Выбранный сервис YouTrack недоступен"
 
-#: src/app/edit-form.js:463
+#: src/app/edit-form.js:455
 msgid "Set optional title"
-msgstr ""
+msgstr "Задайте заголовок (не обязательно)"
 
 #: node_modules/hub-dashboard-addons/components/localization/src/localization.js:88
 msgid "Sunday|Monday|Tuesday|Wednesday|Thursday|Friday|Saturday"
@@ -100,25 +100,25 @@ msgstr "воскресенье|понедельник|вторник|среда|
 msgid "Sun|Mon|Tue|Wed|Thu|Fri|Sat"
 msgstr "вск|пнд|втр|срд|чтв|птн|сбт"
 
-#: src/app/edit-form.js:403
+#: src/app/edit-form.js:393
 msgid "Tags"
-msgstr ""
+msgstr "Теги"
 
 #: src/app/calendar_toolbar.js:32
 msgid "Today"
-msgstr ""
+msgstr "Сегодня"
 
-#: src/app/edit-form.js:384
+#: src/app/edit-form.js:374
 msgid "Type search query"
-msgstr ""
+msgstr "Введите поисковый запрос"
 
 #: src/app/calendar_toolbar.js:48
 msgid "Week"
-msgstr ""
+msgstr "Неделя"
 
 #: node_modules/@jetbrains/hub-widget-ui/src/refresh-period/refresh-period.js:69
 msgid "Widget refreshes every minute"
-msgstr ""
+msgstr "Виджет обновляется каждую минуту"
 
 #: node_modules/@jetbrains/hub-widget-ui/src/refresh-period/refresh-period.js:70
 msgid "Widget refreshes every {{minutesCount}} minutes"
@@ -130,7 +130,7 @@ msgstr "ДП|ПП"
 
 #: src/app/due_dates_calendar_widget.js:63
 msgid "issues"
-msgstr ""
+msgstr "задачи"
 
 #: node_modules/@jetbrains/hub-widget-ui/src/refresh-period/refresh-period.js:64
 msgid "{{minutesCount}} min"

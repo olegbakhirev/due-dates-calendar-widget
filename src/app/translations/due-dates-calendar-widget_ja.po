@@ -9,19 +9,19 @@ msgstr ""
 "X-Crowdin-File: /widgets/due-dates-calendar-widget/default.pot\n"
 "Language-Team: Japanese\n"
 "Language: ja_JP\n"
-"PO-Revision-Date: 2020-02-27 15:44\n"
+"PO-Revision-Date: 2020-06-04 18:40\n"
 
 #: src/app/due_dates_calendar_widget.js:357
 msgid "Can't load information from service."
-msgstr ""
+msgstr "サービスから情報を読み込むことができません。"
 
 #: node_modules/@jetbrains/hub-widget-ui/src/configuration-form/configuration-form.js:58
 msgid "Cancel"
-msgstr ""
+msgstr "取り消す"
 
 #: src/app/calendar_toolbar.js:44
 msgid "Day"
-msgstr ""
+msgstr "日"
 
 #: src/app/due_dates_calendar_widget.js:83
 msgid "Due Dates Calendar Widget"
@@ -30,15 +30,15 @@ msgstr ""
 #: src/app/edit-form.js:368
 #: src/app/edit-form.js:50
 msgid "Everything"
-msgstr ""
+msgstr "すべて"
 
 #: node_modules/hub-dashboard-addons/components/localization/src/localization.js:90
 msgid "January|February|March|April|May|June|July|August|September|October|November|December"
-msgstr ""
+msgstr "1月|2月|3月|4月|5月|6月|7月|8月|9月|10月|11月|12月"
 
 #: node_modules/hub-dashboard-addons/components/localization/src/localization.js:89
 msgid "Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec"
-msgstr ""
+msgstr "1月|2月|3月|4月|5月|6月|7月|8月|9月|10月|11月|12月"
 
 #: src/app/due_dates_calendar_widget.js:366
 msgid "No issues corresponding your query, project and schedule field."
@@ -46,31 +46,31 @@ msgstr ""
 
 #: src/app/edit-form.js:290
 msgid "No projects"
-msgstr ""
+msgstr "プロジェクトがありません"
 
 #: src/app/edit-form.js:292
 msgid "No saved searches"
-msgstr ""
+msgstr "保存した検索条件はありません"
 
 #: src/app/edit-form.js:291
 msgid "No tags"
-msgstr ""
+msgstr "タグなし"
 
 #: node_modules/@jetbrains/hub-widget-ui/src/http-error-handler/http-error-handler.js:4
 msgid "Oops! Something went wrong..."
-msgstr ""
+msgstr "不明なエラーが発生しました..."
 
 #: src/app/edit-form.js:387
 msgid "Projects"
-msgstr ""
+msgstr "プロジェクト"
 
 #: node_modules/@jetbrains/hub-widget-ui/src/configuration-form/configuration-form.js:47
 msgid "Save"
-msgstr ""
+msgstr "保存"
 
 #: src/app/edit-form.js:399
 msgid "Saved searches"
-msgstr ""
+msgstr "保存した検索条件"
 
 #: src/app/edit-form.js:486
 msgid "Select Schedule field"
@@ -78,7 +78,7 @@ msgstr ""
 
 #: src/app/edit-form.js:471
 msgid "Select YouTrack"
-msgstr ""
+msgstr "YouTrackを選択"
 
 #: src/app/edit-form.js:501
 msgid "Select color scheme field"
@@ -86,52 +86,53 @@ msgstr ""
 
 #: src/app/edit-form.js:111
 msgid "Selected YouTrack service is not available"
-msgstr ""
+msgstr "選択されたYouTrackサービスはご利用いただけません"
 
 #: src/app/edit-form.js:455
 msgid "Set optional title"
-msgstr ""
+msgstr "タイトル（省略可）を設定"
 
 #: node_modules/hub-dashboard-addons/components/localization/src/localization.js:88
 msgid "Sunday|Monday|Tuesday|Wednesday|Thursday|Friday|Saturday"
-msgstr ""
+msgstr "日曜日|月曜日|火曜日|水曜日|木曜日|金曜日|土曜日"
 
 #: node_modules/hub-dashboard-addons/components/localization/src/localization.js:87
 msgid "Sun|Mon|Tue|Wed|Thu|Fri|Sat"
-msgstr ""
+msgstr "日|月|火|水|木|金|土"
 
 #: src/app/edit-form.js:393
 msgid "Tags"
-msgstr ""
+msgstr "タグ"
 
 #: src/app/calendar_toolbar.js:32
 msgid "Today"
-msgstr ""
+msgstr "今日"
 
 #: src/app/edit-form.js:374
 msgid "Type search query"
-msgstr ""
+msgstr "検索クエリを入力"
 
 #: src/app/calendar_toolbar.js:48
 msgid "Week"
-msgstr ""
+msgstr "週"
 
 #: node_modules/@jetbrains/hub-widget-ui/src/refresh-period/refresh-period.js:69
 msgid "Widget refreshes every minute"
-msgstr ""
+msgstr "ウィジェットは1分ごとに更新されます"
 
 #: node_modules/@jetbrains/hub-widget-ui/src/refresh-period/refresh-period.js:70
 msgid "Widget refreshes every {{minutesCount}} minutes"
-msgstr ""
+msgstr "ウィジェットは{{minutesCount}}分ごとに更新されます"
 
 #: node_modules/hub-dashboard-addons/components/localization/src/localization.js:91
 msgid "am|pm"
-msgstr ""
+msgstr "am|pm"
 
 #: src/app/due_dates_calendar_widget.js:63
 msgid "issues"
-msgstr ""
+msgstr "課題"
 
 #: node_modules/@jetbrains/hub-widget-ui/src/refresh-period/refresh-period.js:64
 msgid "{{minutesCount}} min"
-msgstr ""
+msgstr "{{minutesCount}} 分"
+
