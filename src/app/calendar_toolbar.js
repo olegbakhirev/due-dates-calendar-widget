@@ -46,7 +46,7 @@ class CalendarToolbar extends Toolbar {
                 active={selectedView === 'week'}
                 onClick={this.setWeekView}
               >{i18n('Week')}</Button>
-              <Button active={selectedView === 'month'} onClick={this.setMonthView}>{'Month'}</Button>
+              <Button active={selectedView === 'month'} onClick={this.setMonthView}>{i18n('Month')}</Button>
             </ButtonGroup>
           </div>
         </div>
