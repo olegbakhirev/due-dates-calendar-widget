@@ -9,9 +9,9 @@ msgstr ""
 "X-Crowdin-File: /widgets/due-dates-calendar-widget/default.pot\n"
 "Language-Team: Esperanto\n"
 "Language: eo_UY\n"
-"PO-Revision-Date: 2020-06-04 18:41\n"
+"PO-Revision-Date: 2020-06-04 23:27\n"
 
-#: src/app/due_dates_calendar_widget.js:357
+#: src/app/due_dates_calendar_widget.js:359
 msgid "Can't load information from service."
 msgstr "crwdns9073104:0crwdne9073104:0"
 
@@ -27,8 +27,8 @@ msgstr "crwdns9073108:0crwdne9073108:0"
 msgid "Due Dates Calendar Widget"
 msgstr "crwdns9073110:0crwdne9073110:0"
 
-#: src/app/edit-form.js:368
-#: src/app/edit-form.js:50
+#: src/app/edit-form.js:378
+#: src/app/edit-form.js:49
 msgid "Everything"
 msgstr "crwdns9073112:0crwdne9073112:0"
 
@@ -40,19 +40,23 @@ msgstr "crwdns9073114:0crwdne9073114:0"
 msgid "Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec"
 msgstr "crwdns9073116:0crwdne9073116:0"
 
-#: src/app/due_dates_calendar_widget.js:366
+#: src/app/calendar_toolbar.js:49
+msgid "Month"
+msgstr "crwdns9223324:0crwdne9223324:0"
+
+#: src/app/due_dates_calendar_widget.js:368
 msgid "No issues corresponding your query, project and schedule field."
 msgstr "crwdns9073118:0crwdne9073118:0"
 
-#: src/app/edit-form.js:290
+#: src/app/edit-form.js:308
 msgid "No projects"
 msgstr "crwdns9073120:0crwdne9073120:0"
 
-#: src/app/edit-form.js:292
+#: src/app/edit-form.js:310
 msgid "No saved searches"
 msgstr "crwdns9073122:0crwdne9073122:0"
 
-#: src/app/edit-form.js:291
+#: src/app/edit-form.js:309
 msgid "No tags"
 msgstr "crwdns9073124:0crwdne9073124:0"
 
@@ -60,7 +64,7 @@ msgstr "crwdns9073124:0crwdne9073124:0"
 msgid "Oops! Something went wrong..."
 msgstr "crwdns9073126:0crwdne9073126:0"
 
-#: src/app/edit-form.js:387
+#: src/app/edit-form.js:397
 msgid "Projects"
 msgstr "crwdns9073128:0crwdne9073128:0"
 
@@ -68,27 +72,27 @@ msgstr "crwdns9073128:0crwdne9073128:0"
 msgid "Save"
 msgstr "crwdns9073130:0crwdne9073130:0"
 
-#: src/app/edit-form.js:399
+#: src/app/edit-form.js:409
 msgid "Saved searches"
 msgstr "crwdns9073132:0crwdne9073132:0"
 
-#: src/app/edit-form.js:486
+#: src/app/edit-form.js:494
 msgid "Select Schedule field"
 msgstr "crwdns9073134:0crwdne9073134:0"
 
-#: src/app/edit-form.js:471
+#: src/app/edit-form.js:479
 msgid "Select YouTrack"
 msgstr "crwdns9073136:0crwdne9073136:0"
 
-#: src/app/edit-form.js:501
+#: src/app/edit-form.js:509
 msgid "Select color scheme field"
 msgstr "crwdns9073138:0crwdne9073138:0"
 
-#: src/app/edit-form.js:111
+#: src/app/edit-form.js:110
 msgid "Selected YouTrack service is not available"
 msgstr "crwdns9073140:0crwdne9073140:0"
 
-#: src/app/edit-form.js:455
+#: src/app/edit-form.js:463
 msgid "Set optional title"
 msgstr "crwdns9073142:0crwdne9073142:0"
 
@@ -100,7 +104,7 @@ msgstr "crwdns9073144:0crwdne9073144:0"
 msgid "Sun|Mon|Tue|Wed|Thu|Fri|Sat"
 msgstr "crwdns9073146:0crwdne9073146:0"
 
-#: src/app/edit-form.js:393
+#: src/app/edit-form.js:403
 msgid "Tags"
 msgstr "crwdns9073148:0crwdne9073148:0"
 
@@ -108,7 +112,7 @@ msgstr "crwdns9073148:0crwdne9073148:0"
 msgid "Today"
 msgstr "crwdns9073150:0crwdne9073150:0"
 
-#: src/app/edit-form.js:374
+#: src/app/edit-form.js:384
 msgid "Type search query"
 msgstr "crwdns9073152:0crwdne9073152:0"
 
