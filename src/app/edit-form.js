@@ -457,7 +457,7 @@ class EditForm extends React.Component {
       >
         <Input
           className="ring-form__group"
-          label="Optional title"
+          label={i18n('Optional title')}
           size={InputSize.FULL}
           value={this.state.title}
           placeholder={i18n('Set optional title')}
@@ -483,7 +483,7 @@ class EditForm extends React.Component {
           !errorMessage &&
           <Select
             className="ring-form__group"
-            selectedLabel="Schedule by field"
+            selectedLabel={i18n('Schedule by field')}
             size={InputSize.FULL}
             data={this.state.availableScheduleFields}
             selected={{label: this.state.scheduleField}}
@@ -498,7 +498,7 @@ class EditForm extends React.Component {
           !errorMessage &&
           <Select
             className="ring-form__group"
-            selectedLabel="Color scheme"
+            selectedLabel={i18n('Color scheme')}
             size={InputSize.FULL}
             data={this.state.availableEventFields}
             selected={{label: this.state.colorField}}
