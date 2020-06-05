@@ -9,15 +9,19 @@ msgstr ""
 "X-Crowdin-File: /widgets/due-dates-calendar-widget/default.pot\n"
 "Language-Team: Spanish\n"
 "Language: es_ES\n"
-"PO-Revision-Date: 2020-06-05 08:28\n"
+"PO-Revision-Date: 2020-06-05 08:41\n"
 
-#: src/app/due_dates_calendar_widget.js:357
+#: src/app/due_dates_calendar_widget.js:359
 msgid "Can't load information from service."
 msgstr "No es posible cargar información desde el servicio."
 
 #: node_modules/@jetbrains/hub-widget-ui/src/configuration-form/configuration-form.js:58
 msgid "Cancel"
 msgstr "Cancelar"
+
+#: src/app/edit-form.js:501
+msgid "Color scheme"
+msgstr "Combinación de colores"
 
 #: src/app/calendar_toolbar.js:44
 msgid "Day"
@@ -27,8 +31,8 @@ msgstr "Día"
 msgid "Due Dates Calendar Widget"
 msgstr ""
 
-#: src/app/edit-form.js:368
-#: src/app/edit-form.js:50
+#: src/app/edit-form.js:378
+#: src/app/edit-form.js:49
 msgid "Everything"
 msgstr "Todo"
 
@@ -40,19 +44,23 @@ msgstr "Enero|Febrero|Marzo|Abril|Mayo|Junio|Julio|Agosto|Septiembre|Octubre|Nov
 msgid "Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec"
 msgstr "Ene|Feb|Mar|Abr|May|Jun|Jul|Ago|Sep|Oct|Nov|Dic"
 
-#: src/app/due_dates_calendar_widget.js:366
+#: src/app/calendar_toolbar.js:49
+msgid "Month"
+msgstr "Mes"
+
+#: src/app/due_dates_calendar_widget.js:368
 msgid "No issues corresponding your query, project and schedule field."
 msgstr ""
 
-#: src/app/edit-form.js:290
+#: src/app/edit-form.js:308
 msgid "No projects"
 msgstr "Ningún proyecto"
 
-#: src/app/edit-form.js:292
+#: src/app/edit-form.js:310
 msgid "No saved searches"
 msgstr "Ninguna búsqueda guardada"
 
-#: src/app/edit-form.js:291
+#: src/app/edit-form.js:309
 msgid "No tags"
 msgstr "Ninguna etiqueta"
 
@@ -60,7 +68,11 @@ msgstr "Ninguna etiqueta"
 msgid "Oops! Something went wrong..."
 msgstr "¡Uy! Algo ha salido mal..."
 
-#: src/app/edit-form.js:387
+#: src/app/edit-form.js:460
+msgid "Optional title"
+msgstr "Título opcional"
+
+#: src/app/edit-form.js:397
 msgid "Projects"
 msgstr "Proyectos"
 
@@ -68,27 +80,31 @@ msgstr "Proyectos"
 msgid "Save"
 msgstr "Guardar"
 
-#: src/app/edit-form.js:399
+#: src/app/edit-form.js:409
 msgid "Saved searches"
 msgstr "Búsquedas guardadas"
 
 #: src/app/edit-form.js:486
+msgid "Schedule by field"
+msgstr ""
+
+#: src/app/edit-form.js:494
 msgid "Select Schedule field"
 msgstr ""
 
-#: src/app/edit-form.js:471
+#: src/app/edit-form.js:479
 msgid "Select YouTrack"
 msgstr "Seleccionar YouTrack"
 
-#: src/app/edit-form.js:501
+#: src/app/edit-form.js:509
 msgid "Select color scheme field"
 msgstr ""
 
-#: src/app/edit-form.js:111
+#: src/app/edit-form.js:110
 msgid "Selected YouTrack service is not available"
 msgstr "El servicio de YouTrack seleccionado no está disponible"
 
-#: src/app/edit-form.js:455
+#: src/app/edit-form.js:463
 msgid "Set optional title"
 msgstr "Establecer título opcional"
 
@@ -100,7 +116,7 @@ msgstr "Domingo|Lunes|Martes|Miércoles|Jueves|Viernes|Sábado"
 msgid "Sun|Mon|Tue|Wed|Thu|Fri|Sat"
 msgstr "Dom|Lun|Mar|Mié|Jue|Vie|Sáb"
 
-#: src/app/edit-form.js:393
+#: src/app/edit-form.js:403
 msgid "Tags"
 msgstr "Etiquetas"
 
@@ -108,7 +124,7 @@ msgstr "Etiquetas"
 msgid "Today"
 msgstr "Hoy"
 
-#: src/app/edit-form.js:374
+#: src/app/edit-form.js:384
 msgid "Type search query"
 msgstr "Escriba la consulta de búsqueda"
 
