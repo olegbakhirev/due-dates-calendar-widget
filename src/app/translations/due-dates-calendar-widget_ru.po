@@ -9,7 +9,7 @@ msgstr ""
 "X-Crowdin-File: /widgets/due-dates-calendar-widget/default.pot\n"
 "Language-Team: Russian\n"
 "Language: ru_RU\n"
-"PO-Revision-Date: 2020-06-05 08:41\n"
+"PO-Revision-Date: 2020-06-05 08:51\n"
 
 #: src/app/due_dates_calendar_widget.js:359
 msgid "Can't load information from service."
@@ -86,7 +86,7 @@ msgstr "Сохраненные поиски"
 
 #: src/app/edit-form.js:486
 msgid "Schedule by field"
-msgstr ""
+msgstr "Поле расписания"
 
 #: src/app/edit-form.js:494
 msgid "Select Schedule field"
