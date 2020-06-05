@@ -9,9 +9,9 @@ msgstr ""
 "X-Crowdin-File: /widgets/due-dates-calendar-widget/default.pot\n"
 "Language-Team: Japanese\n"
 "Language: ja_JP\n"
-"PO-Revision-Date: 2020-06-04 23:30\n"
+"PO-Revision-Date: 2020-06-05 08:28\n"
 
-#: src/app/due_dates_calendar_widget.js:359
+#: src/app/due_dates_calendar_widget.js:357
 msgid "Can't load information from service."
 msgstr "サービスから情報を読み込むことができません。"
 
@@ -27,8 +27,8 @@ msgstr "日"
 msgid "Due Dates Calendar Widget"
 msgstr ""
 
-#: src/app/edit-form.js:378
-#: src/app/edit-form.js:49
+#: src/app/edit-form.js:368
+#: src/app/edit-form.js:50
 msgid "Everything"
 msgstr "すべて"
 
@@ -40,23 +40,19 @@ msgstr "1月|2月|3月|4月|5月|6月|7月|8月|9月|10月|11月|12月"
 msgid "Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec"
 msgstr "1月|2月|3月|4月|5月|6月|7月|8月|9月|10月|11月|12月"
 
-#: src/app/calendar_toolbar.js:49
-msgid "Month"
-msgstr "月"
-
-#: src/app/due_dates_calendar_widget.js:368
+#: src/app/due_dates_calendar_widget.js:366
 msgid "No issues corresponding your query, project and schedule field."
 msgstr ""
 
-#: src/app/edit-form.js:308
+#: src/app/edit-form.js:290
 msgid "No projects"
 msgstr "プロジェクトがありません"
 
-#: src/app/edit-form.js:310
+#: src/app/edit-form.js:292
 msgid "No saved searches"
 msgstr "保存した検索条件はありません"
 
-#: src/app/edit-form.js:309
+#: src/app/edit-form.js:291
 msgid "No tags"
 msgstr "タグなし"
 
@@ -64,7 +60,7 @@ msgstr "タグなし"
 msgid "Oops! Something went wrong..."
 msgstr "不明なエラーが発生しました..."
 
-#: src/app/edit-form.js:397
+#: src/app/edit-form.js:387
 msgid "Projects"
 msgstr "プロジェクト"
 
@@ -72,27 +68,27 @@ msgstr "プロジェクト"
 msgid "Save"
 msgstr "保存"
 
-#: src/app/edit-form.js:409
+#: src/app/edit-form.js:399
 msgid "Saved searches"
 msgstr "保存した検索条件"
 
-#: src/app/edit-form.js:494
+#: src/app/edit-form.js:486
 msgid "Select Schedule field"
 msgstr ""
 
-#: src/app/edit-form.js:479
+#: src/app/edit-form.js:471
 msgid "Select YouTrack"
 msgstr "YouTrackを選択"
 
-#: src/app/edit-form.js:509
+#: src/app/edit-form.js:501
 msgid "Select color scheme field"
 msgstr ""
 
-#: src/app/edit-form.js:110
+#: src/app/edit-form.js:111
 msgid "Selected YouTrack service is not available"
 msgstr "選択されたYouTrackサービスはご利用いただけません"
 
-#: src/app/edit-form.js:463
+#: src/app/edit-form.js:455
 msgid "Set optional title"
 msgstr "タイトル（省略可）を設定"
 
@@ -104,7 +100,7 @@ msgstr "日曜日|月曜日|火曜日|水曜日|木曜日|金曜日|土曜日"
 msgid "Sun|Mon|Tue|Wed|Thu|Fri|Sat"
 msgstr "日|月|火|水|木|金|土"
 
-#: src/app/edit-form.js:403
+#: src/app/edit-form.js:393
 msgid "Tags"
 msgstr "タグ"
 
@@ -112,7 +108,7 @@ msgstr "タグ"
 msgid "Today"
 msgstr "今日"
 
-#: src/app/edit-form.js:384
+#: src/app/edit-form.js:374
 msgid "Type search query"
 msgstr "検索クエリを入力"
 
