@@ -5,9 +5,10 @@ const ISSUE_FIELDS = `id,idReadable,summary,resolved,fields(${ISSUE_FIELD_FIELDS
 
 const QUERY_ASSIST_FIELDS = 'query,caret,styleRanges(start,length,style),suggestions(options,prefix,option,suffix,description,matchingStart,matchingEnd,caret,completionStart,completionEnd,group,icon)';
 const WATCH_FOLDERS_FIELDS = 'id,$type,name,query,shortName';
+const PACK_SIZE_ALL = -1;
 
 export async function loadIssues(fetchYouTrack, query, context, skip) {
-  const packSize = 50;
+  const packSize = PACK_SIZE_ALL;
   const encodedQuery = encodeURIComponent(query);
   if (context && context.id) {
     return await fetchYouTrack(
