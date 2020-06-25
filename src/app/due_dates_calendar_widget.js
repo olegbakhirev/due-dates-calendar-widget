@@ -80,7 +80,7 @@ class DueDatesCalendarWidget extends React.Component {
   static youTrackServiceNeedsUpdate = service => !service.name;
 
   static getDefaultWidgetTitle = () =>
-    i18n('Due Dates Calendar Widget');
+    i18n('Due Date Calendar Widget');
 
   static getWidgetTitle =
       (search, context, title, issuesCount, youTrack, scheduleField) => {

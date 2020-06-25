@@ -470,20 +470,18 @@ class EditForm extends React.Component {
             className="ring-form__group"
             size={InputSize.FULL}
             maxHeight={300}
-            //type={Select.Type.BUTTON}
             selectedLabel="YouTrack service"
             data={youTracks.map(youTrackServiceToSelectItem)}
             selected={youTrackServiceToSelectItem(selectedYouTrack)}
             onSelect={this.changeYouTrack}
             filter={true}
-            label={i18n('Select YouTrack')}
           />
         }
         {
           !errorMessage &&
           <Select
             className="ring-form__group"
-            selectedLabel={i18n('Schedule by field')}
+            selectedLabel={i18n('Field used to schedule due dates')}
             size={InputSize.FULL}
             data={this.state.availableScheduleFields}
             selected={{label: this.state.scheduleField}}
@@ -491,14 +489,13 @@ class EditForm extends React.Component {
             filter={true}
             maxHeight={300}
             renderOptimization={false}
-            label={i18n('Select Schedule field')}
           />
         }
         {
           !errorMessage &&
           <Select
             className="ring-form__group"
-            selectedLabel={i18n('Color scheme')}
+            selectedLabel={i18n('Field used to apply color scheme')}
             size={InputSize.FULL}
             data={this.state.availableEventFields}
             selected={{label: this.state.colorField}}
@@ -506,7 +503,6 @@ class EditForm extends React.Component {
             filter={true}
             maxHeight={300}
             renderOptimization={false}
-            label={i18n('Select color scheme field')}
           />
         }
         <div className="ring-form__group">
