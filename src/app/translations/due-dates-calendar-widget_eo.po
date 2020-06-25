@@ -5,11 +5,13 @@ msgstr ""
 "Project-Id-Version: youtrackjetbrains\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Crowdin-Project: youtrackjetbrains\n"
+"X-Crowdin-Project-ID: 295498\n"
 "X-Crowdin-Language: eo\n"
 "X-Crowdin-File: /widgets/due-dates-calendar-widget/default.pot\n"
+"X-Crowdin-File-ID: 220756\n"
 "Language-Team: Esperanto\n"
 "Language: eo_UY\n"
-"PO-Revision-Date: 2020-06-05 08:51\n"
+"PO-Revision-Date: 2020-06-25 15:42\n"
 
 #: src/app/due_dates_calendar_widget.js:359
 msgid "Can't load information from service."
@@ -19,22 +21,26 @@ msgstr "crwdns9073104:0crwdne9073104:0"
 msgid "Cancel"
 msgstr "crwdns9073106:0crwdne9073106:0"
 
-#: src/app/edit-form.js:501
-msgid "Color scheme"
-msgstr "crwdns9223600:0crwdne9223600:0"
-
 #: src/app/calendar_toolbar.js:44
 msgid "Day"
 msgstr "crwdns9073108:0crwdne9073108:0"
 
 #: src/app/due_dates_calendar_widget.js:83
-msgid "Due Dates Calendar Widget"
-msgstr "crwdns9073110:0crwdne9073110:0"
+msgid "Due Date Calendar Widget"
+msgstr "crwdns9674560:0crwdne9674560:0"
 
 #: src/app/edit-form.js:378
 #: src/app/edit-form.js:49
 msgid "Everything"
 msgstr "crwdns9073112:0crwdne9073112:0"
+
+#: src/app/edit-form.js:498
+msgid "Field used to apply color scheme"
+msgstr "crwdns9674562:0crwdne9674562:0"
+
+#: src/app/edit-form.js:484
+msgid "Field used to schedule due dates"
+msgstr "crwdns9674564:0crwdne9674564:0"
 
 #: node_modules/hub-dashboard-addons/components/localization/src/localization.js:90
 msgid "January|February|March|April|May|June|July|August|September|October|November|December"
@@ -83,22 +89,6 @@ msgstr "crwdns9073130:0crwdne9073130:0"
 #: src/app/edit-form.js:409
 msgid "Saved searches"
 msgstr "crwdns9073132:0crwdne9073132:0"
-
-#: src/app/edit-form.js:486
-msgid "Schedule by field"
-msgstr "crwdns9223606:0crwdne9223606:0"
-
-#: src/app/edit-form.js:494
-msgid "Select Schedule field"
-msgstr "crwdns9073134:0crwdne9073134:0"
-
-#: src/app/edit-form.js:479
-msgid "Select YouTrack"
-msgstr "crwdns9073136:0crwdne9073136:0"
-
-#: src/app/edit-form.js:509
-msgid "Select color scheme field"
-msgstr "crwdns9073138:0crwdne9073138:0"
 
 #: src/app/edit-form.js:110
 msgid "Selected YouTrack service is not available"
