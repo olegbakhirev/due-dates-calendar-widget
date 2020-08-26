@@ -4,7 +4,7 @@ import LoaderInline from '@jetbrains/ring-ui/components/loader-inline/loader-inl
 import {i18n} from 'hub-dashboard-addons/dist/localization';
 import EmptyWidget, {EmptyWidgetFaces} from '@jetbrains/hub-widget-ui/dist/empty-widget';
 import ConfigurableWidget from '@jetbrains/hub-widget-ui/dist/configurable-widget';
-import {Calendar, momentLocalizer} from 'react-big-calendar';
+import {Calendar} from 'react-big-calendar';
 import moment from 'moment';
 
 import 'react-big-calendar/lib/css/react-big-calendar.css';
@@ -14,7 +14,7 @@ import styles from './app.css';
 import EditForm from './edit-form';
 import {loadIssues, loadTotalIssuesCount, loadProfile} from './resources';
 import ServiceResource from './components/service-resource';
-
+import customMoment from './custom-localizer';
 import EventComponent from './issue_event';
 import CalendarToolbar from './calendar_toolbar';
 
@@ -109,7 +109,7 @@ class DueDatesCalendarWidget extends React.Component {
       isLoading: true,
       events: [],
       date: new Date(),
-      localizer: momentLocalizer(moment)
+      localizer: customMoment(moment)
     };
 
     registerWidgetApi({
@@ -155,7 +155,7 @@ class DueDatesCalendarWidget extends React.Component {
         dow: firstDayOfWeek
       }
     });
-    this.setState({localizer: momentLocalizer(moment), profileLocale});
+    this.setState({localizer: customMoment(moment), profileLocale});
   }
 
 
@@ -560,6 +560,9 @@ class DueDatesCalendarWidget extends React.Component {
           onNavigate={this.calendarNavigate}
           onView={this.calendarChangeView}
           onSelectSlot={this.handleSelect}
+          messages={{
+            showMore: total => `+ ${total} ${i18n('more')}`
+          }}
         />
       </div>
     );

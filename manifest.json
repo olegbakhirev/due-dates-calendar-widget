@@ -1,7 +1,7 @@
 {
   "key": "due-dates-calendar",
   "name": "Due Date Calendar",
-  "version": "1.5.5",
+  "version": "1.5.6",
   "description": "Due Date Calendar Widget for YouTrack Issues",
   "applicationName": "YouTrack",
   "author": "JetBrains",
