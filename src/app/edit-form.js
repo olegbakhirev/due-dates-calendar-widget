@@ -23,6 +23,7 @@ import {
 import './style/widget.scss';
 
 const MIN_YOUTRACK_VERSION = '2017.4.38723';
+const MAX_PROJECTS_IN_FIELD_DESCR = 2;
 
 class EditForm extends React.Component {
   static propTypes = {
@@ -182,7 +183,7 @@ class EditForm extends React.Component {
     this.setFormLoaderEnabled(false);
 
     const isDateAndTime =
-        this.state.dateTimeFields.map(i => i.name).includes(scheduleField);
+      this.state.dateTimeFields.map(i => i.name).includes(scheduleField);
 
     await this.props.onSubmit({
       search: search || '',
@@ -235,7 +236,7 @@ class EditForm extends React.Component {
     const dateFields =
       await loadFieldsWithType(this.fetchYouTrack, 'date', context);
     const dateTimeFields =
-        await loadFieldsWithType(this.fetchYouTrack, 'date and time', context);
+      await loadFieldsWithType(this.fetchYouTrack, 'date and time', context);
 
     const fields = [
       ...dateFields,
@@ -244,9 +245,31 @@ class EditForm extends React.Component {
 
     const availableScheduleFields = [];
     fields.forEach(field => {
-      availableScheduleFields.push({label: field.name});
+      availableScheduleFields.push(
+        {
+          label: field.name,
+          description: `${field.customField.fieldType.id} in ${this.getFieldDescriptionPresentation(field)}`
+        });
     });
-    this.setState({availableScheduleFields, dateFields, dateTimeFields});
+    let scheduleField = this.state.scheduleField;
+    if (availableScheduleFields.length === 0) {
+      scheduleField = undefined;
+    }
+    this.setState(
+      {availableScheduleFields, dateFields, dateTimeFields, scheduleField});
+  };
+
+  getFieldDescriptionPresentation = field => {
+    const fieldProjects = field.projects;
+    let descriptionPresentation = '';
+    if (fieldProjects.length > MAX_PROJECTS_IN_FIELD_DESCR) {
+      descriptionPresentation =
+        `${fieldProjects[0].name}, ${fieldProjects[1].name} and ${fieldProjects.length - MAX_PROJECTS_IN_FIELD_DESCR} other projects`;
+    } else {
+      descriptionPresentation =
+        field.projects.map(project => project.name).join(', ');
+    }
+    return descriptionPresentation;
   };
 
   loadAllEventFields = async () => {
@@ -259,10 +282,18 @@ class EditForm extends React.Component {
       await loadFieldsWithType(this.fetchYouTrack, 'state[1]', context);
     const availableEventFields = [];
     enumFields.forEach(field => {
-      availableEventFields.push({label: field.name});
+      availableEventFields.push(
+        {
+          label: field.name,
+          description: this.getFieldDescriptionPresentation(field)
+        });
     });
     stateFields.forEach(field => {
-      availableEventFields.push({label: field.name});
+      availableEventFields.push(
+        {
+          label: field.name,
+          description: this.getFieldDescriptionPresentation(field)
+        });
     });
     this.setState({availableEventFields});
   };
@@ -481,6 +512,7 @@ class EditForm extends React.Component {
           !errorMessage &&
           <Select
             className="ring-form__group"
+            label={i18n('Select available schedule fields in context selected below')}
             selectedLabel={i18n('Field used to schedule due dates')}
             size={InputSize.FULL}
             data={this.state.availableScheduleFields}

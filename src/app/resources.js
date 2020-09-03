@@ -58,7 +58,7 @@ export async function underlineAndSuggest(fetchYouTrack, query, caret) {
 }
 
 export async function loadFieldsWithType(fetchYouTrack, fieldType, context) {
-  let request = `api/filterFields?$top=-1&fieldTypes=${fieldType}&fields=name`;
+  let request = `api/filterFields?$top=-1&fieldTypes=${fieldType}&fields=name,customField(fieldType(id)),projects(name)`;
   if (context && context !== '') {
     request += `&fld=${context.id}`;
   }
