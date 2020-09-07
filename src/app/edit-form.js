@@ -23,7 +23,6 @@ import {
 import './style/widget.scss';
 
 const MIN_YOUTRACK_VERSION = '2017.4.38723';
-const MAX_PROJECTS_IN_FIELD_DESCR = 2;
 
 class EditForm extends React.Component {
   static propTypes = {
@@ -262,9 +261,9 @@ class EditForm extends React.Component {
   getFieldDescriptionPresentation = field => {
     const fieldProjects = field.projects;
     let descriptionPresentation = '';
-    if (fieldProjects.length > MAX_PROJECTS_IN_FIELD_DESCR) {
+    if (fieldProjects.length > 1) {
       descriptionPresentation =
-        `${fieldProjects[0].name}, ${fieldProjects[1].name} and ${fieldProjects.length - MAX_PROJECTS_IN_FIELD_DESCR} other projects`;
+        `${fieldProjects[0].name} and ${fieldProjects.length - 1} more`;
     } else {
       descriptionPresentation =
         field.projects.map(project => project.name).join(', ');
