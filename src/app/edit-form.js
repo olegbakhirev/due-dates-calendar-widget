@@ -122,10 +122,13 @@ class EditForm extends React.Component {
     this.setState({search, errorMessage: ''});
   };
 
-  appendToSearch = (filterType, filter) => {
+  appendToSearch = async (filterType, filter) => {
     const {search, context} = this.state;
     if (!search && !context) {
-      this.setState({context: filter});
+      this.setState({context: filter}, async () => {
+        await this.loadAllScheduleFields();
+        await this.loadAllEventFields();
+      });
     } else {
       const trimmedSearch = (search || '').replace(/\s+$/g, '');
       const newSearch = trimmedSearch ? `${trimmedSearch} ${filter.query}` : `${filter.query}`;
