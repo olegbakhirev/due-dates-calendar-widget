@@ -254,7 +254,7 @@ class EditForm extends React.Component {
         });
     });
     let scheduleField = this.state.scheduleField;
-    if (availableScheduleFields.length === 0) {
+    if (!availableScheduleFields.map(it => it.label).includes(scheduleField)) {
       scheduleField = undefined;
     }
     this.setState(
