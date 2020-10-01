@@ -20,6 +20,9 @@ import CalendarToolbar from './calendar_toolbar';
 
 const DEFAULT_SCHEDULE_FIELD = 'Due Date';
 const DEFAULT_COLOR_FIELD = 'Priority';
+const DATE_FIELD_TYPE = 'date';
+const DATE_AND_TIME_FIELD_TYPE = 'date and time';
+const STATE_FIELD_NAME = 'State';
 
 class DueDatesCalendarWidget extends React.Component {
   static propTypes = {
@@ -400,6 +403,7 @@ class DueDatesCalendarWidget extends React.Component {
     const startDate = moment(currentDate).startOf('month').startOf('week').format('YYYY-MM-DD');
     const endDate = moment(currentDate).endOf('month').endOf('week').format('YYYY-MM-DD');
     const issuesQuery = `${search} ${scheduleField}: ${startDate} .. ${endDate}`;
+    const isDateAndTime = this.state.isDateAndTime;
 
     const issues = await loadIssues(
       this.fetchYouTrack, issuesQuery, context
@@ -417,49 +421,51 @@ class DueDatesCalendarWidget extends React.Component {
         // eslint-disable-next-line complexity
         issue.fields.forEach(field => {
           if (field.hasOwnProperty('projectCustomField') && field.value) {
-            if (field.value) {
+            const fieldType =
+              field.projectCustomField.field.fieldType.valueType;
             // eslint-disable-next-line max-len
-              if (field.projectCustomField.field.name === this.state.scheduleField) {
+            if (fieldType === DATE_FIELD_TYPE && !isDateAndTime || fieldType === DATE_AND_TIME_FIELD_TYPE && isDateAndTime) {
+              // eslint-disable-next-line max-len
+              if (field.projectCustomField.field.name === scheduleField || field.projectCustomField.field.localizedName === scheduleField) {
                 dueDate = field.value;
               }
-              // eslint-disable-next-line max-len
-              if (field.projectCustomField.field.name === this.state.colorField) {
-                issuePriority = field.value.name;
-                foregroundColor = field.value.color.foreground;
-                backgroundColor = field.value.color.background;
-              } else if (field.value.color) {
-                customFields.push({name: field.projectCustomField.field.name,
-                  value: field.value.name,
-                  foregroundColor: field.value.color.foreground,
-                  backgroundColor: field.value.color.background});
-              }
+            }
+            // eslint-disable-next-line max-len
+            if (field.projectCustomField.field.name === this.state.colorField) {
+              issuePriority = field.value.name;
+              foregroundColor = field.value.color.foreground;
+              backgroundColor = field.value.color.background;
+            } else if (field.value.color) {
+              customFields.push({
+                name: field.projectCustomField.field.name,
+                value: field.value.name,
+                foregroundColor: field.value.color.foreground,
+                backgroundColor: field.value.color.background
+              });
+            }
 
-              if (field.projectCustomField.field.name === 'State') {
+            if (field.projectCustomField.field.name === STATE_FIELD_NAME) {
               // eslint-disable-next-line max-len
-                isResolved = Boolean(field.value.isResolved);
-              }
-            } else {
-              customFields.push({name: field.projectCustomField.field.name,
-                value: 'Undefined',
-                foregroundColor: '#fff',
-                backgroundColor: '#fff'});
+              isResolved = Boolean(field.value.isResolved);
             }
           }
         });
 
-        events.push({
-          issueId: issue.idReadable,
-          description: `${issue.idReadable} ${issue.summary}`,
-          url: `${this.state.youTrack.homeUrl}/issue/${issue.idReadable}`,
-          priority: issuePriority,
-          isResolved,
-          start: (new Date(dueDate)),
-          end: (new Date(dueDate)),
-          allDay: !this.state.isDateAndTime,
-          foregroundColor,
-          backgroundColor,
-          customFields
-        });
+        if (dueDate !== '') {
+          events.push({
+            issueId: issue.idReadable,
+            description: `${issue.idReadable} ${issue.summary}`,
+            url: `${this.state.youTrack.homeUrl}/issue/${issue.idReadable}`,
+            priority: issuePriority,
+            isResolved,
+            start: (new Date(dueDate)),
+            end: (new Date(dueDate)),
+            allDay: !this.state.isDateAndTime,
+            foregroundColor,
+            backgroundColor,
+            customFields
+          });
+        }
       });
     }
     this.setState({issues, events, fromCache: false, isLoadDataError: false});
