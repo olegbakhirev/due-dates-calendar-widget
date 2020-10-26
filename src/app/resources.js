@@ -1,5 +1,5 @@
 const PROJECT_CUSTOM_FIELD_FIELDS = 'id,bundle(id),field(id,name,localizedName,fieldType(id,valueType))';
-const ISSUE_FIELD_VALUE_FIELDS = 'id,name,localizedName,login,avatarUrl,name,presentation,minutes,color(id,foreground,background),isResolved';
+const ISSUE_FIELD_VALUE_FIELDS = 'id,name,localizedName,login,avatarUrl,ringId,presentation,minutes,color(id,foreground,background),isResolved';
 const ISSUE_FIELD_FIELDS = `id,value(${ISSUE_FIELD_VALUE_FIELDS}),projectCustomField(${PROJECT_CUSTOM_FIELD_FIELDS})`;
 const ISSUE_FIELDS = `id,idReadable,summary,resolved,fields(${ISSUE_FIELD_FIELDS})`;
 

@@ -26,6 +26,25 @@ class EventComponent extends React.Component {
     }
   };
 
+  renderAssignee = () => {
+
+    const assignee = this.props.event.issueAssignee;
+    const ringId = assignee.ringId;
+
+    if (ringId) {
+      const assigneeHomeUrl = `${this.props.event.ytHomeUrl}/users/${ringId}`;
+      return (
+        <a href={assigneeHomeUrl}>
+          <img
+            src={assignee.avatarUrl}
+            title={assignee.name}
+          />
+        </a>);
+    } else {
+      return ('');
+    }
+  };
+
   renderDescription() {
     const event = this.props.event;
     return (
@@ -45,6 +64,10 @@ class EventComponent extends React.Component {
     const customFields = [];
     const eventCustomFields = this.props.event.customFields;
 
+    customFields.push(<div className={'popup-assignee'}>
+      {this.renderAssignee()}
+    </div>);
+
     for (let i = 0; i < eventCustomFields.length; i++) {
       const customField = eventCustomFields[i];
       const colorsStyle = {
@@ -63,8 +86,10 @@ class EventComponent extends React.Component {
   };
 
   renderAnchor() {
-    const classes = classNames({'event-link': true,
-      'event-resolved': this.props.event.isResolved});
+    const classes = classNames({
+      'event-link': true,
+      'event-resolved': this.props.event.isResolved
+    });
 
     const event = this.props.event;
     const colorsStyle = {

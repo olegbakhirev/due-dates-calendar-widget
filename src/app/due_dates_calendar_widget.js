@@ -23,6 +23,7 @@ const DEFAULT_COLOR_FIELD = 'Priority';
 const DATE_FIELD_TYPE = 'date';
 const DATE_AND_TIME_FIELD_TYPE = 'date and time';
 const STATE_FIELD_NAME = 'State';
+const ASSIGNEE_FIELD_NAME = 'Assignee';
 
 class DueDatesCalendarWidget extends React.Component {
   static propTypes = {
@@ -413,6 +414,7 @@ class DueDatesCalendarWidget extends React.Component {
     if (Array.isArray(issues)) {
       issues.forEach(issue => {
         let dueDate = '';
+        let issueAssignee = '';
         let foregroundColor = '#9c9c9c';
         let backgroundColor = '#e8e8e8';
         let issuePriority = '';
@@ -430,6 +432,11 @@ class DueDatesCalendarWidget extends React.Component {
                 dueDate = field.value;
               }
             }
+            // eslint-disable-next-line max-len
+            if (field.projectCustomField.field.name === ASSIGNEE_FIELD_NAME || field.projectCustomField.field.localizedName === ASSIGNEE_FIELD_NAME) {
+              issueAssignee = field.value;
+            }
+
             // eslint-disable-next-line max-len
             if (field.projectCustomField.field.name === this.state.colorField) {
               issuePriority = field.value.name;
@@ -463,7 +470,9 @@ class DueDatesCalendarWidget extends React.Component {
             allDay: !this.state.isDateAndTime,
             foregroundColor,
             backgroundColor,
-            customFields
+            customFields,
+            issueAssignee,
+            ytHomeUrl: this.state.youTrack.homeUrl
           });
         }
       });

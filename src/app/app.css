@@ -186,7 +186,7 @@
 :global(.custom-field-icon) {
   width: 10px;
   height: 10px;
-  margin: 4px;
+  margin: 5px 4px 4px;
 
   -webkit-border-radius: 5px;
   -moz-border-radius: 5px;
@@ -236,6 +236,8 @@
 
   max-width: 160px;
   margin-right: 16px;
+
+  vertical-align: center;
 }
 
 :global(.custom-field-value) {
@@ -375,4 +377,31 @@
 
 :global(.rbc-calendar) {
   min-width: 400px;
+}
+
+:global(.popup-assignee) {
+  display: inline-block;
+
+  height: 100%;
+
+  vertical-align: middle;
+}
+
+:global(.popup-assignee) img {
+  display: inline-block;
+
+  width: 20px;
+  height: 100%;
+  height: 20px;
+  padding-bottom: 2px;
+
+  vertical-align: middle;
+
+  opacity: 0.7;
+
+  border-radius: 3px;
+}
+
+:global(.popup-assignee) img:hover {
+  opacity: 1;
 }
