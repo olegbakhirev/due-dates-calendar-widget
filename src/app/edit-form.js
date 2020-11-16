@@ -514,7 +514,7 @@ class EditForm extends React.Component {
           !errorMessage &&
           <Select
             className="ring-form__group"
-            label={i18n('Select available schedule fields in context selected below')}
+            label={i18n('Select an available date type field')}
             selectedLabel={i18n('Field used to schedule due dates')}
             size={InputSize.FULL}
             data={this.state.availableScheduleFields}
