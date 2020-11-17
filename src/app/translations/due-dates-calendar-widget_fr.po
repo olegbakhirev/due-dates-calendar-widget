@@ -11,36 +11,36 @@ msgstr ""
 "X-Crowdin-File-ID: 220756\n"
 "Language-Team: French\n"
 "Language: fr_FR\n"
-"PO-Revision-Date: 2020-06-30 11:04\n"
+"PO-Revision-Date: 2020-11-16 21:18\n"
 
-#: src/app/due_dates_calendar_widget.js:359
+#: src/app/due_dates_calendar_widget.js:363
 msgid "Can't load information from service."
-msgstr ""
+msgstr "Impossible de charger les informations du service."
 
 #: node_modules/@jetbrains/hub-widget-ui/src/configuration-form/configuration-form.js:58
 msgid "Cancel"
-msgstr ""
+msgstr "Annuler"
 
 #: src/app/calendar_toolbar.js:44
 msgid "Day"
-msgstr ""
+msgstr "Jour"
 
-#: src/app/due_dates_calendar_widget.js:83
+#: src/app/due_dates_calendar_widget.js:87
 msgid "Due Date Calendar Widget"
-msgstr ""
+msgstr "Widget de calendrier des dates d'échéance"
 
-#: src/app/edit-form.js:378
+#: src/app/edit-form.js:411
 #: src/app/edit-form.js:49
 msgid "Everything"
-msgstr ""
+msgstr "Tout"
 
-#: src/app/edit-form.js:498
+#: src/app/edit-form.js:532
 msgid "Field used to apply color scheme"
-msgstr ""
+msgstr "Champ utilisé pour appliquer la palette de couleurs"
 
-#: src/app/edit-form.js:484
+#: src/app/edit-form.js:518
 msgid "Field used to schedule due dates"
-msgstr ""
+msgstr "Champ utilisé pour planifier les dates d'échéance"
 
 #: node_modules/hub-dashboard-addons/components/localization/src/localization.js:90
 msgid "January|February|March|April|May|June|July|August|September|October|November|December"
@@ -52,51 +52,55 @@ msgstr "Jan|Fév|Mar|Avr|Mai|Jun|Jul|Aoû|Sep|Oct|Nov|Déc"
 
 #: src/app/calendar_toolbar.js:49
 msgid "Month"
-msgstr ""
+msgstr "Mois"
 
-#: src/app/due_dates_calendar_widget.js:368
+#: src/app/due_dates_calendar_widget.js:372
 msgid "No issues corresponding your query, project and schedule field."
-msgstr ""
+msgstr "Aucun ticket ne correspond à vos champs de requête, de projet et de calendrier."
 
-#: src/app/edit-form.js:308
+#: src/app/edit-form.js:341
 msgid "No projects"
-msgstr ""
+msgstr "Aucun projet"
 
-#: src/app/edit-form.js:310
+#: src/app/edit-form.js:343
 msgid "No saved searches"
-msgstr ""
+msgstr "Aucune recherche enregistrée"
 
-#: src/app/edit-form.js:309
+#: src/app/edit-form.js:342
 msgid "No tags"
-msgstr ""
+msgstr "Aucune balise"
 
 #: node_modules/@jetbrains/hub-widget-ui/src/http-error-handler/http-error-handler.js:4
 msgid "Oops! Something went wrong..."
 msgstr "Désolé ! Un problème est survenu..."
 
-#: src/app/edit-form.js:460
+#: src/app/edit-form.js:493
 msgid "Optional title"
-msgstr ""
+msgstr "Titre facultatif"
 
-#: src/app/edit-form.js:397
+#: src/app/edit-form.js:430
 msgid "Projects"
-msgstr ""
+msgstr "Projets"
 
 #: node_modules/@jetbrains/hub-widget-ui/src/configuration-form/configuration-form.js:47
 msgid "Save"
-msgstr ""
+msgstr "Enregistrer"
 
-#: src/app/edit-form.js:409
+#: src/app/edit-form.js:442
 msgid "Saved searches"
+msgstr "Recherches enregistrées "
+
+#: src/app/edit-form.js:517
+msgid "Select an available date type field"
 msgstr ""
 
 #: src/app/edit-form.js:110
 msgid "Selected YouTrack service is not available"
-msgstr ""
+msgstr "Le service YouTrack sélectionné n'est pas disponible."
 
-#: src/app/edit-form.js:463
+#: src/app/edit-form.js:496
 msgid "Set optional title"
-msgstr ""
+msgstr "Définir un titre facultatif"
 
 #: node_modules/hub-dashboard-addons/components/localization/src/localization.js:88
 msgid "Sunday|Monday|Tuesday|Wednesday|Thursday|Friday|Saturday"
@@ -106,21 +110,21 @@ msgstr "Dimanche|Lundi|Mardi|Mercredi|Jeudi|Vendredi|Samedi"
 msgid "Sun|Mon|Tue|Wed|Thu|Fri|Sat"
 msgstr "Dim|Lun|Mar|Mer|Jeu|Ven|Sam"
 
-#: src/app/edit-form.js:403
+#: src/app/edit-form.js:436
 msgid "Tags"
-msgstr ""
+msgstr "Tags"
 
 #: src/app/calendar_toolbar.js:32
 msgid "Today"
-msgstr ""
+msgstr "Aujourd’hui"
 
-#: src/app/edit-form.js:384
+#: src/app/edit-form.js:417
 msgid "Type search query"
-msgstr ""
+msgstr "Saisissez la requête de recherche"
 
 #: src/app/calendar_toolbar.js:48
 msgid "Week"
-msgstr ""
+msgstr "Semaine"
 
 #: node_modules/@jetbrains/hub-widget-ui/src/refresh-period/refresh-period.js:69
 msgid "Widget refreshes every minute"
@@ -134,9 +138,13 @@ msgstr "Le widget s'actualise toutes les {{minutesCount}} minutes"
 msgid "am|pm"
 msgstr "am|pm"
 
-#: src/app/due_dates_calendar_widget.js:63
+#: src/app/due_dates_calendar_widget.js:67
 msgid "issues"
-msgstr ""
+msgstr "tickets"
+
+#: src/app/due_dates_calendar_widget.js:579
+msgid "more"
+msgstr "de plus"
 
 #: node_modules/@jetbrains/hub-widget-ui/src/refresh-period/refresh-period.js:64
 msgid "{{minutesCount}} min"
