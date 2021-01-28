@@ -64,7 +64,7 @@
     "chai-dom": "1.7.0",
     "chai-enzyme": "1.0.0-beta.0",
     "copy-webpack-plugin": "^5.1.1",
-    "electron": "1.8.8",
+    "electron": "9.4.0",
     "enzyme": "3.3.0",
     "enzyme-adapter-react-16": "1.1.1",
     "eslint": "4.18.2",
