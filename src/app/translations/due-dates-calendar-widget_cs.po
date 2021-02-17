@@ -11,9 +11,9 @@ msgstr ""
 "X-Crowdin-File-ID: 267290\n"
 "Language-Team: Czech\n"
 "Language: cs_CZ\n"
-"PO-Revision-Date: 2020-11-16 21:21\n"
+"PO-Revision-Date: 2021-02-17 15:13\n"
 
-#: src/app/due_dates_calendar_widget.js:363
+#: src/app/due_dates_calendar_widget.js:366
 msgid "Can't load information from service."
 msgstr "Nelze načíst data ze služby."
 
@@ -25,7 +25,7 @@ msgstr "Zrušit"
 msgid "Day"
 msgstr ""
 
-#: src/app/due_dates_calendar_widget.js:87
+#: src/app/due_dates_calendar_widget.js:90
 msgid "Due Date Calendar Widget"
 msgstr ""
 
@@ -54,7 +54,7 @@ msgstr "Led|Úno|Bře|Dub|Kvě|Čer|Čvc|Srp|Zář|Říj|Lis|Pro"
 msgid "Month"
 msgstr ""
 
-#: src/app/due_dates_calendar_widget.js:372
+#: src/app/due_dates_calendar_widget.js:375
 msgid "No issues corresponding your query, project and schedule field."
 msgstr ""
 
@@ -72,7 +72,7 @@ msgstr "Žádné štítky"
 
 #: node_modules/@jetbrains/hub-widget-ui/src/http-error-handler/http-error-handler.js:4
 msgid "Oops! Something went wrong..."
-msgstr ""
+msgstr "Jejda! Něco se pokazilo…"
 
 #: src/app/edit-form.js:493
 msgid "Optional title"
@@ -132,21 +132,21 @@ msgstr "Widget se aktualizuje každou minutu"
 
 #: node_modules/@jetbrains/hub-widget-ui/src/refresh-period/refresh-period.js:70
 msgid "Widget refreshes every {{minutesCount}} minutes"
-msgstr ""
+msgstr "Widget se aktualizuje každých {{minutesCount}} minut"
 
 #: node_modules/hub-dashboard-addons/components/localization/src/localization.js:91
 msgid "am|pm"
 msgstr "dopol|odpol"
 
-#: src/app/due_dates_calendar_widget.js:67
+#: src/app/due_dates_calendar_widget.js:70
 msgid "issues"
 msgstr "případy"
 
-#: src/app/due_dates_calendar_widget.js:579
+#: src/app/due_dates_calendar_widget.js:593
 msgid "more"
 msgstr ""
 
 #: node_modules/@jetbrains/hub-widget-ui/src/refresh-period/refresh-period.js:64
 msgid "{{minutesCount}} min"
-msgstr ""
+msgstr "{{minutesCount}} min"
 

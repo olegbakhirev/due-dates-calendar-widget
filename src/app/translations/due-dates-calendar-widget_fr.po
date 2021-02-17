@@ -11,9 +11,9 @@ msgstr ""
 "X-Crowdin-File-ID: 220756\n"
 "Language-Team: French\n"
 "Language: fr_FR\n"
-"PO-Revision-Date: 2020-11-16 21:18\n"
+"PO-Revision-Date: 2021-02-17 15:12\n"
 
-#: src/app/due_dates_calendar_widget.js:363
+#: src/app/due_dates_calendar_widget.js:366
 msgid "Can't load information from service."
 msgstr "Impossible de charger les informations du service."
 
@@ -25,7 +25,7 @@ msgstr "Annuler"
 msgid "Day"
 msgstr "Jour"
 
-#: src/app/due_dates_calendar_widget.js:87
+#: src/app/due_dates_calendar_widget.js:90
 msgid "Due Date Calendar Widget"
 msgstr "Widget de calendrier des dates d'échéance"
 
@@ -54,7 +54,7 @@ msgstr "Jan|Fév|Mar|Avr|Mai|Jun|Jul|Aoû|Sep|Oct|Nov|Déc"
 msgid "Month"
 msgstr "Mois"
 
-#: src/app/due_dates_calendar_widget.js:372
+#: src/app/due_dates_calendar_widget.js:375
 msgid "No issues corresponding your query, project and schedule field."
 msgstr "Aucun ticket ne correspond à vos champs de requête, de projet et de calendrier."
 
@@ -92,7 +92,7 @@ msgstr "Recherches enregistrées "
 
 #: src/app/edit-form.js:517
 msgid "Select an available date type field"
-msgstr ""
+msgstr "Sélectionner un champ de type de date disponible"
 
 #: src/app/edit-form.js:110
 msgid "Selected YouTrack service is not available"
@@ -138,11 +138,11 @@ msgstr "Le widget s'actualise toutes les {{minutesCount}} minutes"
 msgid "am|pm"
 msgstr "am|pm"
 
-#: src/app/due_dates_calendar_widget.js:67
+#: src/app/due_dates_calendar_widget.js:70
 msgid "issues"
 msgstr "tickets"
 
-#: src/app/due_dates_calendar_widget.js:579
+#: src/app/due_dates_calendar_widget.js:593
 msgid "more"
 msgstr "de plus"
 

@@ -11,9 +11,9 @@ msgstr ""
 "X-Crowdin-File-ID: 267290\n"
 "Language-Team: Hungarian\n"
 "Language: hu_HU\n"
-"PO-Revision-Date: 2020-11-16 21:21\n"
+"PO-Revision-Date: 2021-02-17 15:13\n"
 
-#: src/app/due_dates_calendar_widget.js:363
+#: src/app/due_dates_calendar_widget.js:366
 msgid "Can't load information from service."
 msgstr "Nem lehet betölteni az információkat a szolgáltatásból."
 
@@ -25,7 +25,7 @@ msgstr "Mégsem"
 msgid "Day"
 msgstr "Nap"
 
-#: src/app/due_dates_calendar_widget.js:87
+#: src/app/due_dates_calendar_widget.js:90
 msgid "Due Date Calendar Widget"
 msgstr ""
 
@@ -54,7 +54,7 @@ msgstr "Jan|Febr|Már|Ápr|Máj|Jún|Júl|Aug|Szept|Okt|Nov|Dec"
 msgid "Month"
 msgstr "Hónap"
 
-#: src/app/due_dates_calendar_widget.js:372
+#: src/app/due_dates_calendar_widget.js:375
 msgid "No issues corresponding your query, project and schedule field."
 msgstr ""
 
@@ -138,11 +138,11 @@ msgstr ""
 msgid "am|pm"
 msgstr "am|pm"
 
-#: src/app/due_dates_calendar_widget.js:67
+#: src/app/due_dates_calendar_widget.js:70
 msgid "issues"
 msgstr "hibajegyek"
 
-#: src/app/due_dates_calendar_widget.js:579
+#: src/app/due_dates_calendar_widget.js:593
 msgid "more"
 msgstr "több"
 

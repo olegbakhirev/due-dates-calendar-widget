@@ -11,9 +11,9 @@ msgstr ""
 "X-Crowdin-File-ID: 267290\n"
 "Language-Team: Polish\n"
 "Language: pl_PL\n"
-"PO-Revision-Date: 2020-11-16 21:21\n"
+"PO-Revision-Date: 2021-02-17 15:14\n"
 
-#: src/app/due_dates_calendar_widget.js:363
+#: src/app/due_dates_calendar_widget.js:366
 msgid "Can't load information from service."
 msgstr "Nie można załadować informacji z usługi."
 
@@ -25,7 +25,7 @@ msgstr "Anuluj"
 msgid "Day"
 msgstr "Dzień"
 
-#: src/app/due_dates_calendar_widget.js:87
+#: src/app/due_dates_calendar_widget.js:90
 msgid "Due Date Calendar Widget"
 msgstr ""
 
@@ -54,7 +54,7 @@ msgstr "Sty|Lut|Mar|Kwi|Maj|Cze|Lip|Sie|Wrz|Paź|Lis|Gru"
 msgid "Month"
 msgstr "Miesiąc"
 
-#: src/app/due_dates_calendar_widget.js:372
+#: src/app/due_dates_calendar_widget.js:375
 msgid "No issues corresponding your query, project and schedule field."
 msgstr ""
 
@@ -138,11 +138,11 @@ msgstr "Widżet jest odświeżany co {{minutesCount}} min"
 msgid "am|pm"
 msgstr "am|pm"
 
-#: src/app/due_dates_calendar_widget.js:67
+#: src/app/due_dates_calendar_widget.js:70
 msgid "issues"
 msgstr "zgłoszenia"
 
-#: src/app/due_dates_calendar_widget.js:579
+#: src/app/due_dates_calendar_widget.js:593
 msgid "more"
 msgstr "więcej"
 
