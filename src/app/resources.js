@@ -68,3 +68,11 @@ export async function loadFieldsWithType(fetchYouTrack, fieldType, context) {
 export async function loadProfile(fetchYouTrack) {
   return await fetchYouTrack('api/admin/users/me?$top=-1&fields=profiles(appearance(firstDayOfWeek),general(locale(locale)))');
 }
+
+export async function loadConfigL10n(fetchYouTrack) {
+  return fetchYouTrack('api/config', {
+    query: {
+      fields: 'l10n(predefinedQueries)'
+    }
+  });
+}

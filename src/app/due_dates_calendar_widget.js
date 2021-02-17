@@ -12,7 +12,10 @@ import classNames from 'classnames';
 
 import styles from './app.css';
 import EditForm from './edit-form';
-import {loadIssues, loadTotalIssuesCount, loadProfile} from './resources';
+import {loadIssues,
+  loadTotalIssuesCount,
+  loadProfile,
+  loadConfigL10n} from './resources';
 import ServiceResource from './components/service-resource';
 import customMoment from './custom-localizer';
 import EventComponent from './issue_event';
@@ -510,7 +513,7 @@ class DueDatesCalendarWidget extends React.Component {
   };
 
   // eslint-disable-next-line no-unused-vars
-  handleSelect = ({start, end}) => {
+  handleSelect = async ({start, end}) => {
     const {
       context,
       isDateAndTime,
@@ -520,8 +523,19 @@ class DueDatesCalendarWidget extends React.Component {
 
     const projectName = context.shortName;
     if (projectName) {
-      const slotTime = isDateAndTime ? moment(start).format('YYYY-MM-DDTHH:mm:ss') : moment(start).format('YYYY-MM-DD');
-      window.open(`${youTrack.homeUrl}/newIssue?project=${projectName}&c=${scheduleField} ${slotTime}`);
+      let format = 'YYYY-MM-DD';
+      if (isDateAndTime) {
+        const l10nConfig = await loadConfigL10n(this.fetchYouTrack);
+        const predefinedQueries = l10nConfig.l10n.predefinedQueries;
+        const sep =
+          predefinedQueries['DateTime Separator'] ? predefinedQueries['DateTime Separator'] : 'T';
+        format = `YYYY-MM-DD[${sep}]HH:mm:ss`;
+      }
+
+      const slotTime = moment(start).format(format);
+
+      window.open(
+        `${youTrack.homeUrl}/newIssue?project=${encodeURIComponent(projectName)}&c=${encodeURIComponent(scheduleField)} ${slotTime}`);
     }
   };
 
