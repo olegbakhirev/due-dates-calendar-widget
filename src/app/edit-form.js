@@ -30,6 +30,7 @@ class EditForm extends React.Component {
     context: PropTypes.object,
     title: PropTypes.string,
     scheduleField: PropTypes.string,
+    endDateField: PropTypes.string,
     colorField: PropTypes.string,
     refreshPeriod: PropTypes.number,
     onSubmit: PropTypes.func,
@@ -62,6 +63,7 @@ class EditForm extends React.Component {
       context: props.context,
       title: props.title || '',
       scheduleField: props.scheduleField,
+      endDateField: props.endDateField,
       colorField: props.colorField,
       refreshPeriod: props.refreshPeriod || 0,
       selectedYouTrack,
@@ -145,12 +147,20 @@ class EditForm extends React.Component {
     this.setState({scheduleField: evt.label});
   };
 
+  changeEndDateField = evt => {
+    this.setState({endDateField: evt.label});
+  };
+
   changeColorField = evt => {
     this.setState({colorField: evt.label});
   };
 
   clearScheduleField = () => {
     this.setState({scheduleField: ''});
+  };
+
+  clearEndDateField = () => {
+    this.setState({endDateField: ''});
   };
 
   changeYouTrack = selected => {
@@ -168,6 +178,7 @@ class EditForm extends React.Component {
       refreshPeriod,
       selectedYouTrack,
       scheduleField,
+      endDateField,
       colorField
     } = this.state;
     this.setFormLoaderEnabled(true);
@@ -194,6 +205,7 @@ class EditForm extends React.Component {
       refreshPeriod,
       selectedYouTrack,
       scheduleField,
+      endDateField,
       colorField,
       isDateAndTime
     });
@@ -257,8 +269,12 @@ class EditForm extends React.Component {
     if (!availableScheduleFields.map(it => it.label).includes(scheduleField)) {
       scheduleField = undefined;
     }
+    let endDateField = this.state.endDateField;
+    if (!availableScheduleFields.map(it => it.label).includes(endDateField)) {
+      endDateField = undefined;
+    }
     this.setState(
-      {availableScheduleFields, dateFields, dateTimeFields, scheduleField});
+      {availableScheduleFields, dateFields, dateTimeFields, scheduleField, endDateField});
   };
 
   getFieldDescriptionPresentation = field => {
@@ -515,11 +531,26 @@ class EditForm extends React.Component {
           <Select
             className="ring-form__group"
             label={i18n('Select an available date type field')}
-            selectedLabel={i18n('Field used to schedule due dates')}
+            selectedLabel={i18n('Field used to schedule the start date')}
             size={InputSize.FULL}
             data={this.state.availableScheduleFields}
             selected={{label: this.state.scheduleField}}
             onSelect={this.changeScheduleField}
+            filter={true}
+            maxHeight={300}
+            renderOptimization={false}
+          />
+        }
+        {
+          !errorMessage &&
+          <Select
+            className="ring-form__group"
+            label={i18n('Select an available date type field')}
+            selectedLabel={i18n('Field used to schedule the end date. May be the same as start date')}
+            size={InputSize.FULL}
+            data={this.state.availableScheduleFields}
+            selected={{label: this.state.endDateField}}
+            onSelect={this.changeEndDateField}
             filter={true}
             maxHeight={300}
             renderOptimization={false}

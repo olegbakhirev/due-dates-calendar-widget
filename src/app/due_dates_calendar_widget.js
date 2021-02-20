@@ -90,10 +90,10 @@ class DueDatesCalendarWidget extends React.Component {
     i18n('Due Date Calendar Widget');
 
   static getWidgetTitle =
-      (search, context, title, issuesCount, youTrack, scheduleField) => {
+      (search, context, title, issuesCount, youTrack, scheduleField, endDateField) => {
         let displayedTitle =
             title ||
-            `${DueDatesCalendarWidget.getFullSearchPresentation(context, search)} has: {${scheduleField}}`;
+            `${DueDatesCalendarWidget.getFullSearchPresentation(context, search)} (has: {${scheduleField}} or has: {${endDateField}})`;
         if (issuesCount) {
           const superScriptIssuesCount =
                 `${issuesCount}`.split('').map(DueDatesCalendarWidget.digitToUnicodeSuperScriptDigit).join('');
@@ -102,7 +102,7 @@ class DueDatesCalendarWidget extends React.Component {
         return {
           text: displayedTitle,
           href: youTrack && DueDatesCalendarWidget.getIssueListLink(
-            youTrack.homeUrl, context, `${search} has: {${scheduleField}}`
+            youTrack.homeUrl, context, `${search} (has: {${scheduleField}} or has: {${endDateField}})`
           )
         };
       };
@@ -191,6 +191,8 @@ class DueDatesCalendarWidget extends React.Component {
     const scheduleField =
         this.props.configWrapper.getFieldValue('scheduleField') ||
         DEFAULT_SCHEDULE_FIELD;
+    const endDateField = this.props.configWrapper.getFieldValue('scheduleField') ||
+        scheduleField;
     const colorField =
         this.props.configWrapper.getFieldValue('colorField') ||
         DEFAULT_COLOR_FIELD;
@@ -206,6 +208,7 @@ class DueDatesCalendarWidget extends React.Component {
       date: date ? new Date(date) : new Date(),
       view,
       scheduleField,
+      endDateField,
       isDateAndTime,
       colorField,
       refreshPeriod:
@@ -272,14 +275,14 @@ class DueDatesCalendarWidget extends React.Component {
   submitConfiguration = async formParameters => {
     const {
       search, title, context, refreshPeriod, selectedYouTrack,
-      scheduleField, colorField, isDateAndTime
+      scheduleField, endDateField, colorField, isDateAndTime
     } = formParameters;
 
     this.setYouTrack(
       selectedYouTrack, async () => {
         this.setState(
           {search: search || '',
-            context, title, scheduleField,
+            context, title, scheduleField, endDateField,
             refreshPeriod, colorField, isDateAndTime},
           async () => {
             await this.loadIssues();
@@ -289,6 +292,7 @@ class DueDatesCalendarWidget extends React.Component {
               title,
               refreshPeriod,
               scheduleField,
+              endDateField,
               colorField,
               isDateAndTime,
               youTrack: {
@@ -327,10 +331,11 @@ class DueDatesCalendarWidget extends React.Component {
         refreshPeriod,
         search,
         context,
-        scheduleField
+        scheduleField,
+        endDateField
       } = this.state;
       if (!isConfiguring && refreshPeriod === newRefreshPeriod) {
-        await this.loadIssues(search, context, scheduleField);
+        await this.loadIssues(search, context, scheduleField, endDateField);
         this.initRefreshPeriod(refreshPeriod);
       }
     }, newRefreshPeriod * millisInSec);
@@ -350,6 +355,7 @@ class DueDatesCalendarWidget extends React.Component {
         title={this.state.title}
         refreshPeriod={this.state.refreshPeriod}
         scheduleField={this.state.scheduleField || DEFAULT_SCHEDULE_FIELD}
+        endDateField={this.state.endDateField || this.state.scheduleField || DEFAULT_SCHEDULE_FIELD}
         colorField={this.state.colorField || DEFAULT_COLOR_FIELD}
         onSubmit={this.submitConfiguration}
         onCancel={this.cancelConfiguration}
@@ -377,12 +383,13 @@ class DueDatesCalendarWidget extends React.Component {
     );
   }
 
-  async loadIssues(search, context, scheduleField) {
+  async loadIssues(search, context, scheduleField, endDateField) {
     const currentSearch = search || this.state.search;
     const currentContext = context || this.state.context;
     const currentScheduleField = scheduleField || this.state.scheduleField;
+    const currentEndDateField = endDateField || this.state.endDateField;
     try {
-      await this.loadIssuesCount(`${currentSearch} has: {${currentScheduleField}}`, currentContext);
+      await this.loadIssuesCount(`${currentSearch} (has: {${currentScheduleField}} or has: {${currentEndDateField}})`, currentContext);
     } catch (error) {
       this.setState({isEmptyQueryResultError: true, issuesCount: 0});
     }
@@ -390,7 +397,8 @@ class DueDatesCalendarWidget extends React.Component {
     await this.loadIssuesUnsafe(
       currentSearch,
       currentContext,
-      currentScheduleField);
+      currentScheduleField, 
+      currentEndDateField);
 
     await this.setLocaleOptions();
 
@@ -401,12 +409,15 @@ class DueDatesCalendarWidget extends React.Component {
   }
 
 
-  async loadIssuesUnsafe(search, context, scheduleField) {
+  async loadIssuesUnsafe(search, context, scheduleField, endDateField) {
 
     const currentDate = moment(this.state.date);
     const startDate = moment(currentDate).startOf('month').startOf('week').format('YYYY-MM-DD');
     const endDate = moment(currentDate).endOf('month').endOf('week').format('YYYY-MM-DD');
-    const issuesQuery = `${search} ${scheduleField}: ${startDate} .. ${endDate}`;
+    const issuesQuery = `${search} `
+      + `(${scheduleField}: * .. ${endDate} or has: -{${scheduleField}} and ${endDateField}: * .. ${endDate}) and `
+      + `(${endDateField}: ${startDate} .. * or has: -{${endDateField}} and ${scheduleField}: ${startDate} .. *)`;
+    console.log("Query = " + issuesQuery);
     const isDateAndTime = this.state.isDateAndTime;
 
     const issues = await loadIssues(
@@ -417,6 +428,7 @@ class DueDatesCalendarWidget extends React.Component {
     if (Array.isArray(issues)) {
       issues.forEach(issue => {
         let dueDate = '';
+        let endDate = '';
         let issueAssignee = '';
         let foregroundColor = '#9c9c9c';
         let backgroundColor = '#e8e8e8';
@@ -433,6 +445,10 @@ class DueDatesCalendarWidget extends React.Component {
               // eslint-disable-next-line max-len
               if (field.projectCustomField.field.name === scheduleField || field.projectCustomField.field.localizedName === scheduleField) {
                 dueDate = field.value;
+              }
+              if (field.projectCustomField.field.name === endDateField || field.projectCustomField.field.localizedName === endDateField) {
+                // "if", not "else if" in case scheduleField == endDateField
+                endDate = field.value;
               }
             }
             // eslint-disable-next-line max-len
@@ -460,8 +476,14 @@ class DueDatesCalendarWidget extends React.Component {
             }
           }
         });
-
-        if (dueDate !== '') {
+        
+        if (dueDate !== '' && endDate == '') {
+          endDate = dueDate;
+        } else if (dueDate == '' && endDate !== '') {
+          dueDate = endDate;
+        }
+        
+        if (dueDate !== '' && endDate !== '') {
           events.push({
             issueId: issue.idReadable,
             description: `${issue.idReadable} ${issue.summary}`,
@@ -469,7 +491,7 @@ class DueDatesCalendarWidget extends React.Component {
             priority: issuePriority,
             isResolved,
             start: (new Date(dueDate)),
-            end: (new Date(dueDate)),
+            end: (new Date(endDate)),
             allDay: !this.state.isDateAndTime,
             foregroundColor,
             backgroundColor,
@@ -518,7 +540,8 @@ class DueDatesCalendarWidget extends React.Component {
       context,
       isDateAndTime,
       youTrack,
-      scheduleField
+      scheduleField,
+      endDateField
     } = this.state;
 
     const projectName = context.shortName;
@@ -606,13 +629,14 @@ class DueDatesCalendarWidget extends React.Component {
       title,
       issuesCount,
       youTrack,
-      scheduleField
+      scheduleField,
+      endDateField
     } = this.state;
 
     const widgetTitle = isConfiguring
       ? DueDatesCalendarWidget.getDefaultWidgetTitle()
       : DueDatesCalendarWidget.getWidgetTitle(
-        search, context, title, issuesCount, youTrack, scheduleField
+        search, context, title, issuesCount, youTrack, scheduleField, endDateField
       );
 
     return (
