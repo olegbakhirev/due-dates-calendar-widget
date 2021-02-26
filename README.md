@@ -9,7 +9,7 @@ Works in YouTrack 2018.1+, Hub 2018.1+, Upsource 2018.1+.
 1. NodeJS and NPM are required
 2. Run `npm install` in the project folder to install dependencies
 3. Run `npm start` in the project folder to run development http server
-4. Open widgets playground (/dashboard/widgets-playground) and enter your development server address.
+4. Open widgets playground (/dashboard/widgets-playground) and enter your development server address. As mentioned in the YouTrack [manual](https://www.jetbrains.com/help/youtrack/standalone/test-custom-widgets.html), [ngrok](https://ngrok.com/) can simplify making the local test server available publicly over https using e.g. `ngrok http --host-header=rewrite <port>`
 5. To build dist user `npm run-script build`
 
 # Packing
@@ -19,4 +19,3 @@ Works in YouTrack 2018.1+, Hub 2018.1+, Upsource 2018.1+.
 # License
 
 The code of this widget is licensed with Apache 2.0.
-
