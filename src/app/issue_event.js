@@ -64,7 +64,7 @@ class EventComponent extends React.Component {
     const customFields = [];
     const eventCustomFields = this.props.event.customFields;
 
-    customFields.push(<div className={'popup-assignee'}>
+    customFields.push(<div key={'popup-assignee'} className={'popup-assignee'}>
       {this.renderAssignee()}
     </div>);
 
@@ -75,7 +75,7 @@ class EventComponent extends React.Component {
 
       };
       customFields.push(
-        <div key={i} className={'custom-field-block'}>
+        <div key={customField.name} className={'custom-field-block'}>
           <div className={'custom-field-value'}>
             <div className={'custom-field-icon'} style={colorsStyle}/>
             <div title={customField.name}>{customField.value}</div>
@@ -99,7 +99,7 @@ class EventComponent extends React.Component {
     };
 
     return (
-      <div className={'event-container'} style={colorsStyle}>
+      <div className={'event-container'} style={colorsStyle} title={''}>
         <a
           className={classes}
           style={colorsStyle}

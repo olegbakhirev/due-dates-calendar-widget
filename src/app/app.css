@@ -29,49 +29,6 @@
   padding: 16px;
 }
 
-:global(.date-only-calendar) :global(.rbc-time-content) {
-  display: none !important;
-}
-
-:global(.date-only-calendar) :global(.rbc-time-header-gutter.rbc-label) {
-  display: none !important;
-}
-
-:global(.date-only-calendar) :global(.rbc-time-header) {
-  height: 100%;
-}
-
-:global(.rbc-time-content) {
-  border-color: var(--ring-line-color) !important;
-}
-
-:global(.rbc-time-header.rbc-overflowing) {
-  border-color: var(--ring-line-color) !important;
-}
-
-:global(.rbc-time-slot) {
-  color: var(--ring-text-color) !important;
-  border-color: var(--ring-line-color) !important;
-
-  font-size: var(--ring-font-size) !important;
-}
-
-:global(.date-only-calendar) :global(.rbc-time-header-content) {
-  border: none !important;
-}
-
-:global(.rbc-time-header-content) {
-  border-left-color: var(--ring-line-color) !important;
-}
-
-:global(.rbc-events-container) {
-  border-left-color: var(--ring-line-color) !important;
-}
-
-:global(.rbc-timeslot-group) {
-  border-color: var(--ring-line-color) !important;
-}
-
 :global(.custom-toolbar-navigate) {
   display: block;
 
@@ -79,11 +36,6 @@
   height: 40px;
 
   text-align: center;
-}
-
-:global(.rbc-btn-group) {
-  display: inline-block;
-  float: right;
 }
 
 :global(.selection-title) {
@@ -109,62 +61,6 @@
   float: left;
 }
 
-:global(.rbc-today) {
-  background-color: var(--ring-selected-background-color);
-}
-
-:global(.rbc-show-more) {
-  color: var(--ring-main-color);
-
-  border-radius: var(--ring-border-radius);
-  background: transparent;
-
-  font-size: 12px !important;
-  font-weight: 400;
-  text-decoration-line: none;
-}
-
-:global(.rbc-show-more:hover) {
-  color: var(--ring-link-hover-color);
-}
-
-:global(.rbc-event-content:hover) {
-  text-decoration: none;
-
-  line-height: 1;
-}
-
-:global(.event-link:hover) {
-  text-decoration: none;
-}
-
-:global(.rbc-event-content) {
-  height: 16px !important;
-  margin-right: 0;
-  margin-left: 0;
-}
-
-:global(.rbc-row-segment) {
-  margin-right: 0;
-  margin-left: 0;
-}
-
-:global(.rbc-off-range-bg) {
-  background-color: var(--ring-sidebar-background-color);
-}
-
-:global(.rbc-event) {
-  height: 16px;
-  margin-top: 4px;
-  padding: 0;
-
-  border: none !important;
-  background-color: transparent;
-
-  font-size: 11px !important;
-  line-height: normal !important;
-}
-
 :global(.event-link) {
   overflow: hidden;
 
@@ -181,6 +77,8 @@
 
   font-size: 11px;
   line-height: 14px;
+
+  -webkit-user-drag: none;
 }
 
 :global(.custom-field-icon) {
@@ -191,26 +89,6 @@
   -webkit-border-radius: 5px;
   -moz-border-radius: 5px;
   border-radius: 5px;
-}
-
-:global(.rbc-month-view) {
-  height: auto !important;
-
-  border-color: var(--ring-line-color);
-  border-radius: var(--ring-border-radius);
-}
-
-:global(.rbc-time-view) {
-  border-color: var(--ring-line-color);
-  border-radius: var(--ring-border-radius);
-}
-
-:global(.rbc-month-row+.rbc-month-row) {
-  border-top-color: var(--ring-line-color);
-}
-
-:global(.rbc-day-bg+.rbc-day-bg) {
-  border-left-color: var(--ring-line-color);
 }
 
 :global(.event-container) {
@@ -325,58 +203,10 @@
   text-decoration: line-through;
 }
 
-:global(.rbc-event) {
-  height: 16px !important;
-  min-height: 16px !important;
-
-  border-radius: 3px;
-
-  background-color: transparent;
-}
-
-:global(.rbc-event.rbc-selected) {
-  background-color: transparent;
-}
-
-:global(.rbc-event-label) {
-  display: none;
-
-  width: 0 !important;
-}
-
-:global(.rbc-row-segment) {
-  height: 24px;
-  padding: 0 8px;
-}
-
-:global(.rbc-date-cell) {
-  padding-right: 8px;
-
-  color: var(--ring-text-color);
-}
-
-:global(.rbc-header) {
-  color: var(--ring-text-color);
-
-  border-bottom-color: var(--ring-line-color);
-}
-
-:global(.rbc-header+.rbc-header) {
-  border-left-color: var(--ring-line-color);
-}
-
-:global(.rbc-date-cell.rbc-off-range) {
-  color: var(--ring-hint-color);
-}
-
 :global(button.nav-button) {
   margin-right: 4px;
   padding-right: 8px;
   padding-left: 8px;
-}
-
-:global(.rbc-calendar) {
-  min-width: 400px;
 }
 
 :global(.popup-assignee) {

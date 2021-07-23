@@ -1,26 +1,33 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import LoaderInline from '@jetbrains/ring-ui/components/loader-inline/loader-inline';
+import PermissionCache from '@jetbrains/ring-ui/components/permissions/permissions__cache';
 import {i18n} from 'hub-dashboard-addons/dist/localization';
 import EmptyWidget, {EmptyWidgetFaces} from '@jetbrains/hub-widget-ui/dist/empty-widget';
 import ConfigurableWidget from '@jetbrains/hub-widget-ui/dist/configurable-widget';
 import {Calendar} from 'react-big-calendar';
+import withDragAndDrop from 'react-big-calendar/lib/addons/dragAndDrop';
 import moment from 'moment';
+import './style/calendar.scss';
 
-import 'react-big-calendar/lib/css/react-big-calendar.css';
 import classNames from 'classnames';
 
 import styles from './app.css';
 import EditForm from './edit-form';
-import {loadIssues,
+import {
+  loadIssues,
   loadTotalIssuesCount,
   loadProfile,
-  loadConfigL10n} from './resources';
+  loadConfigL10n,
+  updateIssueScheduleField,
+  loadPermissionCache
+} from './resources';
 import ServiceResource from './components/service-resource';
 import customMoment from './custom-localizer';
 import EventComponent from './issue_event';
 import CalendarToolbar from './calendar_toolbar';
 
+const DragAndDropCalendar = withDragAndDrop(Calendar);
 const DEFAULT_SCHEDULE_FIELD = 'Due Date';
 const DEFAULT_COLOR_FIELD = 'Priority';
 const DATE_FIELD_TYPE = 'date';
@@ -387,11 +394,14 @@ class DueDatesCalendarWidget extends React.Component {
       this.setState({isEmptyQueryResultError: true, issuesCount: 0});
     }
 
-    await this.loadIssuesUnsafe(
-      currentSearch,
-      currentContext,
-      currentScheduleField);
-
+    try {
+      await this.loadIssuesUnsafe(
+        currentSearch,
+        currentContext,
+        currentScheduleField);
+    } catch (error) {
+      this.setState({isLoadDataError: true});
+    }
     await this.setLocaleOptions();
 
   }
@@ -413,10 +423,15 @@ class DueDatesCalendarWidget extends React.Component {
       this.fetchYouTrack, issuesQuery, context
     );
 
+    const permCache = new PermissionCache(
+      await loadPermissionCache(this.fetchYouTrack));
+
     const events = [];
     if (Array.isArray(issues)) {
+
       issues.forEach(issue => {
-        let dueDate = '';
+        let issueScheduleField = '';
+        let issueScheduleFieldDbId = '';
         let issueAssignee = '';
         let foregroundColor = '#9c9c9c';
         let backgroundColor = '#e8e8e8';
@@ -432,7 +447,8 @@ class DueDatesCalendarWidget extends React.Component {
             if (fieldType === DATE_FIELD_TYPE && !isDateAndTime || fieldType === DATE_AND_TIME_FIELD_TYPE && isDateAndTime) {
               // eslint-disable-next-line max-len
               if (field.projectCustomField.field.name === scheduleField || field.projectCustomField.field.localizedName === scheduleField) {
-                dueDate = field.value;
+                issueScheduleField = field.value;
+                issueScheduleFieldDbId = field.id;
               }
             }
             // eslint-disable-next-line max-len
@@ -461,20 +477,25 @@ class DueDatesCalendarWidget extends React.Component {
           }
         });
 
-        if (dueDate !== '') {
+
+        if (issueScheduleField !== '') {
           events.push({
+            dbIssueId: issue.id,
             issueId: issue.idReadable,
             description: `${issue.idReadable} ${issue.summary}`,
             url: `${this.state.youTrack.homeUrl}/issue/${issue.idReadable}`,
             priority: issuePriority,
             isResolved,
-            start: (new Date(dueDate)),
-            end: (new Date(dueDate)),
+            issueScheduleFieldDbId,
+            start: (new Date(issueScheduleField)),
+            end: (new Date(issueScheduleField)),
             allDay: !this.state.isDateAndTime,
             foregroundColor,
             backgroundColor,
             customFields,
             issueAssignee,
+            isUpdatable: permCache.has('JetBrains.YouTrack.UPDATE_ISSUE',
+              issue.project.ringId),
             ytHomeUrl: this.state.youTrack.homeUrl
           });
         }
@@ -539,6 +560,36 @@ class DueDatesCalendarWidget extends React.Component {
     }
   };
 
+
+  moveEvent = async ({event, start, end}) => {
+    const {events} = this.state;
+
+    const prevEvents = events;
+
+    const idx = events.indexOf(event);
+    const updatedEvent = {...event, start, end};
+    const updatedEvents = [...events];
+    updatedEvents.splice(idx, 1, updatedEvent);
+    this.setState({
+      events: updatedEvents
+    });
+
+    try {
+      await updateIssueScheduleField(
+        this.fetchYouTrack,
+        event.dbIssueId,
+        event.issueScheduleFieldDbId,
+        moment(start).format('x'));
+
+    } catch (error) {
+      this.setState({
+        events: prevEvents
+      });
+    }
+  }
+
+  eventUpdatable = event => event.isUpdatable
+
   // eslint-disable-next-line complexity
   renderContent = () => {
     const {
@@ -571,12 +622,14 @@ class DueDatesCalendarWidget extends React.Component {
     });
     return (
       <div className={styles.widget}>
-        <Calendar
+        <DragAndDropCalendar
           selectable={true}
           localizer={this.state.localizer}
           defaultDate={this.state.date}
           defaultView={this.state.view}
           events={this.state.events}
+          draggableAccessor={this.eventUpdatable}
+          onEventDrop={this.moveEvent}
           className={calendarClasses}
           views={['month', 'week', 'day']}
           culture={this.state.profileLocale}
@@ -629,3 +682,4 @@ class DueDatesCalendarWidget extends React.Component {
 }
 
 export default DueDatesCalendarWidget;
+//export default DndContext(HTML5Backend)(DueDatesCalendarWidget);

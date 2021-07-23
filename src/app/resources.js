@@ -1,7 +1,7 @@
 const PROJECT_CUSTOM_FIELD_FIELDS = 'id,bundle(id),field(id,name,localizedName,fieldType(id,valueType))';
 const ISSUE_FIELD_VALUE_FIELDS = 'id,name,localizedName,login,avatarUrl,ringId,presentation,minutes,color(id,foreground,background),isResolved';
 const ISSUE_FIELD_FIELDS = `id,value(${ISSUE_FIELD_VALUE_FIELDS}),projectCustomField(${PROJECT_CUSTOM_FIELD_FIELDS})`;
-const ISSUE_FIELDS = `id,idReadable,summary,resolved,fields(${ISSUE_FIELD_FIELDS})`;
+const ISSUE_FIELDS = `id,idReadable,summary,resolved,project(ringId),fields(${ISSUE_FIELD_FIELDS})`;
 
 const QUERY_ASSIST_FIELDS = 'query,caret,styleRanges(start,length,style),suggestions(options,prefix,option,suffix,description,matchingStart,matchingEnd,caret,completionStart,completionEnd,group,icon)';
 const WATCH_FOLDERS_FIELDS = 'id,$type,name,query,shortName';
@@ -69,6 +69,10 @@ export async function loadProfile(fetchYouTrack) {
   return await fetchYouTrack('api/admin/users/me?$top=-1&fields=profiles(appearance(firstDayOfWeek),general(locale(locale)))');
 }
 
+export async function loadPermissionCache(fetchYouTrack) {
+  return await fetchYouTrack('hub/api/rest/permissions/cache?fields=permission/key,global,projects(id)');
+}
+
 export async function loadConfigL10n(fetchYouTrack) {
   return fetchYouTrack('api/config', {
     query: {
@@ -76,3 +80,16 @@ export async function loadConfigL10n(fetchYouTrack) {
     }
   });
 }
+
+// eslint-disable-next-line max-len
+export async function updateIssueScheduleField(fetchYouTrack, dbIssueId, scheduleFieldDbId, scheduleFieldValue) {
+  return await fetchYouTrack(`api/issues/${dbIssueId}/fields/${scheduleFieldDbId}?$top=-1&fields=$type,id,value($type,archived,avatarUrl,buildIntegration,buildLink,color(id),fullName,id,isResolved,localizedName,login,markdownText,minutes,name,presentation,ringId,text)`, {
+    method: 'POST',
+    body: {
+      $type: 'DateIssueCustomField',
+      id: scheduleFieldDbId,
+      value: Number(scheduleFieldValue)
+    }
+  });
+}
+

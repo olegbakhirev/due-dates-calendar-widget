@@ -36,7 +36,9 @@ const webpackConfig = () => ({
 
       {
         test: /\.scss$/,
-        include: componentsPath,
+        include: [
+          componentsPath,
+          join(__dirname, 'node_modules', 'react-big-calendar')],
         use: [
           'style-loader',
           'css-loader',
