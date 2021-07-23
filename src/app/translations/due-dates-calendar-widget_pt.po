@@ -2,18 +2,18 @@ msgid ""
 msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Project-Id-Version: youtrack-custom-localization\n"
+"Project-Id-Version: youtrackjetbrains\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Crowdin-Project: youtrack-custom-localization\n"
-"X-Crowdin-Project-ID: 309400\n"
+"X-Crowdin-Project: youtrackjetbrains\n"
+"X-Crowdin-Project-ID: 295498\n"
 "X-Crowdin-Language: pt-BR\n"
 "X-Crowdin-File: /widgets/due-dates-calendar-widget/default.pot\n"
-"X-Crowdin-File-ID: 267290\n"
+"X-Crowdin-File-ID: 220756\n"
 "Language-Team: Portuguese, Brazilian\n"
 "Language: pt_BR\n"
-"PO-Revision-Date: 2021-02-17 15:14\n"
+"PO-Revision-Date: 2021-07-23 17:51\n"
 
-#: src/app/due_dates_calendar_widget.js:366
+#: src/app/due_dates_calendar_widget.js:373
 msgid "Can't load information from service."
 msgstr "Não é possível carregar informações do serviço."
 
@@ -25,9 +25,9 @@ msgstr "Cancelar"
 msgid "Day"
 msgstr "Dia"
 
-#: src/app/due_dates_calendar_widget.js:90
+#: src/app/due_dates_calendar_widget.js:97
 msgid "Due Date Calendar Widget"
-msgstr ""
+msgstr "Widget de calendário de datas de vencimento"
 
 #: src/app/edit-form.js:411
 #: src/app/edit-form.js:49
@@ -36,11 +36,11 @@ msgstr "Tudo"
 
 #: src/app/edit-form.js:532
 msgid "Field used to apply color scheme"
-msgstr ""
+msgstr "Campo usado para aplicar esquema de cores"
 
 #: src/app/edit-form.js:518
 msgid "Field used to schedule due dates"
-msgstr ""
+msgstr "Campo usado para agendar datas de vencimento"
 
 #: node_modules/hub-dashboard-addons/components/localization/src/localization.js:90
 msgid "January|February|March|April|May|June|July|August|September|October|November|December"
@@ -54,9 +54,9 @@ msgstr "Jan|Fev|Mar|Abr|Maio|Jun|Jul|Ago|Set|Out|Nov|Dez"
 msgid "Month"
 msgstr "Mês"
 
-#: src/app/due_dates_calendar_widget.js:375
+#: src/app/due_dates_calendar_widget.js:382
 msgid "No issues corresponding your query, project and schedule field."
-msgstr ""
+msgstr "Não há issues que correspondam à sua consulta, projeto e campo de programação."
 
 #: src/app/edit-form.js:341
 msgid "No projects"
@@ -72,7 +72,7 @@ msgstr "Nenhuma tag"
 
 #: node_modules/@jetbrains/hub-widget-ui/src/http-error-handler/http-error-handler.js:4
 msgid "Oops! Something went wrong..."
-msgstr ""
+msgstr "Oops! Algo deu errado..."
 
 #: src/app/edit-form.js:493
 msgid "Optional title"
@@ -92,7 +92,7 @@ msgstr "Pesquisas salvas"
 
 #: src/app/edit-form.js:517
 msgid "Select an available date type field"
-msgstr ""
+msgstr "Selecione um campo de data disponível"
 
 #: src/app/edit-form.js:110
 msgid "Selected YouTrack service is not available"
@@ -132,21 +132,21 @@ msgstr "Widget atualiza a cada minuto"
 
 #: node_modules/@jetbrains/hub-widget-ui/src/refresh-period/refresh-period.js:70
 msgid "Widget refreshes every {{minutesCount}} minutes"
-msgstr ""
+msgstr "Widget atualiza a cada {{minutesCount}} minutos"
 
 #: node_modules/hub-dashboard-addons/components/localization/src/localization.js:91
 msgid "am|pm"
 msgstr "a.m.|p.m."
 
-#: src/app/due_dates_calendar_widget.js:70
+#: src/app/due_dates_calendar_widget.js:77
 msgid "issues"
 msgstr "issues"
 
-#: src/app/due_dates_calendar_widget.js:593
+#: src/app/due_dates_calendar_widget.js:646
 msgid "more"
 msgstr "mais"
 
 #: node_modules/@jetbrains/hub-widget-ui/src/refresh-period/refresh-period.js:64
 msgid "{{minutesCount}} min"
-msgstr ""
+msgstr "{{minutesCount}} minutos"
 

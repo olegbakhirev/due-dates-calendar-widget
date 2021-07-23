@@ -2,18 +2,18 @@ msgid ""
 msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Project-Id-Version: youtrack-custom-localization\n"
+"Project-Id-Version: youtrackjetbrains\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Crowdin-Project: youtrack-custom-localization\n"
-"X-Crowdin-Project-ID: 309400\n"
+"X-Crowdin-Project: youtrackjetbrains\n"
+"X-Crowdin-Project-ID: 295498\n"
 "X-Crowdin-Language: zh-CN\n"
 "X-Crowdin-File: /widgets/due-dates-calendar-widget/default.pot\n"
-"X-Crowdin-File-ID: 267290\n"
+"X-Crowdin-File-ID: 220756\n"
 "Language-Team: Chinese Simplified\n"
 "Language: zh_CN\n"
-"PO-Revision-Date: 2021-02-17 15:13\n"
+"PO-Revision-Date: 2021-07-23 17:49\n"
 
-#: src/app/due_dates_calendar_widget.js:366
+#: src/app/due_dates_calendar_widget.js:373
 msgid "Can't load information from service."
 msgstr "无法从服务中加载信息。"
 
@@ -23,11 +23,11 @@ msgstr "取消"
 
 #: src/app/calendar_toolbar.js:44
 msgid "Day"
-msgstr ""
+msgstr "天"
 
-#: src/app/due_dates_calendar_widget.js:90
+#: src/app/due_dates_calendar_widget.js:97
 msgid "Due Date Calendar Widget"
-msgstr ""
+msgstr "截止日期日历小部件"
 
 #: src/app/edit-form.js:411
 #: src/app/edit-form.js:49
@@ -36,11 +36,11 @@ msgstr "所有"
 
 #: src/app/edit-form.js:532
 msgid "Field used to apply color scheme"
-msgstr ""
+msgstr "配色方案字段"
 
 #: src/app/edit-form.js:518
 msgid "Field used to schedule due dates"
-msgstr ""
+msgstr "安排截止日期字段"
 
 #: node_modules/hub-dashboard-addons/components/localization/src/localization.js:90
 msgid "January|February|March|April|May|June|July|August|September|October|November|December"
@@ -52,11 +52,11 @@ msgstr "1 月|2 月|3 月|4 月|5 月|6 月|7 月|8 月|9 月|10 月|11 月|12 �
 
 #: src/app/calendar_toolbar.js:49
 msgid "Month"
-msgstr ""
+msgstr "月"
 
-#: src/app/due_dates_calendar_widget.js:375
+#: src/app/due_dates_calendar_widget.js:382
 msgid "No issues corresponding your query, project and schedule field."
-msgstr ""
+msgstr "没有问题对应您的查询、项目和时间表字段。"
 
 #: src/app/edit-form.js:341
 msgid "No projects"
@@ -92,11 +92,11 @@ msgstr "保存的搜索"
 
 #: src/app/edit-form.js:517
 msgid "Select an available date type field"
-msgstr ""
+msgstr "选择可用的日期类型字段"
 
 #: src/app/edit-form.js:110
 msgid "Selected YouTrack service is not available"
-msgstr "选择的 YoutTrack 服务不可用"
+msgstr "选择的 YouTrack 服务不可用"
 
 #: src/app/edit-form.js:496
 msgid "Set optional title"
@@ -116,7 +116,7 @@ msgstr "标签"
 
 #: src/app/calendar_toolbar.js:32
 msgid "Today"
-msgstr ""
+msgstr "今天"
 
 #: src/app/edit-form.js:417
 msgid "Type search query"
@@ -124,7 +124,7 @@ msgstr "输入搜索查询"
 
 #: src/app/calendar_toolbar.js:48
 msgid "Week"
-msgstr ""
+msgstr "周"
 
 #: node_modules/@jetbrains/hub-widget-ui/src/refresh-period/refresh-period.js:69
 msgid "Widget refreshes every minute"
@@ -138,11 +138,11 @@ msgstr "微件每 {{minutesCount}} 分钟刷新一次"
 msgid "am|pm"
 msgstr "上午|下午"
 
-#: src/app/due_dates_calendar_widget.js:70
+#: src/app/due_dates_calendar_widget.js:77
 msgid "issues"
 msgstr "问题"
 
-#: src/app/due_dates_calendar_widget.js:593
+#: src/app/due_dates_calendar_widget.js:646
 msgid "more"
 msgstr "更多"
 

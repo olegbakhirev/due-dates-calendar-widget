@@ -11,9 +11,9 @@ msgstr ""
 "X-Crowdin-File-ID: 267290\n"
 "Language-Team: Italian\n"
 "Language: it_IT\n"
-"PO-Revision-Date: 2021-02-17 15:14\n"
+"PO-Revision-Date: 2021-07-23 17:54\n"
 
-#: src/app/due_dates_calendar_widget.js:366
+#: src/app/due_dates_calendar_widget.js:373
 msgid "Can't load information from service."
 msgstr ""
 
@@ -25,7 +25,7 @@ msgstr ""
 msgid "Day"
 msgstr ""
 
-#: src/app/due_dates_calendar_widget.js:90
+#: src/app/due_dates_calendar_widget.js:97
 msgid "Due Date Calendar Widget"
 msgstr ""
 
@@ -54,7 +54,7 @@ msgstr ""
 msgid "Month"
 msgstr ""
 
-#: src/app/due_dates_calendar_widget.js:375
+#: src/app/due_dates_calendar_widget.js:382
 msgid "No issues corresponding your query, project and schedule field."
 msgstr ""
 
@@ -138,11 +138,11 @@ msgstr ""
 msgid "am|pm"
 msgstr ""
 
-#: src/app/due_dates_calendar_widget.js:70
+#: src/app/due_dates_calendar_widget.js:77
 msgid "issues"
 msgstr ""
 
-#: src/app/due_dates_calendar_widget.js:593
+#: src/app/due_dates_calendar_widget.js:646
 msgid "more"
 msgstr ""
 

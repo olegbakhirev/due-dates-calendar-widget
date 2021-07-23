@@ -2,18 +2,18 @@ msgid ""
 msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Project-Id-Version: youtrack-custom-localization\n"
+"Project-Id-Version: youtrackjetbrains\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Crowdin-Project: youtrack-custom-localization\n"
-"X-Crowdin-Project-ID: 309400\n"
+"X-Crowdin-Project: youtrackjetbrains\n"
+"X-Crowdin-Project-ID: 295498\n"
 "X-Crowdin-Language: ko\n"
 "X-Crowdin-File: /widgets/due-dates-calendar-widget/default.pot\n"
-"X-Crowdin-File-ID: 267290\n"
+"X-Crowdin-File-ID: 220756\n"
 "Language-Team: Korean\n"
 "Language: ko_KR\n"
-"PO-Revision-Date: 2021-02-17 15:14\n"
+"PO-Revision-Date: 2021-07-23 17:51\n"
 
-#: src/app/due_dates_calendar_widget.js:366
+#: src/app/due_dates_calendar_widget.js:373
 msgid "Can't load information from service."
 msgstr "서비스에서 정보를 불러올 수 없습니다."
 
@@ -25,7 +25,7 @@ msgstr "취소"
 msgid "Day"
 msgstr "일"
 
-#: src/app/due_dates_calendar_widget.js:90
+#: src/app/due_dates_calendar_widget.js:97
 msgid "Due Date Calendar Widget"
 msgstr "기한 캘린더 위젯"
 
@@ -54,7 +54,7 @@ msgstr "1월|2월|3월|4월|5월|6월|7월|8월|9월|10월|11월|12월"
 msgid "Month"
 msgstr "월"
 
-#: src/app/due_dates_calendar_widget.js:375
+#: src/app/due_dates_calendar_widget.js:382
 msgid "No issues corresponding your query, project and schedule field."
 msgstr "해당 쿼리, 프로젝트, 일정 필드에 맞는 이슈가 없습니다."
 
@@ -138,11 +138,11 @@ msgstr "위젯은 {{minutesCount}}분마다 새로고침됩니다"
 msgid "am|pm"
 msgstr "오전|오후"
 
-#: src/app/due_dates_calendar_widget.js:70
+#: src/app/due_dates_calendar_widget.js:77
 msgid "issues"
 msgstr "이슈"
 
-#: src/app/due_dates_calendar_widget.js:593
+#: src/app/due_dates_calendar_widget.js:646
 msgid "more"
 msgstr "더보기"
 

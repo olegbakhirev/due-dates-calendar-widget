@@ -11,9 +11,9 @@ msgstr ""
 "X-Crowdin-File-ID: 220756\n"
 "Language-Team: Russian\n"
 "Language: ru_RU\n"
-"PO-Revision-Date: 2021-02-17 15:35\n"
+"PO-Revision-Date: 2021-07-23 17:52\n"
 
-#: src/app/due_dates_calendar_widget.js:366
+#: src/app/due_dates_calendar_widget.js:373
 msgid "Can't load information from service."
 msgstr "Не удается загрузить информацию от сервиса."
 
@@ -25,7 +25,7 @@ msgstr "Отмена"
 msgid "Day"
 msgstr "День"
 
-#: src/app/due_dates_calendar_widget.js:90
+#: src/app/due_dates_calendar_widget.js:97
 msgid "Due Date Calendar Widget"
 msgstr "Виджет «Календарь со сроками исполнения»"
 
@@ -54,7 +54,7 @@ msgstr "янв|фев|мар|апр|мая|июн|июл|авг|сен|окт|н
 msgid "Month"
 msgstr "Месяц"
 
-#: src/app/due_dates_calendar_widget.js:375
+#: src/app/due_dates_calendar_widget.js:382
 msgid "No issues corresponding your query, project and schedule field."
 msgstr "Нет задач, удовлетворяющих вашему запросу и полям проект и расписание"
 
@@ -138,11 +138,11 @@ msgstr "Виджет обновляется раз в {{minutesCount}} мин"
 msgid "am|pm"
 msgstr "ДП|ПП"
 
-#: src/app/due_dates_calendar_widget.js:70
+#: src/app/due_dates_calendar_widget.js:77
 msgid "issues"
 msgstr "задачи"
 
-#: src/app/due_dates_calendar_widget.js:593
+#: src/app/due_dates_calendar_widget.js:646
 msgid "more"
 msgstr "больше"
 

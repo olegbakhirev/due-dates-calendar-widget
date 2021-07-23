@@ -11,9 +11,9 @@ msgstr ""
 "X-Crowdin-File-ID: 220756\n"
 "Language-Team: Esperanto\n"
 "Language: eo_UY\n"
-"PO-Revision-Date: 2021-02-17 15:36\n"
+"PO-Revision-Date: 2021-07-23 17:52\n"
 
-#: src/app/due_dates_calendar_widget.js:366
+#: src/app/due_dates_calendar_widget.js:373
 msgid "Can't load information from service."
 msgstr "crwdns9073104:0crwdne9073104:0"
 
@@ -25,7 +25,7 @@ msgstr "crwdns9073106:0crwdne9073106:0"
 msgid "Day"
 msgstr "crwdns9073108:0crwdne9073108:0"
 
-#: src/app/due_dates_calendar_widget.js:90
+#: src/app/due_dates_calendar_widget.js:97
 msgid "Due Date Calendar Widget"
 msgstr "crwdns9674560:0crwdne9674560:0"
 
@@ -54,7 +54,7 @@ msgstr "crwdns9073116:0crwdne9073116:0"
 msgid "Month"
 msgstr "crwdns9223602:0crwdne9223602:0"
 
-#: src/app/due_dates_calendar_widget.js:375
+#: src/app/due_dates_calendar_widget.js:382
 msgid "No issues corresponding your query, project and schedule field."
 msgstr "crwdns9073118:0crwdne9073118:0"
 
@@ -138,11 +138,11 @@ msgstr "crwdns9073158:0{{minutesCount}}crwdne9073158:0"
 msgid "am|pm"
 msgstr "crwdns9073160:0crwdne9073160:0"
 
-#: src/app/due_dates_calendar_widget.js:70
+#: src/app/due_dates_calendar_widget.js:77
 msgid "issues"
 msgstr "crwdns9073162:0crwdne9073162:0"
 
-#: src/app/due_dates_calendar_widget.js:593
+#: src/app/due_dates_calendar_widget.js:646
 msgid "more"
 msgstr "crwdns12701540:0crwdne12701540:0"
 
