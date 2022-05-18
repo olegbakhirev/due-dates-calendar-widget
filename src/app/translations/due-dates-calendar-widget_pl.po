@@ -11,7 +11,7 @@ msgstr ""
 "X-Crowdin-File-ID: 267290\n"
 "Language-Team: Polish\n"
 "Language: pl_PL\n"
-"PO-Revision-Date: 2021-07-23 17:55\n"
+"PO-Revision-Date: 2022-04-18 22:06\n"
 
 #: src/app/due_dates_calendar_widget.js:373
 msgid "Can't load information from service."
@@ -116,7 +116,7 @@ msgstr "Tagi"
 
 #: src/app/calendar_toolbar.js:32
 msgid "Today"
-msgstr ""
+msgstr "Dziś"
 
 #: src/app/edit-form.js:417
 msgid "Type search query"
@@ -124,7 +124,7 @@ msgstr "Wpisz zapytanie wyszukiwania"
 
 #: src/app/calendar_toolbar.js:48
 msgid "Week"
-msgstr ""
+msgstr "Tydzień"
 
 #: node_modules/@jetbrains/hub-widget-ui/src/refresh-period/refresh-period.js:69
 msgid "Widget refreshes every minute"

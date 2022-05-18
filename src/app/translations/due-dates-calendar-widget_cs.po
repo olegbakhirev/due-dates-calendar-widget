@@ -11,7 +11,7 @@ msgstr ""
 "X-Crowdin-File-ID: 267290\n"
 "Language-Team: Czech\n"
 "Language: cs_CZ\n"
-"PO-Revision-Date: 2021-07-23 17:53\n"
+"PO-Revision-Date: 2022-05-18 10:38\n"
 
 #: src/app/due_dates_calendar_widget.js:373
 msgid "Can't load information from service."
@@ -23,11 +23,11 @@ msgstr "Zrušit"
 
 #: src/app/calendar_toolbar.js:44
 msgid "Day"
-msgstr ""
+msgstr "Den"
 
 #: src/app/due_dates_calendar_widget.js:97
 msgid "Due Date Calendar Widget"
-msgstr ""
+msgstr "Kalendář termínů"
 
 #: src/app/edit-form.js:411
 #: src/app/edit-form.js:49
@@ -36,11 +36,11 @@ msgstr "Vše"
 
 #: src/app/edit-form.js:532
 msgid "Field used to apply color scheme"
-msgstr ""
+msgstr "Políčko určující barvy položek"
 
 #: src/app/edit-form.js:518
 msgid "Field used to schedule due dates"
-msgstr ""
+msgstr "Políčko označující termíny položek"
 
 #: node_modules/hub-dashboard-addons/components/localization/src/localization.js:90
 msgid "January|February|March|April|May|June|July|August|September|October|November|December"
@@ -52,11 +52,11 @@ msgstr "Led|Úno|Bře|Dub|Kvě|Čer|Čvc|Srp|Zář|Říj|Lis|Pro"
 
 #: src/app/calendar_toolbar.js:49
 msgid "Month"
-msgstr ""
+msgstr "Měsíc"
 
 #: src/app/due_dates_calendar_widget.js:382
 msgid "No issues corresponding your query, project and schedule field."
-msgstr ""
+msgstr "Nebyly nalezeny případy odpovídající vašemu dotazu, projektu a políčku termínu."
 
 #: src/app/edit-form.js:341
 msgid "No projects"
@@ -76,7 +76,7 @@ msgstr "Jejda! Něco se pokazilo…"
 
 #: src/app/edit-form.js:493
 msgid "Optional title"
-msgstr ""
+msgstr "Volitelný název"
 
 #: src/app/edit-form.js:430
 msgid "Projects"
@@ -92,7 +92,7 @@ msgstr "Uložená hledání"
 
 #: src/app/edit-form.js:517
 msgid "Select an available date type field"
-msgstr ""
+msgstr "Vyberte z dostupných políček typu \"datum\""
 
 #: src/app/edit-form.js:110
 msgid "Selected YouTrack service is not available"
@@ -116,7 +116,7 @@ msgstr "Štítky"
 
 #: src/app/calendar_toolbar.js:32
 msgid "Today"
-msgstr ""
+msgstr "dnes"
 
 #: src/app/edit-form.js:417
 msgid "Type search query"
@@ -124,7 +124,7 @@ msgstr "Zadejte vyhledávací dotaz"
 
 #: src/app/calendar_toolbar.js:48
 msgid "Week"
-msgstr ""
+msgstr "Týden"
 
 #: node_modules/@jetbrains/hub-widget-ui/src/refresh-period/refresh-period.js:69
 msgid "Widget refreshes every minute"
@@ -144,7 +144,7 @@ msgstr "případy"
 
 #: src/app/due_dates_calendar_widget.js:646
 msgid "more"
-msgstr ""
+msgstr "více"
 
 #: node_modules/@jetbrains/hub-widget-ui/src/refresh-period/refresh-period.js:64
 msgid "{{minutesCount}} min"

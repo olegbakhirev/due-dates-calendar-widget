@@ -11,15 +11,15 @@ msgstr ""
 "X-Crowdin-File-ID: 267290\n"
 "Language-Team: Hebrew\n"
 "Language: he_IL\n"
-"PO-Revision-Date: 2021-07-23 17:54\n"
+"PO-Revision-Date: 2022-05-18 10:39\n"
 
 #: src/app/due_dates_calendar_widget.js:373
 msgid "Can't load information from service."
-msgstr ""
+msgstr "לא ניתן לטעון מידע מהשירות."
 
 #: node_modules/@jetbrains/hub-widget-ui/src/configuration-form/configuration-form.js:58
 msgid "Cancel"
-msgstr ""
+msgstr "ביטול"
 
 #: src/app/calendar_toolbar.js:44
 msgid "Day"
@@ -116,7 +116,7 @@ msgstr "תגיות"
 
 #: src/app/calendar_toolbar.js:32
 msgid "Today"
-msgstr ""
+msgstr "היום"
 
 #: src/app/edit-form.js:417
 msgid "Type search query"
@@ -140,7 +140,7 @@ msgstr ""
 
 #: src/app/due_dates_calendar_widget.js:77
 msgid "issues"
-msgstr ""
+msgstr "בעיות"
 
 #: src/app/due_dates_calendar_widget.js:646
 msgid "more"
@@ -148,5 +148,5 @@ msgstr ""
 
 #: node_modules/@jetbrains/hub-widget-ui/src/refresh-period/refresh-period.js:64
 msgid "{{minutesCount}} min"
-msgstr ""
+msgstr "{{minutesCount}} דקות"
 
