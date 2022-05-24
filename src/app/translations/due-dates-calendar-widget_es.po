@@ -11,9 +11,9 @@ msgstr ""
 "X-Crowdin-File-ID: 220756\n"
 "Language-Team: Spanish\n"
 "Language: es_ES\n"
-"PO-Revision-Date: 2022-05-18 13:27\n"
+"PO-Revision-Date: 2022-05-24 17:07\n"
 
-#: src/app/due_dates_calendar_widget.js:373
+#: src/app/due_dates_calendar_widget.js:378
 msgid "Can't load information from service."
 msgstr "No es posible cargar información desde el servicio."
 
@@ -54,7 +54,7 @@ msgstr "Ene|Feb|Mar|Abr|May|Jun|Jul|Ago|Sep|Oct|Nov|Dic"
 msgid "Month"
 msgstr "Mes"
 
-#: src/app/due_dates_calendar_widget.js:382
+#: src/app/due_dates_calendar_widget.js:387
 msgid "No issues corresponding your query, project and schedule field."
 msgstr "No hay incidencias que coincidan con su consulta, proyecto y campo de programación."
 
@@ -142,7 +142,7 @@ msgstr "am|pm"
 msgid "issues"
 msgstr "incidencias"
 
-#: src/app/due_dates_calendar_widget.js:646
+#: src/app/due_dates_calendar_widget.js:651
 msgid "more"
 msgstr "más"
 

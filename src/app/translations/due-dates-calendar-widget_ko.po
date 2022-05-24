@@ -11,9 +11,9 @@ msgstr ""
 "X-Crowdin-File-ID: 220756\n"
 "Language-Team: Korean\n"
 "Language: ko_KR\n"
-"PO-Revision-Date: 2022-05-18 13:26\n"
+"PO-Revision-Date: 2022-05-24 17:07\n"
 
-#: src/app/due_dates_calendar_widget.js:373
+#: src/app/due_dates_calendar_widget.js:378
 msgid "Can't load information from service."
 msgstr "서비스에서 정보를 불러올 수 없습니다."
 
@@ -54,7 +54,7 @@ msgstr "1월|2월|3월|4월|5월|6월|7월|8월|9월|10월|11월|12월"
 msgid "Month"
 msgstr "월"
 
-#: src/app/due_dates_calendar_widget.js:382
+#: src/app/due_dates_calendar_widget.js:387
 msgid "No issues corresponding your query, project and schedule field."
 msgstr "해당 쿼리, 프로젝트, 일정 필드에 맞는 이슈가 없습니다."
 
@@ -142,7 +142,7 @@ msgstr "오전|오후"
 msgid "issues"
 msgstr "이슈"
 
-#: src/app/due_dates_calendar_widget.js:646
+#: src/app/due_dates_calendar_widget.js:651
 msgid "more"
 msgstr "더보기"
 

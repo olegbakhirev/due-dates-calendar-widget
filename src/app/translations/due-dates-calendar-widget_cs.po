@@ -11,9 +11,9 @@ msgstr ""
 "X-Crowdin-File-ID: 267290\n"
 "Language-Team: Czech\n"
 "Language: cs_CZ\n"
-"PO-Revision-Date: 2022-05-18 13:33\n"
+"PO-Revision-Date: 2022-05-24 17:08\n"
 
-#: src/app/due_dates_calendar_widget.js:373
+#: src/app/due_dates_calendar_widget.js:378
 msgid "Can't load information from service."
 msgstr "Nelze načíst data ze služby."
 
@@ -54,7 +54,7 @@ msgstr "Led|Úno|Bře|Dub|Kvě|Čer|Čvc|Srp|Zář|Říj|Lis|Pro"
 msgid "Month"
 msgstr "Měsíc"
 
-#: src/app/due_dates_calendar_widget.js:382
+#: src/app/due_dates_calendar_widget.js:387
 msgid "No issues corresponding your query, project and schedule field."
 msgstr "Nebyly nalezeny případy odpovídající vašemu dotazu, projektu a políčku termínu."
 
@@ -142,7 +142,7 @@ msgstr "dopol|odpol"
 msgid "issues"
 msgstr "případy"
 
-#: src/app/due_dates_calendar_widget.js:646
+#: src/app/due_dates_calendar_widget.js:651
 msgid "more"
 msgstr "více"
 

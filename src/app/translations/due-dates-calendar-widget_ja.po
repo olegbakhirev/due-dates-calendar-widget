@@ -11,9 +11,9 @@ msgstr ""
 "X-Crowdin-File-ID: 220756\n"
 "Language-Team: Japanese\n"
 "Language: ja_JP\n"
-"PO-Revision-Date: 2022-05-18 13:26\n"
+"PO-Revision-Date: 2022-05-24 17:06\n"
 
-#: src/app/due_dates_calendar_widget.js:373
+#: src/app/due_dates_calendar_widget.js:378
 msgid "Can't load information from service."
 msgstr "サービスから情報を読み込むことができません。"
 
@@ -54,7 +54,7 @@ msgstr "1月|2月|3月|4月|5月|6月|7月|8月|9月|10月|11月|12月"
 msgid "Month"
 msgstr "月"
 
-#: src/app/due_dates_calendar_widget.js:382
+#: src/app/due_dates_calendar_widget.js:387
 msgid "No issues corresponding your query, project and schedule field."
 msgstr "あなたのクエリ、プロジェクト、およびスケジュールフィールドに対応する課題はありません。"
 
@@ -142,7 +142,7 @@ msgstr "am|pm"
 msgid "issues"
 msgstr "課題"
 
-#: src/app/due_dates_calendar_widget.js:646
+#: src/app/due_dates_calendar_widget.js:651
 msgid "more"
 msgstr "もっと"
 

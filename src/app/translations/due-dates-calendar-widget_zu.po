@@ -11,9 +11,9 @@ msgstr ""
 "X-Crowdin-File-ID: 267290\n"
 "Language-Team: Zulu\n"
 "Language: zu_ZA\n"
-"PO-Revision-Date: 2022-05-18 13:32\n"
+"PO-Revision-Date: 2022-05-24 17:08\n"
 
-#: src/app/due_dates_calendar_widget.js:373
+#: src/app/due_dates_calendar_widget.js:378
 msgid "Can't load information from service."
 msgstr "crwdns12780292:0crwdne12780292:0"
 
@@ -54,7 +54,7 @@ msgstr "crwdns12780308:0crwdne12780308:0"
 msgid "Month"
 msgstr "crwdns12780310:0crwdne12780310:0"
 
-#: src/app/due_dates_calendar_widget.js:382
+#: src/app/due_dates_calendar_widget.js:387
 msgid "No issues corresponding your query, project and schedule field."
 msgstr "crwdns12780312:0crwdne12780312:0"
 
@@ -142,7 +142,7 @@ msgstr "crwdns12780352:0crwdne12780352:0"
 msgid "issues"
 msgstr "crwdns12780354:0crwdne12780354:0"
 
-#: src/app/due_dates_calendar_widget.js:646
+#: src/app/due_dates_calendar_widget.js:651
 msgid "more"
 msgstr "crwdns12780356:0crwdne12780356:0"
 

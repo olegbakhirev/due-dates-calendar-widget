@@ -11,15 +11,15 @@ msgstr ""
 "X-Crowdin-File-ID: 267290\n"
 "Language-Team: Ukrainian\n"
 "Language: uk_UA\n"
-"PO-Revision-Date: 2022-05-18 13:34\n"
+"PO-Revision-Date: 2022-05-24 17:08\n"
 
-#: src/app/due_dates_calendar_widget.js:373
+#: src/app/due_dates_calendar_widget.js:378
 msgid "Can't load information from service."
 msgstr ""
 
 #: node_modules/@jetbrains/hub-widget-ui/src/configuration-form/configuration-form.js:58
 msgid "Cancel"
-msgstr ""
+msgstr "Скасувати"
 
 #: src/app/calendar_toolbar.js:44
 msgid "Day"
@@ -54,7 +54,7 @@ msgstr ""
 msgid "Month"
 msgstr ""
 
-#: src/app/due_dates_calendar_widget.js:382
+#: src/app/due_dates_calendar_widget.js:387
 msgid "No issues corresponding your query, project and schedule field."
 msgstr ""
 
@@ -84,7 +84,7 @@ msgstr ""
 
 #: node_modules/@jetbrains/hub-widget-ui/src/configuration-form/configuration-form.js:47
 msgid "Save"
-msgstr ""
+msgstr "Зберегти"
 
 #: src/app/edit-form.js:442
 msgid "Saved searches"
@@ -142,7 +142,7 @@ msgstr ""
 msgid "issues"
 msgstr ""
 
-#: src/app/due_dates_calendar_widget.js:646
+#: src/app/due_dates_calendar_widget.js:651
 msgid "more"
 msgstr ""
 

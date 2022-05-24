@@ -11,9 +11,9 @@ msgstr ""
 "X-Crowdin-File-ID: 220756\n"
 "Language-Team: Chinese Simplified\n"
 "Language: zh_CN\n"
-"PO-Revision-Date: 2022-05-18 13:25\n"
+"PO-Revision-Date: 2022-05-24 17:06\n"
 
-#: src/app/due_dates_calendar_widget.js:373
+#: src/app/due_dates_calendar_widget.js:378
 msgid "Can't load information from service."
 msgstr "无法从服务中加载信息。"
 
@@ -54,7 +54,7 @@ msgstr "1 月|2 月|3 月|4 月|5 月|6 月|7 月|8 月|9 月|10 月|11 月|12 �
 msgid "Month"
 msgstr "月"
 
-#: src/app/due_dates_calendar_widget.js:382
+#: src/app/due_dates_calendar_widget.js:387
 msgid "No issues corresponding your query, project and schedule field."
 msgstr "没有问题对应您的查询、项目和时间表字段。"
 
@@ -142,7 +142,7 @@ msgstr "上午|下午"
 msgid "issues"
 msgstr "问题"
 
-#: src/app/due_dates_calendar_widget.js:646
+#: src/app/due_dates_calendar_widget.js:651
 msgid "more"
 msgstr "更多"
 
