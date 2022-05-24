@@ -69,8 +69,8 @@ export async function loadProfile(fetchYouTrack) {
   return await fetchYouTrack('api/admin/users/me?$top=-1&fields=profiles(appearance(firstDayOfWeek),general(locale(locale)))');
 }
 
-export async function loadPermissionCache(fetchYouTrack) {
-  return await fetchYouTrack('hub/api/rest/permissions/cache?fields=permission/key,global,projects(id)');
+export async function loadPermissionCache(fetchHub) {
+  return await fetchHub('api/rest/permissions/cache?fields=permission/key,global,projects(id)');
 }
 
 export async function loadConfigL10n(fetchYouTrack) {

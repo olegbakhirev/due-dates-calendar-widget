@@ -349,6 +349,11 @@ class DueDatesCalendarWidget extends React.Component {
     return await dashboardApi.fetch(youTrack.id, url, params);
   };
 
+  fetchHub = async (url, params) => {
+    const {dashboardApi} = this.props;
+    return await dashboardApi.fetchHub(url, params);
+  };
+
   renderConfiguration = () => (
     <div className={`issues-list-widget ${styles.widget}`}>
       <EditForm
@@ -424,7 +429,7 @@ class DueDatesCalendarWidget extends React.Component {
     );
 
     const permCache = new PermissionCache(
-      await loadPermissionCache(this.fetchYouTrack));
+      await loadPermissionCache(this.fetchHub));
 
     const events = [];
     if (Array.isArray(issues)) {
