@@ -462,13 +462,16 @@ class DueDatesCalendarWidget extends React.Component {
             }
 
             // eslint-disable-next-line max-len
-            if (field.projectCustomField.field.name === this.state.colorField) {
+            if (field.projectCustomField.field.name === this.state.colorField || field.projectCustomField.field.localizedName === this.state.colorField) {
               issuePriority = field.value.name;
               foregroundColor = field.value.color.foreground;
               backgroundColor = field.value.color.background;
             } else if (field.value.color) {
+              const prjCustomField = field.projectCustomField;
               customFields.push({
-                name: field.projectCustomField.field.name,
+                name: prjCustomField.localizedName !== null
+                  ? prjCustomField.localizedName
+                  : prjCustomField.field.name,
                 value: field.value.name,
                 foregroundColor: field.value.color.foreground,
                 backgroundColor: field.value.color.background
