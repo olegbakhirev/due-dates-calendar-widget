@@ -11,7 +11,7 @@ msgstr ""
 "X-Crowdin-File-ID: 267290\n"
 "Language-Team: Zulu\n"
 "Language: zu_ZA\n"
-"PO-Revision-Date: 2022-05-24 17:08\n"
+"PO-Revision-Date: 2022-05-30 14:45\n"
 
 #: src/app/due_dates_calendar_widget.js:378
 msgid "Can't load information from service."
@@ -142,7 +142,7 @@ msgstr "crwdns12780352:0crwdne12780352:0"
 msgid "issues"
 msgstr "crwdns12780354:0crwdne12780354:0"
 
-#: src/app/due_dates_calendar_widget.js:651
+#: src/app/due_dates_calendar_widget.js:654
 msgid "more"
 msgstr "crwdns12780356:0crwdne12780356:0"
 
