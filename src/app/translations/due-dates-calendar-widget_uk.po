@@ -11,11 +11,11 @@ msgstr ""
 "X-Crowdin-File-ID: 267290\n"
 "Language-Team: Ukrainian\n"
 "Language: uk_UA\n"
-"PO-Revision-Date: 2022-05-30 14:44\n"
+"PO-Revision-Date: 2022-06-28 20:47\n"
 
 #: src/app/due_dates_calendar_widget.js:378
 msgid "Can't load information from service."
-msgstr ""
+msgstr "Не вдалося завантажити інформацію з сервісу."
 
 #: node_modules/@jetbrains/hub-widget-ui/src/configuration-form/configuration-form.js:58
 msgid "Cancel"
@@ -23,7 +23,7 @@ msgstr "Скасувати"
 
 #: src/app/calendar_toolbar.js:44
 msgid "Day"
-msgstr ""
+msgstr "День"
 
 #: src/app/due_dates_calendar_widget.js:97
 msgid "Due Date Calendar Widget"
@@ -32,7 +32,7 @@ msgstr ""
 #: src/app/edit-form.js:411
 #: src/app/edit-form.js:49
 msgid "Everything"
-msgstr ""
+msgstr "Усе"
 
 #: src/app/edit-form.js:532
 msgid "Field used to apply color scheme"
@@ -44,11 +44,11 @@ msgstr ""
 
 #: node_modules/hub-dashboard-addons/components/localization/src/localization.js:90
 msgid "January|February|March|April|May|June|July|August|September|October|November|December"
-msgstr ""
+msgstr "Січень|Лютий|Березень|Квітень|Травень|Червень|Липень|Серпень|Вересень|Жовтень|Листопад|Грудень"
 
 #: node_modules/hub-dashboard-addons/components/localization/src/localization.js:89
 msgid "Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec"
-msgstr ""
+msgstr "Січ|Лют|Бер|Кві|Тра|Чер|Лип|Сер|Вер|Жов|Лис|Гру"
 
 #: src/app/calendar_toolbar.js:49
 msgid "Month"
@@ -76,11 +76,11 @@ msgstr ""
 
 #: src/app/edit-form.js:493
 msgid "Optional title"
-msgstr ""
+msgstr "Необовʼязкова назва"
 
 #: src/app/edit-form.js:430
 msgid "Projects"
-msgstr ""
+msgstr "Проєкти"
 
 #: node_modules/@jetbrains/hub-widget-ui/src/configuration-form/configuration-form.js:47
 msgid "Save"
@@ -104,11 +104,11 @@ msgstr ""
 
 #: node_modules/hub-dashboard-addons/components/localization/src/localization.js:88
 msgid "Sunday|Monday|Tuesday|Wednesday|Thursday|Friday|Saturday"
-msgstr ""
+msgstr "Неділя|Понеділок|Вівторок|Середа|Четвер|Пʼятниця|Субота"
 
 #: node_modules/hub-dashboard-addons/components/localization/src/localization.js:87
 msgid "Sun|Mon|Tue|Wed|Thu|Fri|Sat"
-msgstr ""
+msgstr "Нд|Пн|Вт|Ср|Чт|Пт|Сб"
 
 #: src/app/edit-form.js:436
 msgid "Tags"
@@ -144,7 +144,7 @@ msgstr ""
 
 #: src/app/due_dates_calendar_widget.js:654
 msgid "more"
-msgstr ""
+msgstr "більше"
 
 #: node_modules/@jetbrains/hub-widget-ui/src/refresh-period/refresh-period.js:64
 msgid "{{minutesCount}} min"
