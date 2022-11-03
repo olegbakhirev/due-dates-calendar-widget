@@ -66,7 +66,7 @@ export async function loadFieldsWithType(fetchYouTrack, fieldType, context) {
 }
 
 export async function loadProfile(fetchYouTrack) {
-  return await fetchYouTrack('api/admin/users/me?$top=-1&fields=profiles(appearance(firstDayOfWeek),general(locale(locale)))');
+  return await fetchYouTrack('api/users/me?$top=-1&fields=profiles(appearance(firstDayOfWeek),general(locale(locale)))');
 }
 
 export async function loadPermissionCache(fetchHub) {
