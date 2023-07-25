@@ -11,7 +11,7 @@ msgstr ""
 "X-Crowdin-File-ID: 267290\n"
 "Language-Team: Hebrew\n"
 "Language: he_IL\n"
-"PO-Revision-Date: 2022-06-29 13:23\n"
+"PO-Revision-Date: 2023-05-16 00:10\n"
 
 #: src/app/due_dates_calendar_widget.js:378
 msgid "Can't load information from service."
@@ -23,7 +23,7 @@ msgstr "ביטול"
 
 #: src/app/calendar_toolbar.js:44
 msgid "Day"
-msgstr ""
+msgstr "יום"
 
 #: src/app/due_dates_calendar_widget.js:97
 msgid "Due Date Calendar Widget"
@@ -48,11 +48,11 @@ msgstr "ינואר|פברואר|מרץ|אפריל|מאי|יוני|יולי|או�
 
 #: node_modules/hub-dashboard-addons/components/localization/src/localization.js:89
 msgid "Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec"
-msgstr ""
+msgstr "ינו'|פבר'|מרץ|אפר'|מאי|יונ'|יול'|אוג'|ספט'|אוק'|נוב'|דצמ'"
 
 #: src/app/calendar_toolbar.js:49
 msgid "Month"
-msgstr ""
+msgstr "חודש"
 
 #: src/app/due_dates_calendar_widget.js:387
 msgid "No issues corresponding your query, project and schedule field."
@@ -72,7 +72,7 @@ msgstr "ללא תגיות"
 
 #: node_modules/@jetbrains/hub-widget-ui/src/http-error-handler/http-error-handler.js:4
 msgid "Oops! Something went wrong..."
-msgstr ""
+msgstr "אופס! משהו השתבש..."
 
 #: src/app/edit-form.js:493
 msgid "Optional title"
@@ -100,7 +100,7 @@ msgstr ""
 
 #: src/app/edit-form.js:496
 msgid "Set optional title"
-msgstr ""
+msgstr "הגדרת כותרת אופציונלית"
 
 #: node_modules/hub-dashboard-addons/components/localization/src/localization.js:88
 msgid "Sunday|Monday|Tuesday|Wednesday|Thursday|Friday|Saturday"
@@ -124,7 +124,7 @@ msgstr "הזן שאילתת חיפוש"
 
 #: src/app/calendar_toolbar.js:48
 msgid "Week"
-msgstr ""
+msgstr "שבוע"
 
 #: node_modules/@jetbrains/hub-widget-ui/src/refresh-period/refresh-period.js:69
 msgid "Widget refreshes every minute"
@@ -132,11 +132,11 @@ msgstr ""
 
 #: node_modules/@jetbrains/hub-widget-ui/src/refresh-period/refresh-period.js:70
 msgid "Widget refreshes every {{minutesCount}} minutes"
-msgstr ""
+msgstr "הווידג'ט מתרענן כל {{minutesCount}} דקות"
 
 #: node_modules/hub-dashboard-addons/components/localization/src/localization.js:91
 msgid "am|pm"
-msgstr ""
+msgstr "לפנ\"צ|אחה\"צ"
 
 #: src/app/due_dates_calendar_widget.js:77
 msgid "issues"
@@ -144,7 +144,7 @@ msgstr "בעיות"
 
 #: src/app/due_dates_calendar_widget.js:654
 msgid "more"
-msgstr ""
+msgstr "עוד"
 
 #: node_modules/@jetbrains/hub-widget-ui/src/refresh-period/refresh-period.js:64
 msgid "{{minutesCount}} min"

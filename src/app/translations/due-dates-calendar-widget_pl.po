@@ -11,7 +11,7 @@ msgstr ""
 "X-Crowdin-File-ID: 267290\n"
 "Language-Team: Polish\n"
 "Language: pl_PL\n"
-"PO-Revision-Date: 2022-06-29 13:23\n"
+"PO-Revision-Date: 2023-05-19 11:26\n"
 
 #: src/app/due_dates_calendar_widget.js:378
 msgid "Can't load information from service."
@@ -36,11 +36,11 @@ msgstr "Wszystko"
 
 #: src/app/edit-form.js:532
 msgid "Field used to apply color scheme"
-msgstr ""
+msgstr "Pole używane do stosowania schematu kolorów"
 
 #: src/app/edit-form.js:518
 msgid "Field used to schedule due dates"
-msgstr ""
+msgstr "Pole używane do planowania terminów"
 
 #: node_modules/hub-dashboard-addons/components/localization/src/localization.js:90
 msgid "January|February|March|April|May|June|July|August|September|October|November|December"

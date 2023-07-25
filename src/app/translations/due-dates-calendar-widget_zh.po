@@ -11,7 +11,7 @@ msgstr ""
 "X-Crowdin-File-ID: 220756\n"
 "Language-Team: Chinese Simplified\n"
 "Language: zh_CN\n"
-"PO-Revision-Date: 2022-06-29 12:06\n"
+"PO-Revision-Date: 2023-07-25 18:14\n"
 
 #: src/app/due_dates_calendar_widget.js:378
 msgid "Can't load information from service."
@@ -27,7 +27,7 @@ msgstr "天"
 
 #: src/app/due_dates_calendar_widget.js:97
 msgid "Due Date Calendar Widget"
-msgstr "截止日期日历小部件"
+msgstr "截止日期日历微件"
 
 #: src/app/edit-form.js:411
 #: src/app/edit-form.js:49
@@ -72,7 +72,7 @@ msgstr "没有标签"
 
 #: node_modules/@jetbrains/hub-widget-ui/src/http-error-handler/http-error-handler.js:4
 msgid "Oops! Something went wrong..."
-msgstr "哎呀，出了些问题..."
+msgstr "哎呀，出了些问题…"
 
 #: src/app/edit-form.js:493
 msgid "Optional title"
