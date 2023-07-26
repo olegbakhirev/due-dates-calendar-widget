@@ -11,7 +11,7 @@ msgstr ""
 "X-Crowdin-File-ID: 220756\n"
 "Language-Team: Korean\n"
 "Language: ko_KR\n"
-"PO-Revision-Date: 2023-07-25 19:50\n"
+"PO-Revision-Date: 2023-07-26 11:57\n"
 
 #: src/app/due_dates_calendar_widget.js:378
 msgid "Can't load information from service."
