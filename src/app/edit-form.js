@@ -30,6 +30,7 @@ class EditForm extends React.Component {
     context: PropTypes.object,
     title: PropTypes.string,
     scheduleField: PropTypes.string,
+    eventEndField: PropTypes.string,
     colorField: PropTypes.string,
     refreshPeriod: PropTypes.number,
     onSubmit: PropTypes.func,
@@ -62,6 +63,7 @@ class EditForm extends React.Component {
       context: props.context,
       title: props.title || '',
       scheduleField: props.scheduleField,
+      eventEndField: props.eventEndField,
       colorField: props.colorField,
       refreshPeriod: props.refreshPeriod || 0,
       selectedYouTrack,
@@ -145,6 +147,10 @@ class EditForm extends React.Component {
     this.setState({scheduleField: evt.label});
   };
 
+  changeEventEndField = evt => {
+    this.setState({eventEndField: evt.label});
+  };
+
   changeColorField = evt => {
     this.setState({colorField: evt.label});
   };
@@ -168,6 +174,7 @@ class EditForm extends React.Component {
       refreshPeriod,
       selectedYouTrack,
       scheduleField,
+      eventEndField,
       colorField
     } = this.state;
     this.setFormLoaderEnabled(true);
@@ -194,6 +201,7 @@ class EditForm extends React.Component {
       refreshPeriod,
       selectedYouTrack,
       scheduleField,
+      eventEndField,
       colorField,
       isDateAndTime
     });
@@ -254,11 +262,20 @@ class EditForm extends React.Component {
         });
     });
     let scheduleField = this.state.scheduleField;
+    let eventEndField = this.state.eventEndField;
     if (!availableScheduleFields.map(it => it.label).includes(scheduleField)) {
       scheduleField = undefined;
     }
+    if (!availableScheduleFields.map(it => it.label).includes(eventEndField)) {
+      eventEndField = undefined;
+    }
+
     this.setState(
-      {availableScheduleFields, dateFields, dateTimeFields, scheduleField});
+      {availableScheduleFields,
+        dateFields,
+        dateTimeFields,
+        scheduleField,
+        eventEndField});
   };
 
   getFieldDescriptionPresentation = field => {
@@ -524,6 +541,21 @@ class EditForm extends React.Component {
             maxHeight={300}
             renderOptimization={false}
           />
+        }
+        {
+          !errorMessage &&
+            <Select
+              className="ring-form__group"
+              label={i18n('Select an available end date field')}
+              selectedLabel={i18n('Field used to show end date of issues')}
+              size={InputSize.FULL}
+              data={this.state.availableScheduleFields}
+              selected={{label: this.state.eventEndField}}
+              onSelect={this.changeEventEndField}
+              filter={true}
+              maxHeight={300}
+              renderOptimization={false}
+            />
         }
         {
           !errorMessage &&
