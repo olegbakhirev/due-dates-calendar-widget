@@ -8,7 +8,7 @@ import ConfigWrapper from './config-wrapper';
 import {initTranslations} from './translations';
 
 const CONFIG_FIELDS = [
-  'search', 'context', 'title', 'refreshPeriod', 'youTrack', 'date', 'view', 'scheduleField', 'colorField', 'isDateAndTime'
+  'search', 'context', 'title', 'refreshPeriod', 'youTrack', 'date', 'view', 'scheduleField', 'colorField', 'isDateAndTime', 'eventEndField'
 ];
 
 DashboardAddons.registerWidget(async (dashboardApi, registerWidgetApi) => {
