@@ -88,7 +88,7 @@ export async function updateIssueScheduleField(fetchYouTrack, dbIssueId, schedul
     body: {
       $type: 'DateIssueCustomField',
       id: scheduleFieldDbId,
-      value: Number(scheduleFieldValue)
+      value: scheduleFieldValue
     }
   });
 }

@@ -127,6 +127,8 @@ const webpackConfig = () => ({
     ]
   },
   devServer: {
+    liveReload: false,
+    hot: false,
     headers: {
       'Access-Control-Allow-Origin': '*'
     },

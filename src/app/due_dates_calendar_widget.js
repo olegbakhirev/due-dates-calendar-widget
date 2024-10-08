@@ -34,6 +34,7 @@ const DATE_FIELD_TYPE = 'date';
 const DATE_AND_TIME_FIELD_TYPE = 'date and time';
 const STATE_FIELD_NAME = 'State';
 const ASSIGNEE_FIELD_NAME = 'Assignee';
+const MIDDAY = 12;
 
 class DueDatesCalendarWidget extends React.Component {
   static propTypes = {
@@ -201,6 +202,7 @@ class DueDatesCalendarWidget extends React.Component {
     const date = this.props.configWrapper.getFieldValue('date');
     const view = this.props.configWrapper.getFieldValue('view');
 
+
     const scheduleField =
         this.props.configWrapper.getFieldValue('scheduleField') ||
         DEFAULT_SCHEDULE_FIELD;
@@ -216,6 +218,7 @@ class DueDatesCalendarWidget extends React.Component {
     const isDateAndTime =
         this.props.configWrapper.getFieldValue('isDateAndTime');
 
+    const canResize = scheduleField !== eventEndField;
 
     this.setState({
       title,
@@ -227,6 +230,7 @@ class DueDatesCalendarWidget extends React.Component {
       eventEndField,
       isDateAndTime,
       colorField,
+      canResize,
       refreshPeriod:
         refreshPeriod || DueDatesCalendarWidget.DEFAULT_REFRESH_PERIOD
     });
@@ -294,11 +298,12 @@ class DueDatesCalendarWidget extends React.Component {
       scheduleField, eventEndField, colorField, isDateAndTime
     } = formParameters;
 
+    console.log('submitConfiguration', formParameters);
     this.setYouTrack(
       selectedYouTrack, async () => {
         this.setState(
           {search: search || '',
-            context, title, scheduleField,
+            context, title, scheduleField, eventEndField,
             refreshPeriod, colorField, isDateAndTime},
           async () => {
             await this.loadIssues();
@@ -316,8 +321,10 @@ class DueDatesCalendarWidget extends React.Component {
                 homeUrl: selectedYouTrack.homeUrl
               }
             });
+            // eslint-disable-next-line max-len
+            const canResize = this.state.scheduleField !== this.state.eventEndField;
             this.setState(
-              {isConfiguring: false, fromCache: false, isNew: false}
+              {isConfiguring: false, fromCache: false, isNew: false, canResize}
             );
           }
         );
@@ -411,7 +418,7 @@ class DueDatesCalendarWidget extends React.Component {
     const currentScheduleField = scheduleField || this.state.scheduleField;
     const currentEventEndField = eventEndField || this.state.eventEndField;
     try {
-      await this.loadIssuesCount(`${currentSearch} has: {${currentScheduleField}} and has: {${currentEventEndField}}`, currentContext);
+      await this.loadIssuesCount(`${currentSearch} has: {${currentScheduleField}} or has: {${currentEventEndField}}`, currentContext);
     } catch (error) {
       this.setState({isEmptyQueryResultError: true, issuesCount: 0});
     }
@@ -523,7 +530,8 @@ class DueDatesCalendarWidget extends React.Component {
             priority: issuePriority,
             isResolved,
             issueScheduleFieldDbId,
-            issueEventEndFieldDbId,
+            // eslint-disable-next-line max-len
+            issueEventEndFieldDbId: issueEventEndFieldDbId !== '' ? issueEventEndFieldDbId : issueScheduleFieldDbId,
             start: (new Date(issueScheduleField)),
             // eslint-disable-next-line max-len
             end: (issueEventEndField !== '' ? new Date(issueEventEndField) : new Date(issueScheduleField)),
@@ -604,7 +612,8 @@ class DueDatesCalendarWidget extends React.Component {
     const {events} = this.state;
 
     const prevEvents = events;
-
+    console.log('new data');
+    console.log({event, start, end});
     const idx = events.indexOf(event);
     const updatedEvent = {...event, start, end};
     const updatedEvents = [...events];
@@ -614,11 +623,23 @@ class DueDatesCalendarWidget extends React.Component {
     });
 
     try {
+      console.log('new start ', toUtcMidday(start));
+      // update start date
       await updateIssueScheduleField(
         this.fetchYouTrack,
         event.dbIssueId,
         event.issueScheduleFieldDbId,
-        moment(start).format('x'));
+        toUtcMidday(start));
+
+      // update event end date if field different
+      console.log('new end ', toUtcMidday(end));
+      if (event.issueEventEndFieldDbId !== event.issueScheduleFieldDbId) {
+        await updateIssueScheduleField(
+          this.fetchYouTrack,
+          event.dbIssueId,
+          event.issueEventEndFieldDbId,
+          toUtcMidday(end));
+      }
 
     } catch (error) {
       this.setState({
@@ -659,6 +680,7 @@ class DueDatesCalendarWidget extends React.Component {
       [`${styles.calendar}`]: true,
       'date-only-calendar': !this.state.isDateAndTime
     });
+
     return (
       <div className={styles.widget}>
         <DragAndDropCalendar
@@ -669,6 +691,8 @@ class DueDatesCalendarWidget extends React.Component {
           events={this.state.events}
           draggableAccessor={this.eventUpdatable}
           onEventDrop={this.moveEvent}
+          onEventResize={this.moveEvent}
+          resizableAccessor={() => this.state.canResize}
           className={calendarClasses}
           views={['month', 'week', 'day']}
           culture={this.state.profileLocale}
@@ -725,6 +749,14 @@ class DueDatesCalendarWidget extends React.Component {
       />
     );
   }
+}
+
+function toUtcMidday(date) {
+  return Date.UTC(date.getFullYear(), date.getMonth(), date.getDate(), MIDDAY, 0, 0, 0);
+}
+
+function utcToLocalMidday(date) {
+  return new Date(date.getUTCFullYear(), date.getUTCMonth(), date.getUTCDate(), MIDDAY, 0, 0, 0);
 }
 
 export default DueDatesCalendarWidget;

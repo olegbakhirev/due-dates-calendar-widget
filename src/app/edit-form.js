@@ -144,7 +144,9 @@ class EditForm extends React.Component {
   clearTitle = () => this.setState({title: ''});
 
   changeScheduleField = evt => {
-    this.setState({scheduleField: evt.label});
+    const isDateAndTime =
+        this.state.dateTimeFields.map(i => i.name).includes(evt.label);
+    this.setState({scheduleField: evt.label, isDateAndTime});
   };
 
   changeEventEndField = evt => {
@@ -258,7 +260,8 @@ class EditForm extends React.Component {
       availableScheduleFields.push(
         {
           label: field.name,
-          description: `${field.customField.fieldType.id} in ${this.getFieldDescriptionPresentation(field)}`
+          description: `${field.customField.fieldType.id} in ${this.getFieldDescriptionPresentation(field)}`,
+          isDateAndTime: field.customField.fieldType.id === 'date and time'
         });
     });
     let scheduleField = this.state.scheduleField;
@@ -270,12 +273,16 @@ class EditForm extends React.Component {
       eventEndField = undefined;
     }
 
+    const isDateAndTime =
+        dateTimeFields.map(i => i.name).includes(scheduleField);
+
     this.setState(
       {availableScheduleFields,
         dateFields,
         dateTimeFields,
         scheduleField,
-        eventEndField});
+        eventEndField,
+        isDateAndTime});
   };
 
   getFieldDescriptionPresentation = field => {
@@ -496,6 +503,7 @@ class EditForm extends React.Component {
       model: it
     };
 
+
     return (
       <ConfigurationForm
         warning={errorMessage}
@@ -549,7 +557,7 @@ class EditForm extends React.Component {
               label={i18n('Select an available end date field')}
               selectedLabel={i18n('Field used to show end date of issues')}
               size={InputSize.FULL}
-              data={this.state.availableScheduleFields}
+              data={this.state.availableScheduleFields.filter(field => field.isDateAndTime === this.state.isDateAndTime)}
               selected={{label: this.state.eventEndField}}
               onSelect={this.changeEventEndField}
               filter={true}
