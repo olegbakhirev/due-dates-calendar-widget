@@ -144,9 +144,15 @@ class EditForm extends React.Component {
   clearTitle = () => this.setState({title: ''});
 
   changeScheduleField = evt => {
+    let eventEndField = this.state.eventEndField;
     const isDateAndTime =
         this.state.dateTimeFields.map(i => i.name).includes(evt.label);
-    this.setState({scheduleField: evt.label, isDateAndTime});
+    const isEndFieldDateAndTime =
+        this.state.dateTimeFields.map(i => i.name).includes(eventEndField);
+    if (isDateAndTime !== isEndFieldDateAndTime) {
+      eventEndField = undefined;
+    }
+    this.setState({scheduleField: evt.label, isDateAndTime, eventEndField});
   };
 
   changeEventEndField = evt => {
@@ -557,7 +563,8 @@ class EditForm extends React.Component {
               label={i18n('Select an available end date field')}
               selectedLabel={i18n('Field used to show end date of issues')}
               size={InputSize.FULL}
-              data={this.state.availableScheduleFields.filter(field => field.isDateAndTime === this.state.isDateAndTime)}
+              data={this.state.availableScheduleFields.filter(
+                field => field.isDateAndTime === this.state.isDateAndTime)}
               selected={{label: this.state.eventEndField}}
               onSelect={this.changeEventEndField}
               filter={true}

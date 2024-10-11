@@ -298,7 +298,6 @@ class DueDatesCalendarWidget extends React.Component {
       scheduleField, eventEndField, colorField, isDateAndTime
     } = formParameters;
 
-    console.log('submitConfiguration', formParameters);
     this.setYouTrack(
       selectedYouTrack, async () => {
         this.setState(
@@ -610,29 +609,15 @@ class DueDatesCalendarWidget extends React.Component {
 
   moveEvent = async ({event, start, end}) => {
     const {events} = this.state;
-
     const prevEvents = events;
-    console.log('new data');
-    console.log({event, start, end});
-    const idx = events.indexOf(event);
-    const updatedEvent = {...event, start, end};
-    const updatedEvents = [...events];
-    updatedEvents.splice(idx, 1, updatedEvent);
-    this.setState({
-      events: updatedEvents
-    });
-
     try {
-      console.log('new start ', toUtcMidday(start));
       // update start date
       await updateIssueScheduleField(
         this.fetchYouTrack,
         event.dbIssueId,
         event.issueScheduleFieldDbId,
         toUtcMidday(start));
-
       // update event end date if field different
-      console.log('new end ', toUtcMidday(end));
       if (event.issueEventEndFieldDbId !== event.issueScheduleFieldDbId) {
         await updateIssueScheduleField(
           this.fetchYouTrack,
@@ -640,6 +625,19 @@ class DueDatesCalendarWidget extends React.Component {
           event.issueEventEndFieldDbId,
           toUtcMidday(end));
       }
+
+      const idx = events.indexOf(event);
+      // eslint-disable-next-line max-len
+      const updatedEvent = event.issueEventEndFieldDbId !== event.issueScheduleFieldDbId
+        ? {...event, start, end}
+        : {...event, start, end: start};
+
+
+      const updatedEvents = [...events];
+      updatedEvents.splice(idx, 1, updatedEvent);
+      this.setState({
+        events: updatedEvents
+      });
 
     } catch (error) {
       this.setState({
@@ -649,6 +647,7 @@ class DueDatesCalendarWidget extends React.Component {
   }
 
   eventUpdatable = event => event.isUpdatable
+  canResize = () => this.state.canResize
 
   // eslint-disable-next-line complexity
   renderContent = () => {
@@ -692,7 +691,7 @@ class DueDatesCalendarWidget extends React.Component {
           draggableAccessor={this.eventUpdatable}
           onEventDrop={this.moveEvent}
           onEventResize={this.moveEvent}
-          resizableAccessor={() => this.state.canResize}
+          resizableAccessor={this.canResize}
           className={calendarClasses}
           views={['month', 'week', 'day']}
           culture={this.state.profileLocale}
@@ -752,12 +751,17 @@ class DueDatesCalendarWidget extends React.Component {
 }
 
 function toUtcMidday(date) {
+  // eslint-disable-next-line max-len
   return Date.UTC(date.getFullYear(), date.getMonth(), date.getDate(), MIDDAY, 0, 0, 0);
 }
 
-function utcToLocalMidday(date) {
-  return new Date(date.getUTCFullYear(), date.getUTCMonth(), date.getUTCDate(), MIDDAY, 0, 0, 0);
+function getUtcEndDate(date) {
+  const previousDate = new Date(date);
+  previousDate.setDate(date.getDate() - 1);
+  // eslint-disable-next-line max-len
+  return Date.UTC(previousDate.getFullYear(), previousDate.getMonth(), previousDate.getDate(), 23, 59, 59, 999);
 }
+
 
 export default DueDatesCalendarWidget;
 
